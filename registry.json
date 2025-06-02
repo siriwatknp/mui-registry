@@ -47,22 +47,6 @@
       ]
     },
     {
-      "name": "example-with-css",
-      "type": "registry:component",
-      "title": "Example with CSS",
-      "description": "A login form with a CSS file.",
-      "files": [
-        {
-          "path": "registry/new-york/blocks/example-with-css/example-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/example-with-css/example-card.css",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "avatar-dropdown",
       "type": "registry:block",
       "title": "Avatar Dropdown",
@@ -72,6 +56,34 @@
         {
           "path": "registry/new-york/blocks/avatar-dropdown/index.tsx",
           "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "input-siblings",
+      "type": "registry:component",
+      "title": "Input Siblings",
+      "description": "A set of input components demonstrating sibling input logic and custom hooks.",
+      "files": [
+        {
+          "path": "registry/new-york/blocks/input-siblings/page.tsx",
+          "type": "registry:page"
+        },
+        {
+          "path": "registry/new-york/blocks/input-siblings/hooks/useInput.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/blocks/input-siblings/hooks/useSeparatorInput.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/blocks/input-siblings/hooks/types.ts",
+          "type": "registry:hook"
         }
       ]
     }
