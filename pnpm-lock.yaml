@@ -21,6 +21,9 @@ importers:
       '@emotion/styled':
         specifier: 11.14.0
         version: 11.14.0(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react@19.1.0)
+      '@mui/icons-material':
+        specifier: https://pkg.pr.new/mui/material-ui/@mui/icons-material@d6c44c1
+        version: https://pkg.pr.new/mui/material-ui/@mui/icons-material@d6c44c1(@mui/material@https://pkg.pr.new/mui/material-ui/@mui/material@d6c44c1(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.2)(react@19.1.0)
       '@mui/material':
         specifier: https://pkg.pr.new/mui/material-ui/@mui/material@d6c44c1
         version: https://pkg.pr.new/mui/material-ui/@mui/material@d6c44c1(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -517,6 +520,18 @@ packages:
   '@mui/core-downloads-tracker@https://pkg.pr.new/mui/material-ui/@mui/core-downloads-tracker@d6c44c19ed501e794ebfca75ea890d36412f733c':
     resolution: {tarball: https://pkg.pr.new/mui/material-ui/@mui/core-downloads-tracker@d6c44c19ed501e794ebfca75ea890d36412f733c}
     version: 7.1.0
+
+  '@mui/icons-material@https://pkg.pr.new/mui/material-ui/@mui/icons-material@d6c44c1':
+    resolution: {tarball: https://pkg.pr.new/mui/material-ui/@mui/icons-material@d6c44c1}
+    version: 7.1.0
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@mui/material': 7.1.0
+      '@types/react': 19.1.2
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@mui/material-nextjs@https://pkg.pr.new/mui/material-ui/@mui/material-nextjs@d6c44c1':
     resolution: {tarball: https://pkg.pr.new/mui/material-ui/@mui/material-nextjs@d6c44c1}
@@ -3171,6 +3186,14 @@ snapshots:
       strict-event-emitter: 0.5.1
 
   '@mui/core-downloads-tracker@https://pkg.pr.new/mui/material-ui/@mui/core-downloads-tracker@d6c44c19ed501e794ebfca75ea890d36412f733c': {}
+
+  '@mui/icons-material@https://pkg.pr.new/mui/material-ui/@mui/icons-material@d6c44c1(@mui/material@https://pkg.pr.new/mui/material-ui/@mui/material@d6c44c1(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@types/react@19.1.2)(react@19.1.0)':
+    dependencies:
+      '@babel/runtime': 7.27.4
+      '@mui/material': https://pkg.pr.new/mui/material-ui/@mui/material@d6c44c1(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react: 19.1.0
+    optionalDependencies:
+      '@types/react': 19.1.2
 
   '@mui/material-nextjs@https://pkg.pr.new/mui/material-ui/@mui/material-nextjs@d6c44c1(@emotion/cache@11.14.0)(@emotion/react@11.14.0(@types/react@19.1.2)(react@19.1.0))(@types/react@19.1.2)(next@15.3.1(@babel/core@7.26.10)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)':
     dependencies:

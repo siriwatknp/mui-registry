@@ -88,6 +88,19 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "avatar-dropdown",
+      "type": "registry:block",
+      "title": "Avatar Dropdown",
+      "description": "An avatar that opens a dropdown menu with user management and settings options.",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/avatar-dropdown/index.tsx",
+          "type": "registry:block"
+        }
+      ]
     }
   ]
 }
