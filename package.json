@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "registry:build": "shadcn build"
+    "registry:build": "shadcn build && node -e \"require('fs').copyFileSync('registry.json', 'public/r/registry.json')\""
   },
   "dependencies": {
     "@emotion/cache": "11.14.0",
