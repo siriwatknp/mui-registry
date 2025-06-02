@@ -4,6 +4,7 @@ import PokemonPage from "@/registry/new-york/blocks/complex-component/page";
 import { LoginForm } from "@/registry/new-york/blocks/login-form/login-form";
 import { AvatarDropdown } from "@/registry/new-york/blocks/avatar-dropdown";
 import { FeedbackForm } from "@/registry/new-york/blocks/feedback-form/feedback-form";
+import { InputSiblingsPage } from "@/registry/new-york/blocks/input-siblings/page";
 // This page displays items from the custom registry.
 // You are free to implement this with your own design as needed.
 
@@ -17,6 +18,18 @@ export default function Home() {
         </p>
       </header>
       <main className="flex flex-col flex-1 gap-8">
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Input Siblings
+            </h2>
+            <OpenInV0Button name="complex-component" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[400px] relative">
+            <InputSiblingsPage />
+          </div>
+        </div>
+
         <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative">
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
