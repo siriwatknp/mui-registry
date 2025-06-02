@@ -24,6 +24,7 @@ export default function Home() {
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               Field Pin Input
             </h2>
+            <OpenInV0Button name="field-pin-input" className="w-fit" />
           </div>
           <div className="flex items-center justify-center min-h-[400px] relative">
             <FieldPinInput />
