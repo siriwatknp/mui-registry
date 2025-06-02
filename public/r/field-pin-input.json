@@ -5,7 +5,7 @@
   "title": "Field Pin Input",
   "description": "A minimal 4-digit PIN input field using custom hooks for sibling input logic.",
   "registryDependencies": [
-    "input-siblings"
+    "https://mui-registry.vercel.app/r/input-siblings.json"
   ],
   "files": [
     {
