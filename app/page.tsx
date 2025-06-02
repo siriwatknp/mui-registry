@@ -47,6 +47,7 @@ export default function Home() {
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               Avatar Dropdown
             </h2>
+            <OpenInV0Button name="avatar-dropdown" className="w-fit" />
           </div>
           <div className="flex items-center justify-center min-h-[80px] relative">
             <AvatarDropdown />
