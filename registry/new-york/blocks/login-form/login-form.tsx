@@ -1,7 +1,12 @@
 "use client";
 import * as React from "react";
-import { Card, CardContent, CardHeader } from "@mui/material";
-import { TextField, Button, Typography, Box } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import { z } from "zod";
 
 const loginFormSchema = z.object({
@@ -77,56 +82,71 @@ export function LoginForm() {
   }
 
   return (
-    <Card sx={{ maxWidth: 400, width: "100%" }}>
-      <CardHeader>
-        <Typography variant="h5" component="h1" gutterBottom>
-          Sign In
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Enter your credentials to access your account
-        </Typography>
-      </CardHeader>
-      <CardContent>
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-        >
-          <TextField
-            name="email"
-            type="email"
-            label="Email"
-            variant="outlined"
-            fullWidth
-            required
-            defaultValue={state.defaultValues.email}
-            error={!!state.errors.email}
-            helperText={state.errors.email}
-            disabled={pending}
-          />
-          <TextField
-            name="password"
-            type="password"
-            label="Password"
-            variant="outlined"
-            fullWidth
-            required
-            defaultValue={state.defaultValues.password}
-            error={!!state.errors.password}
-            helperText={state.errors.password}
-            disabled={pending}
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            size="large"
-            disabled={pending}
-            sx={{ mt: 2 }}
+    <Box display="flex" justifyContent="center" alignItems="center">
+      <Card sx={{ maxWidth: 400, width: "100%", p: 2 }}>
+        <CardHeader
+          title={<Typography variant="h5">Login</Typography>}
+          subheader={
+            <Typography variant="body2" color="text.secondary">
+              Please enter your credentials to continue
+            </Typography>
+          }
+        />
+        <CardContent>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
           >
-            {pending ? "Signing in..." : "Sign In"}
-          </Button>
-        </Box>
-      </CardContent>
-    </Card>
+            <TextField
+              id="field-email"
+              label="Email"
+              type="email"
+              placeholder="Enter your email"
+              required
+              defaultValue={state.defaultValues.email}
+              disabled={pending}
+              error={!!state.errors.email}
+              helperText={state.errors.email}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              id="field-password"
+              label="Password"
+              type="password"
+              placeholder="Enter your password"
+              required
+              defaultValue={state.defaultValues.password}
+              disabled={pending}
+              error={!!state.errors.password}
+              helperText={state.errors.password}
+              fullWidth
+              margin="normal"
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              disabled={pending}
+              sx={{ mt: 2 }}
+              fullWidth
+            >
+              {pending ? "Signing in..." : "Sign In"}
+            </Button>
+            <Box mt={2} textAlign="right">
+              <Button
+                href="#"
+                size="small"
+                color="primary"
+                sx={{ textTransform: "none" }}
+              >
+                Forgot password?
+              </Button>
+            </Box>
+          </Box>
+        </CardContent>
+      </Card>
+    </Box>
   );
 }
