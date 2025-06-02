@@ -30,15 +30,15 @@ export interface UseInputOptions {
   onChange?: (value: string, meta: { invalid: boolean }) => void;
 }
 
-export const useIsFirstMount = () => {
+export function useIsFirstMount() {
   const firstMount = React.useRef(true);
   React.useEffect(() => {
     firstMount.current = false;
   }, []);
   return firstMount.current;
-};
+}
 
-export const useInput = (options: UseInputOptions) => {
+export function useInput(options: UseInputOptions) {
   const { autoFocus = false, value } = options;
   const ref = React.useRef<HTMLInputElement | null>(null);
   const [internalValue, setInternalValue] = React.useState(
@@ -86,7 +86,7 @@ export const useInput = (options: UseInputOptions) => {
       },
     }),
   };
-};
+}
 
 const prependZero = (value?: string) => {
   if (!value) return "";
@@ -95,7 +95,7 @@ const prependZero = (value?: string) => {
 export interface UseTwoNumbersInputOptions
   extends Omit<UseInputOptions, "maxLength"> {}
 
-export const useTwoNumbersInput = (options?: UseTwoNumbersInputOptions) => {
+export function useTwoNumbersInput(options?: UseTwoNumbersInputOptions) {
   let defaultValue = options?.defaultValue;
   if (typeof defaultValue !== "undefined") {
     defaultValue = prependZero(defaultValue);
@@ -124,4 +124,4 @@ export const useTwoNumbersInput = (options?: UseTwoNumbersInputOptions) => {
       },
     }),
   };
-};
+}

@@ -51,7 +51,7 @@ export interface UseSeparatorInputOptions {
    */
   onChange?: (value: string, meta: { invalid: boolean }) => void;
 }
-export const useSeparatorInput = (options: UseSeparatorInputOptions) => {
+export function useSeparatorInput(options: UseSeparatorInputOptions) {
   const {
     autoFocus = false,
     defaultValue,
@@ -123,4 +123,4 @@ export const useSeparatorInput = (options: UseSeparatorInputOptions) => {
       },
     }),
   };
-};
+}

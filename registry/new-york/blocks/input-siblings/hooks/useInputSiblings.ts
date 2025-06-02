@@ -28,7 +28,7 @@ function getJumpLength(maxLength: Sibling["options"]["maxLength"]) {
   if (typeof maxLength === "number") return maxLength;
   return maxLength.reduce((total, num) => total + num) + maxLength.length - 1;
 }
-export const useInputSiblings = (options: UseInputSiblingsOptions) => {
+export function useInputSiblings(options: UseInputSiblingsOptions) {
   const { siblings } = options;
   const blurEvent = React.useRef<
     React.FocusEvent<HTMLInputElement> | undefined
@@ -90,4 +90,4 @@ export const useInputSiblings = (options: UseInputSiblingsOptions) => {
       };
     };
   });
-};
+}
