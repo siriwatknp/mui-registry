@@ -1,8 +1,10 @@
 "use client";
 
-import { useInput } from "@/registry/new-york/blocks/input-siblings/hooks/useInput";
-import { useSeparatorInput } from "@/registry/new-york/blocks/input-siblings/hooks/useSeparatorInput";
-import { useInputSiblings } from "@/registry/new-york/blocks/input-siblings/hooks/useInputSiblings";
+import {
+  useInput,
+  useInputSiblings,
+  useSeparatorInput,
+} from "@/registry/new-york/blocks/input-siblings/hooks/useInputSiblings";
 
 function SingleInput() {
   const { getInputProps } = useInput({

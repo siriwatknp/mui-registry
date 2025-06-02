@@ -1,8 +1,7 @@
 import * as React from "react";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import PokemonPage from "@/registry/new-york/blocks/complex-component/page";
 import { LoginForm } from "@/registry/new-york/blocks/login-form/login-form";
-import { AvatarDropdown } from "@/registry/new-york/blocks/avatar-dropdown";
+import { AvatarDropdown } from "@/registry/new-york/blocks/avatar-dropdown/avatar-dropdown";
 import { FeedbackForm } from "@/registry/new-york/blocks/feedback-form/feedback-form";
 import { InputSiblings } from "@/registry/new-york/blocks/input-siblings/input-siblings";
 import { FieldPinInput } from "@/registry/new-york/blocks/field-pin-input/field-pin-input";
@@ -74,18 +73,6 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-center min-h-[500px] relative">
             <FeedbackForm />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A complex component showing hooks, libs and components.
-            </h2>
-            <OpenInV0Button name="complex-component" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <PokemonPage />
           </div>
         </div>
       </main>

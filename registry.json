@@ -17,36 +17,6 @@
       ]
     },
     {
-      "name": "complex-component",
-      "type": "registry:component",
-      "title": "Complex Component",
-      "description": "A complex component showing hooks, libs and components.",
-      "registryDependencies": ["card"],
-      "files": [
-        {
-          "path": "registry/new-york/blocks/complex-component/page.tsx",
-          "type": "registry:page",
-          "target": "app/pokemon/page.tsx"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/components/pokemon-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/components/pokemon-image.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/lib/pokemon.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/hooks/use-pokemon.ts",
-          "type": "registry:hook"
-        }
-      ]
-    },
-    {
       "name": "avatar-dropdown",
       "type": "registry:block",
       "title": "Avatar Dropdown",
@@ -54,7 +24,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/avatar-dropdown/index.tsx",
+          "path": "registry/new-york/blocks/avatar-dropdown/avatar-dropdown.tsx",
           "type": "registry:block"
         }
       ]
@@ -70,23 +40,23 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/index.ts",
+          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/index.ts",
           "type": "registry:hook"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/useInput.ts",
+          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useInput.ts",
           "type": "registry:hook"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings.ts",
+          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useInputSiblings.ts",
           "type": "registry:hook"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/useSeparatorInput.ts",
+          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useSeparatorInput.ts",
           "type": "registry:hook"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/types.ts",
+          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/types.ts",
           "type": "registry:hook"
         }
       ]
@@ -107,6 +77,19 @@
         {
           "path": "registry/new-york/blocks/field-pin-input/hooks/usePinInput.ts",
           "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "feedback-form",
+      "type": "registry:block",
+      "title": "Feedback Form",
+      "description": "A feedback form block for collecting user feedback.",
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/feedback-form/feedback-form.tsx",
+          "type": "registry:block"
         }
       ]
     }

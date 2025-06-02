@@ -4,7 +4,7 @@ import {
   useInput,
   useInputSiblings,
   useIsFirstMount,
-} from "@/registry/new-york/blocks/input-siblings/hooks";
+} from "@/registry/new-york/blocks/input-siblings/hooks/useInputSiblings/index";
 
 const numberValidator = (value: string) => new RegExp(/\d/).test(value);
 const alphanumericValidator = (value: string) =>
