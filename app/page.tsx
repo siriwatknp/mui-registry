@@ -36,7 +36,7 @@ export default function Home() {
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               Input Siblings
             </h2>
-            <OpenInV0Button name="complex-component" className="w-fit" />
+            <OpenInV0Button name="input-siblings" className="w-fit" />
           </div>
           <div className="flex items-center justify-center min-h-[400px] relative">
             <InputSiblings />
