@@ -70,6 +70,10 @@
           "type": "registry:page"
         },
         {
+          "path": "registry/new-york/blocks/input-siblings/hooks/index.ts",
+          "type": "registry:hook"
+        },
+        {
           "path": "registry/new-york/blocks/input-siblings/hooks/useInput.ts",
           "type": "registry:hook"
         },
@@ -83,6 +87,26 @@
         },
         {
           "path": "registry/new-york/blocks/input-siblings/hooks/types.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "field-pin-input",
+      "type": "registry:block",
+      "title": "Field Pin Input",
+      "description": "A minimal 4-digit PIN input field using custom hooks for sibling input logic.",
+      "files": [
+        {
+          "path": "registry/new-york/blocks/field-pin-input/page.tsx",
+          "type": "registry:page"
+        },
+        {
+          "path": "registry/new-york/blocks/field-pin-input/components/field-pin-input.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/blocks/field-pin-input/hooks/usePinInput.ts",
           "type": "registry:hook"
         }
       ]
