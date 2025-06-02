@@ -40,10 +40,6 @@
           "type": "registry:block"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/index.ts",
-          "type": "registry:hook"
-        },
-        {
           "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useInput.ts",
           "type": "registry:hook"
         },
