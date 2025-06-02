@@ -17,33 +17,6 @@
       ]
     },
     {
-      "name": "hello-world",
-      "type": "registry:component",
-      "title": "Hello World",
-      "description": "A simple hello world component",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "registry/new-york/blocks/hello-world/hello-world.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "example-form",
-      "type": "registry:component",
-      "title": "Example Form",
-      "description": "A contact form with Zod validation.",
-      "dependencies": ["zod"],
-      "registryDependencies": ["button", "input", "label", "textarea", "card"],
-      "files": [
-        {
-          "path": "registry/new-york/blocks/example-form/example-form.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "complex-component",
       "type": "registry:component",
       "title": "Complex Component",
@@ -74,18 +47,64 @@
       ]
     },
     {
-      "name": "example-with-css",
-      "type": "registry:component",
-      "title": "Example with CSS",
-      "description": "A login form with a CSS file.",
+      "name": "avatar-dropdown",
+      "type": "registry:block",
+      "title": "Avatar Dropdown",
+      "description": "An avatar that opens a dropdown menu with user management and settings options.",
+      "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/example-with-css/example-card.tsx",
-          "type": "registry:component"
+          "path": "registry/new-york/blocks/avatar-dropdown/index.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "input-siblings",
+      "type": "registry:component",
+      "title": "Input Siblings",
+      "description": "A set of input components demonstrating sibling input logic and custom hooks.",
+      "files": [
+        {
+          "path": "registry/new-york/blocks/input-siblings/input-siblings.tsx",
+          "type": "registry:block"
         },
         {
-          "path": "registry/new-york/blocks/example-with-css/example-card.css",
-          "type": "registry:component"
+          "path": "registry/new-york/blocks/input-siblings/hooks/index.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/blocks/input-siblings/hooks/useInput.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/blocks/input-siblings/hooks/useSeparatorInput.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/blocks/input-siblings/hooks/types.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "field-pin-input",
+      "type": "registry:block",
+      "title": "Field Pin Input",
+      "description": "A minimal 4-digit PIN input field using custom hooks for sibling input logic.",
+      "registryDependencies": ["input-siblings"],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/field-pin-input/field-pin-input.tsx",
+          "type": "registry:block"
+        },
+        {
+          "path": "registry/new-york/blocks/field-pin-input/hooks/usePinInput.ts",
+          "type": "registry:hook"
         }
       ]
     }

@@ -4,8 +4,8 @@ import PokemonPage from "@/registry/new-york/blocks/complex-component/page";
 import { LoginForm } from "@/registry/new-york/blocks/login-form/login-form";
 import { AvatarDropdown } from "@/registry/new-york/blocks/avatar-dropdown";
 import { FeedbackForm } from "@/registry/new-york/blocks/feedback-form/feedback-form";
-import { InputSiblingsPage } from "@/registry/new-york/blocks/input-siblings/page";
-import { FieldPinInputPage } from "@/registry/new-york/blocks/field-pin-input/page";
+import { InputSiblings } from "@/registry/new-york/blocks/input-siblings/input-siblings";
+import { FieldPinInput } from "@/registry/new-york/blocks/field-pin-input/field-pin-input";
 // This page displays items from the custom registry.
 // You are free to implement this with your own design as needed.
 
@@ -26,7 +26,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="flex items-center justify-center min-h-[400px] relative">
-            <FieldPinInputPage />
+            <FieldPinInput />
           </div>
         </div>
 
@@ -38,7 +38,7 @@ export default function Home() {
             <OpenInV0Button name="complex-component" className="w-fit" />
           </div>
           <div className="flex items-center justify-center min-h-[400px] relative">
-            <InputSiblingsPage />
+            <InputSiblings />
           </div>
         </div>
 

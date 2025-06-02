@@ -153,7 +153,7 @@ function Pin() {
   );
 }
 
-export function InputSiblingsPage() {
+export function InputSiblings() {
   return (
     <div className="flex flex-col gap-6 p-6 max-w-md mx-auto">
       <div>
@@ -179,11 +179,3 @@ export function InputSiblingsPage() {
     </div>
   );
 }
-
-// Add a minimal input style for demonstration
-// You can move this to a CSS file if needed
-// <style jsx>{`
-//   .input {
-//     @apply border rounded px-2 py-1 text-base focus:outline-none focus:ring-2 focus:ring-blue-500;
-//   }
-// `}</style>

@@ -2,20 +2,21 @@
 
 import React from "react";
 import Box, { BoxProps } from "@mui/material/Box";
+import FilledInput from "@mui/material/FilledInput";
 import {
   usePinInput,
   UsePinInputOptions,
 } from "@/registry/new-york/blocks/field-pin-input/hooks/usePinInput";
 
-export type FieldPinInputProps = {
+type PinInputProps = {
   children: Array<React.ReactElement>;
 } & Omit<BoxProps, "children"> &
   Omit<UsePinInputOptions, "pinLength">;
 
-export const FieldPinInput = React.forwardRef<
+const PinInput = React.forwardRef<
   HTMLDivElement,
-  React.PropsWithChildren<FieldPinInputProps>
->(function FieldPinInput(props, ref) {
+  React.PropsWithChildren<PinInputProps>
+>(function PinInput(props, ref) {
   const { children, onChange, onBlur, ...other } = props;
   const { pins } = usePinInput({ ...props, pinLength: children.length });
 
@@ -53,3 +54,14 @@ export const FieldPinInput = React.forwardRef<
     </Box>
   );
 });
+
+export function FieldPinInput() {
+  return (
+    <PinInput>
+      <FilledInput disableUnderline hiddenLabel />
+      <FilledInput disableUnderline hiddenLabel />
+      <FilledInput disableUnderline hiddenLabel />
+      <FilledInput disableUnderline hiddenLabel />
+    </PinInput>
+  );
+}
