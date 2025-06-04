@@ -97,6 +97,24 @@
           "type": "registry:block"
         }
       ]
+    },
+    {
+      "name": "mui-nextjs-app-router",
+      "type": "registry:lib",
+      "title": "MUI Next.js App Router Blank Lib",
+      "description": "A blank library for MUI with Next.js App Router integration.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/material-nextjs",
+        "@emotion/cache"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/mui-nextjs-app-router/layout.tsx",
+          "type": "registry:lib"
+        }
+      ]
     }
   ]
 }
