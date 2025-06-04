@@ -4,6 +4,11 @@
   "type": "registry:block",
   "title": "Login Form",
   "description": "A simple Login Form block",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
   "registryDependencies": [],
   "files": [
     {

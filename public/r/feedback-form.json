@@ -4,6 +4,11 @@
   "type": "registry:block",
   "title": "Feedback Form",
   "description": "A feedback form block for collecting user feedback.",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
   "registryDependencies": [],
   "files": [
     {

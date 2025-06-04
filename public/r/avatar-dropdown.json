@@ -4,6 +4,12 @@
   "type": "registry:block",
   "title": "Avatar Dropdown",
   "description": "An avatar that opens a dropdown menu with user management and settings options.",
+  "dependencies": [
+    "@mui/material",
+    "@mui/icons-material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
   "registryDependencies": [],
   "files": [
     {
