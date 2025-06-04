@@ -1,6 +1,5 @@
 import { Roboto } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import "./globals.css";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
