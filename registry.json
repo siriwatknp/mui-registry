@@ -8,6 +8,7 @@
       "type": "registry:block",
       "title": "Login Form",
       "description": "A simple Login Form block",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
       "registryDependencies": [],
       "files": [
         {
@@ -21,6 +22,12 @@
       "type": "registry:block",
       "title": "Avatar Dropdown",
       "description": "An avatar that opens a dropdown menu with user management and settings options.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -62,6 +69,7 @@
       "type": "registry:block",
       "title": "Field Pin Input",
       "description": "A minimal 4-digit PIN input field using custom hooks for sibling input logic.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
       "registryDependencies": [
         "https://mui-registry.vercel.app/r/input-siblings.json"
       ],
@@ -81,6 +89,7 @@
       "type": "registry:block",
       "title": "Feedback Form",
       "description": "A feedback form block for collecting user feedback.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
       "registryDependencies": [],
       "files": [
         {
