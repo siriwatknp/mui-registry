@@ -12,7 +12,6 @@ import Divider from "@mui/material/Divider";
 import Avatar from "@mui/material/Avatar";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
 import Paper from "@mui/material/Paper";
@@ -41,6 +40,7 @@ export function DashboardLayout04() {
     <Box sx={{ display: "flex", height: "100vh", bgcolor: "#f7f8fa" }}>
       <Drawer
         variant="permanent"
+        elevation={0}
         slotProps={{
           paper: {
             sx: {
@@ -48,7 +48,6 @@ export function DashboardLayout04() {
               bgcolor: "#fff",
               color: "#222",
               border: 0,
-              boxShadow: 2,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -84,7 +83,7 @@ export function DashboardLayout04() {
           </Avatar>
           <Divider sx={{ bgcolor: "#e5e7eb", width: 40, mb: 2 }} />
           {/* Menu */}
-          <List sx={{ p: 0, width: "100%", flex: 1 }}>
+          <List sx={{ p: 0, px: 2, width: "100%", flex: 1 }}>
             {menuItems.map((item) => (
               <Tooltip
                 key={item.label}
@@ -126,24 +125,26 @@ export function DashboardLayout04() {
           }}
         >
           <Divider sx={{ bgcolor: "#e5e7eb", width: 40, mb: 2 }} />
-          <Tooltip title="Logout" placement="right" arrow>
-            <ListItem disablePadding sx={{ justifyContent: "center" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: "center",
-                  borderRadius: 2,
-                  color: "#9ca3af",
-                  "&:hover": { bgcolor: "#f1f5f9", color: "#2563eb" },
-                  transition: "all 0.2s",
-                }}
-              >
-                <ListItemIcon sx={{ minWidth: 0, color: "inherit" }}>
-                  <LogoutIcon />
-                </ListItemIcon>
-              </ListItemButton>
-            </ListItem>
-          </Tooltip>
+          <List sx={{ p: 0, px: 2, width: "100%", flex: 1 }}>
+            <Tooltip title="Logout" placement="right" arrow>
+              <ListItem disablePadding sx={{ justifyContent: "center" }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: "center",
+                    borderRadius: 2,
+                    color: "#9ca3af",
+                    "&:hover": { bgcolor: "#f1f5f9", color: "#2563eb" },
+                    transition: "all 0.2s",
+                  }}
+                >
+                  <ListItemIcon sx={{ minWidth: 0, color: "inherit" }}>
+                    <LogoutIcon />
+                  </ListItemIcon>
+                </ListItemButton>
+              </ListItem>
+            </Tooltip>
+          </List>
         </Box>
       </Drawer>
       <Box
@@ -157,7 +158,7 @@ export function DashboardLayout04() {
         <AppBar
           position="static"
           elevation={0}
-          sx={{ bgcolor: "#fff", color: "#222", boxShadow: 1, zIndex: 1201 }}
+          sx={{ bgcolor: "#fff", color: "#222", zIndex: 1201 }}
         >
           <Toolbar
             sx={{
@@ -167,26 +168,7 @@ export function DashboardLayout04() {
               justifyContent: "space-between",
             }}
           >
-            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-              <Avatar
-                sx={{
-                  bgcolor: "#2563eb",
-                  color: "#fff",
-                  width: 40,
-                  height: 40,
-                  fontWeight: 700,
-                  fontSize: 24,
-                }}
-              >
-                <WorkIcon fontSize="medium" />
-              </Avatar>
-              <Typography
-                variant="h5"
-                sx={{ fontWeight: 600, letterSpacing: 0.5 }}
-              >
-                Find Job
-              </Typography>
-            </Box>
+            <Box sx={{ flex: 1 }} />
             <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
               <Paper
                 component="form"
@@ -209,24 +191,10 @@ export function DashboardLayout04() {
                   inputProps={{ "aria-label": "search" }}
                 />
               </Paper>
-              <IconButton
-                sx={{
-                  color: "#2563eb",
-                  bgcolor: "#f1f5f9",
-                  borderRadius: 2,
-                  mr: 1,
-                }}
-              >
+              <IconButton>
                 <HistoryIcon />
               </IconButton>
-              <IconButton
-                sx={{
-                  color: "#2563eb",
-                  bgcolor: "#f1f5f9",
-                  borderRadius: 2,
-                  mr: 1,
-                }}
-              >
+              <IconButton>
                 <NotificationsNoneIcon />
               </IconButton>
               <Avatar

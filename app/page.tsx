@@ -178,25 +178,6 @@ export default function Home() {
         <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
           <div className="flex items-center justify-between">
             <Link
-              href="/job-board-layout"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-muted-foreground sm:pl-3 hover:underline focus:underline"
-            >
-              Job Board Layout
-            </Link>
-            <OpenInV0Button name="job-board-layout" className="w-fit" />
-          </div>
-          <iframe
-            src="/job-board-layout"
-            className="flex flex-1 items-center justify-center min-h-[400px] relative"
-            style={{ width: "100%", border: "none" }}
-          />
-        </div>
-
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <Link
               href="/dashboard-layout-04"
               target="_blank"
               rel="noopener noreferrer"
