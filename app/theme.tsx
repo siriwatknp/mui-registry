@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 const theme = createTheme({
   cssVariables: true,
-  experimental_modularCssLayers: "@layer theme,base,mui,components,utilties;",
+  // experimental_modularCssLayers: "@layer theme,base,mui,components,utilties;",
 });
 
 interface AppThemeProps {
