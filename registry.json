@@ -21,7 +21,9 @@
           "type": "registry:block"
         }
       ],
-      "screenshot": "/screenshots/login-form.png"
+      "meta": {
+        "screenshot": "/screenshots/login-form.png"
+      }
     },
     {
       "name": "avatar-dropdown",
@@ -41,7 +43,9 @@
           "type": "registry:block"
         }
       ],
-      "screenshot": "/screenshots/avatar-dropdown.png"
+      "meta": {
+        "screenshot": "/screenshots/avatar-dropdown.png"
+      }
     },
     {
       "name": "input-siblings",
@@ -70,7 +74,9 @@
           "type": "registry:hook"
         }
       ],
-      "screenshot": "/screenshots/input-siblings.png"
+      "meta": {
+        "screenshot": "/screenshots/input-siblings.png"
+      }
     },
     {
       "name": "field-pin-input",
@@ -95,7 +101,9 @@
           "type": "registry:hook"
         }
       ],
-      "screenshot": "/screenshots/field-pin-input.png"
+      "meta": {
+        "screenshot": "/screenshots/field-pin-input.png"
+      }
     },
     {
       "name": "feedback-form",
@@ -115,7 +123,9 @@
           "type": "registry:block"
         }
       ],
-      "screenshot": "/screenshots/feedback-form.png"
+      "meta": {
+        "screenshot": "/screenshots/feedback-form.png"
+      }
     },
     {
       "name": "mui-nextjs-app-router",
@@ -154,7 +164,9 @@
           "type": "registry:block"
         }
       ],
-      "screenshot": "/screenshots/dashboard-layout.png"
+      "meta": {
+        "screenshot": "/screenshots/dashboard-layout.png"
+      }
     },
     {
       "name": "stats-card",
@@ -174,7 +186,9 @@
           "type": "registry:component"
         }
       ],
-      "screenshot": "/screenshots/stats-card.png"
+      "meta": {
+        "screenshot": "/screenshots/stats-card.png"
+      }
     },
     {
       "name": "order-table",
@@ -192,7 +206,9 @@
           "type": "registry:block"
         }
       ],
-      "screenshot": "/screenshots/order-table.png"
+      "meta": {
+        "screenshot": "/screenshots/order-table.png"
+      }
     },
     {
       "name": "login-dialog",
@@ -212,7 +228,9 @@
           "type": "registry:block"
         }
       ],
-      "screenshot": "/screenshots/login-dialog.png"
+      "meta": {
+        "screenshot": "/screenshots/login-dialog.png"
+      }
     },
     {
       "name": "dashboard-layout-02",
@@ -232,7 +250,9 @@
           "type": "registry:block"
         }
       ],
-      "screenshot": "/screenshots/dashboard-layout-02.png"
+      "meta": {
+        "screenshot": "/screenshots/dashboard-layout-02.png"
+      }
     },
     {
       "name": "dashboard-layout-03",
@@ -252,7 +272,9 @@
           "type": "registry:block"
         }
       ],
-      "screenshot": "/screenshots/dashboard-layout-03.png"
+      "meta": {
+        "screenshot": "/screenshots/dashboard-layout-03.png"
+      }
     },
     {
       "name": "dashboard-layout-04",
@@ -272,7 +294,9 @@
           "type": "registry:block"
         }
       ],
-      "screenshot": "/screenshots/dashboard-layout-04.png"
+      "meta": {
+        "screenshot": "/screenshots/dashboard-layout-04.png"
+      }
     }
   ]
 }

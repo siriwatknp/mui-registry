@@ -80,24 +80,32 @@ export async function screenshotAndUpdateRegistry() {
 
   await browser.close();
 
-  // 3. Update registry.json with screenshot fields
+  // 3. Update registry.json with meta.screenshot fields
   const registryRaw = await fs.readFile(REGISTRY_PATH, "utf-8");
   const registry = JSON.parse(registryRaw);
   const items = registry.items;
 
   for (const item of items) {
+    // Remove top-level screenshot field if present
+    if (item.screenshot) {
+      delete item.screenshot;
+    }
     const screenshotPath = `/screenshots/${item.name}.png`;
     const absScreenshotPath = path.join(SCREENSHOTS_DIR, `${item.name}.png`);
     try {
       await fs.access(absScreenshotPath);
-      item.screenshot = screenshotPath;
+      if (!item.meta) item.meta = {};
+      item.meta.screenshot = screenshotPath;
     } catch {
       // Screenshot does not exist, skip
+      if (item.meta && item.meta.screenshot) {
+        delete item.meta.screenshot;
+      }
     }
   }
 
   await fs.writeFile(REGISTRY_PATH, JSON.stringify(registry, null, 2) + "\n");
-  console.log("registry.json updated with screenshot fields.");
+  console.log("registry.json updated with meta.screenshot fields.");
 }
 
 // If run directly, execute the function

@@ -17,5 +17,8 @@
       "content": "\"use client\";\n\nimport * as React from \"react\";\nimport Card from \"@mui/material/Card\";\nimport CardContent from \"@mui/material/CardContent\";\nimport Typography from \"@mui/material/Typography\";\nimport Box from \"@mui/material/Box\";\nimport ArrowUpwardIcon from \"@mui/icons-material/ArrowUpward\";\nimport ArrowDownwardIcon from \"@mui/icons-material/ArrowDownward\";\n\nexport interface StatsCardProps {\n  label: string;\n  value: number | string;\n  positive?: boolean;\n}\n\nexport function StatsCard({ label, value, positive }: StatsCardProps) {\n  return (\n    <Card>\n      <CardContent>\n        <Typography color=\"text.secondary\" gutterBottom>\n          {label}\n        </Typography>\n        <Box sx={{ display: \"flex\", alignItems: \"center\", gap: 1 }}>\n          <Typography\n            variant=\"h2\"\n            component=\"span\"\n            sx={{ fontWeight: \"bold\", fontSize: \"2.5rem\" }}\n          >\n            {value}\n          </Typography>\n          {positive === true && (\n            <ArrowUpwardIcon color=\"success\" fontSize=\"large\" />\n          )}\n          {positive === false && (\n            <ArrowDownwardIcon color=\"error\" fontSize=\"large\" />\n          )}\n        </Box>\n      </CardContent>\n    </Card>\n  );\n}\n",
       "type": "registry:component"
     }
-  ]
+  ],
+  "meta": {
+    "screenshot": "/screenshots/stats-card.png"
+  }
 }

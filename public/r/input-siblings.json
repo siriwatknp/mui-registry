@@ -30,5 +30,8 @@
       "content": "export interface InputHanders {\n  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;\n  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;\n  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;\n  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;\n}\n",
       "type": "registry:hook"
     }
-  ]
+  ],
+  "meta": {
+    "screenshot": "/screenshots/input-siblings.png"
+  }
 }
