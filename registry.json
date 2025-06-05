@@ -151,7 +151,12 @@
       "type": "registry:component",
       "title": "Stats Card",
       "description": "A card for showing a label, a large value, and an icon indicating positive/negative result.",
-      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -179,7 +184,12 @@
       "type": "registry:block",
       "title": "Login Dialog",
       "description": "A button that opens a dialog with a login form (title, email, password, submit button) and basic validation.",
-      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -193,7 +203,12 @@
       "type": "registry:block",
       "title": "Dashboard Layout 02",
       "description": "A modern dashboard layout sidebar with logo, navigation, and user profile, styled to match the provided image.",
-      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -207,7 +222,12 @@
       "type": "registry:block",
       "title": "Dashboard Layout 03",
       "description": "A modern dashboard layout sidebar with logo, navigation, tooltips, and logout, styled to match the provided image.",
-      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -221,7 +241,12 @@
       "type": "registry:block",
       "title": "Dashboard Layout 04",
       "description": "A dashboard layout with sidebar and header, styled to match the provided image.",
-      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
       "registryDependencies": [],
       "files": [
         {

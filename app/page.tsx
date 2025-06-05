@@ -41,101 +41,6 @@ export default function Home() {
             style={{ width: "100%", border: "none" }}
           />
         </div>
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              Field Pin Input
-            </h2>
-            <OpenInV0Button name="field-pin-input" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <FieldPinInput />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              Input Siblings
-            </h2>
-            <OpenInV0Button name="input-siblings" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <InputSiblings />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              Avatar Dropdown
-            </h2>
-            <OpenInV0Button name="avatar-dropdown" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[80px] relative">
-            <AvatarDropdown />
-          </div>
-        </div>
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A simple login form
-            </h2>
-            <OpenInV0Button name="login-form" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <LoginForm />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              A contact form with Zod validation.
-            </h2>
-            <OpenInV0Button name="feedback-form" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[500px] relative">
-            <FeedbackForm />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[200px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              Stats Card
-            </h2>
-            <OpenInV0Button name="stats-card" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[120px] relative gap-4">
-            <StatsCard label="Revenue" value="12,345" positive />
-            <StatsCard label="Churn" value="-234.2" positive={false} />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              Order Table
-            </h2>
-            <OpenInV0Button name="order-table" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[400px] relative w-full">
-            <OrderTable />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
-              Login Dialog
-            </h2>
-            <OpenInV0Button name="login-dialog" className="w-fit" />
-          </div>
-          <div className="flex items-center justify-center min-h-[80px] relative">
-            <LoginDialog />
-          </div>
-        </div>
 
         <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
           <div className="flex items-center justify-between">
@@ -192,6 +97,103 @@ export default function Home() {
             className="flex flex-1 items-center justify-center min-h-[400px] relative"
             style={{ width: "100%", border: "none" }}
           />
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Avatar Dropdown
+            </h2>
+            <OpenInV0Button name="avatar-dropdown" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[80px] relative">
+            <AvatarDropdown />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              A simple login form
+            </h2>
+            <OpenInV0Button name="login-form" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[400px] relative">
+            <LoginForm />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Login Dialog
+            </h2>
+            <OpenInV0Button name="login-dialog" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[80px] relative">
+            <LoginDialog />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              A contact form with Zod validation.
+            </h2>
+            <OpenInV0Button name="feedback-form" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[500px] relative">
+            <FeedbackForm />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[200px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Stats Card
+            </h2>
+            <OpenInV0Button name="stats-card" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[120px] relative gap-4">
+            <StatsCard label="Revenue" value="12,345" positive />
+            <StatsCard label="Churn" value="-234.2" positive={false} />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Order Table
+            </h2>
+            <OpenInV0Button name="order-table" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[400px] relative w-full">
+            <OrderTable />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Field Pin Input
+            </h2>
+            <OpenInV0Button name="field-pin-input" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[400px] relative">
+            <FieldPinInput />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Input Siblings
+            </h2>
+            <OpenInV0Button name="input-siblings" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[400px] relative">
+            <InputSiblings />
+          </div>
         </div>
       </main>
     </div>
