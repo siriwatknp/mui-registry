@@ -8,7 +8,12 @@
       "type": "registry:block",
       "title": "Login Form",
       "description": "A simple Login Form block",
-      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "dependencies": [
+        "@mui/material",
+        "@emotion/react",
+        "@emotion/styled",
+        "zod"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -89,7 +94,12 @@
       "type": "registry:block",
       "title": "Feedback Form",
       "description": "A feedback form block for collecting user feedback.",
-      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "dependencies": [
+        "@mui/material",
+        "@emotion/react",
+        "@emotion/styled",
+        "zod"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -114,6 +124,25 @@
           "path": "registry/new-york/blocks/mui-nextjs-app-router/mui-nextjs-app-router.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dashboard-layout",
+      "type": "registry:block",
+      "title": "Dashboard Layout",
+      "description": "A dashboard layout with AppBar header and Drawer sidebar using Material UI.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/dashboard-layout/dashboard-layout.tsx",
+          "type": "registry:block"
         }
       ]
     }

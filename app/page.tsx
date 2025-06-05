@@ -5,19 +5,34 @@ import { AvatarDropdown } from "@/registry/new-york/blocks/avatar-dropdown/avata
 import { FeedbackForm } from "@/registry/new-york/blocks/feedback-form/feedback-form";
 import { InputSiblings } from "@/registry/new-york/blocks/input-siblings/input-siblings";
 import { FieldPinInput } from "@/registry/new-york/blocks/field-pin-input/field-pin-input";
+import { DashboardLayout } from "@/registry/new-york/blocks/dashboard-layout/dashboard-layout";
 // This page displays items from the custom registry.
 // You are free to implement this with your own design as needed.
 
 export default function Home() {
   return (
-    <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
+    <div className="flex flex-col min-h-svh px-4 py-8 gap-8">
       <header className="flex flex-col gap-1">
         <h1 className="text-3xl font-bold tracking-tight">Custom Registry</h1>
         <p className="text-muted-foreground">
           A custom registry for distributing code using shadcn.
         </p>
       </header>
-      <main className="flex flex-col flex-1 gap-8">
+      <main className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,600px),1fr))] gap-4">
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Dashboard Layout
+            </h2>
+            <OpenInV0Button name="dashboard-layout" className="w-fit" />
+          </div>
+          <iframe
+            src="/dashboard-layout"
+            className="flex items-center justify-center min-h-[400px] relative"
+          >
+            <DashboardLayout />
+          </iframe>
+        </div>
         <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
