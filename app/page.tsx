@@ -8,6 +8,7 @@ import { FieldPinInput } from "@/registry/new-york/blocks/field-pin-input/field-
 import { DashboardLayout } from "@/registry/new-york/blocks/dashboard-layout/dashboard-layout";
 import { StatsCard } from "@/registry/new-york/blocks/stats-card/stats-card";
 import { OrderTable } from "@/registry/new-york/blocks/order-table/order-table";
+import { LoginDialog } from "@/registry/new-york/blocks/login-dialog/login-dialog";
 // This page displays items from the custom registry.
 // You are free to implement this with your own design as needed.
 
@@ -30,7 +31,7 @@ export default function Home() {
           </div>
           <iframe
             src="/dashboard-layout"
-            className="flex items-center justify-center min-h-[400px] relative"
+            className="flex flex-1 items-center justify-center min-h-[400px] relative"
           >
             <DashboardLayout />
           </iframe>
@@ -116,6 +117,18 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-center min-h-[400px] relative w-full">
             <OrderTable />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Login Dialog
+            </h2>
+            <OpenInV0Button name="login-dialog" className="w-fit" />
+          </div>
+          <div className="flex items-center justify-center min-h-[80px] relative">
+            <LoginDialog />
           </div>
         </div>
       </main>
