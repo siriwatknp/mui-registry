@@ -297,6 +297,26 @@
       "meta": {
         "screenshot": "/screenshots/dashboard-layout-04.png"
       }
+    },
+    {
+      "name": "grid-card",
+      "type": "registry:component",
+      "title": "Grid Card",
+      "description": "A component for organizing cards using CSS grid with an idealWidth prop.",
+      "dependencies": [
+        "@mui/material"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/grid-card/grid-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "author": "auto-generated",
+        "screenshot": "/screenshots/grid-card.png",
+        "docs": "A flexible grid container for cards. Accepts an 'idealWidth' prop to control the minimum width of each card."
+      }
     }
   ]
 }

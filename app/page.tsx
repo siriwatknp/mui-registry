@@ -9,6 +9,10 @@ import { StatsCard } from "@/registry/new-york/blocks/stats-card/stats-card";
 import { OrderTable } from "@/registry/new-york/blocks/order-table/order-table";
 import { LoginDialog } from "@/registry/new-york/blocks/login-dialog/login-dialog";
 import Link from "next/link";
+import { GridCard } from "@/registry/new-york/blocks/grid-card/grid-card";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 // This page displays items from the custom registry.
 // You are free to implement this with your own design as needed.
 
@@ -22,7 +26,34 @@ export default function Home() {
         </p>
       </header>
       <main className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,600px),1fr))] gap-4">
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+        {/* GridCard Demo */}
+        <div
+          data-preview="grid-card"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[200px] relative xl:[grid-column:1/3]"
+        >
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Grid Card Demo
+            </h2>
+          </div>
+          <GridCard idealWidth={320}>
+            {[...Array(6)].map((_, i) => (
+              <Card key={i} variant="outlined">
+                <CardContent>
+                  <Typography variant="h6">Card {i + 1}</Typography>
+                  <Typography color="text.secondary">
+                    This is card number {i + 1}.
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </GridCard>
+        </div>
+
+        <div
+          data-preview="dashboard-layout"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
           <div className="flex items-center justify-between">
             <Link
               href="/dashboard-layout"
@@ -41,7 +72,10 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+        <div
+          data-preview="dashboard-layout-02"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
           <div className="flex items-center justify-between">
             <Link
               href="/dashboard-layout-02"
@@ -60,7 +94,10 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+        <div
+          data-preview="dashboard-layout-03"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
           <div className="flex items-center justify-between">
             <Link
               href="/dashboard-layout-03"
@@ -79,7 +116,10 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+        <div
+          data-preview="dashboard-layout-04"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
           <div className="flex items-center justify-between">
             <Link
               href="/dashboard-layout-04"
@@ -98,7 +138,10 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative">
+        <div
+          data-preview="avatar-dropdown"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative"
+        >
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               Avatar Dropdown
@@ -110,7 +153,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+        <div
+          data-preview="login-form"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               A simple login form
@@ -122,7 +168,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative">
+        <div
+          data-preview="login-dialog"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[120px] relative"
+        >
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               Login Dialog
@@ -134,7 +183,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+        <div
+          data-preview="feedback-form"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               A contact form with Zod validation.
@@ -146,7 +198,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[200px] relative">
+        <div
+          data-preview="stats-card"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[200px] relative"
+        >
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               Stats Card
@@ -159,7 +214,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+        <div
+          data-preview="order-table"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               Order Table
@@ -171,7 +229,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+        <div
+          data-preview="field-pin-input"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               Field Pin Input
@@ -183,7 +244,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+        <div
+          data-preview="input-siblings"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
           <div className="flex items-center justify-between">
             <h2 className="text-sm text-muted-foreground sm:pl-3">
               Input Siblings

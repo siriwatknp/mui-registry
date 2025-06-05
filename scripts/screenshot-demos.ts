@@ -20,25 +20,6 @@ function getPort() {
   return 3000;
 }
 
-// Registry names and their routes/selectors
-const iframeDemos = [
-  { name: "dashboard-layout", url: "/dashboard-layout" },
-  { name: "dashboard-layout-02", url: "/dashboard-layout-02" },
-  { name: "dashboard-layout-03", url: "/dashboard-layout-03" },
-  { name: "dashboard-layout-04", url: "/dashboard-layout-04" },
-];
-
-const homepageDemos = [
-  { name: "avatar-dropdown", heading: "Avatar Dropdown" },
-  { name: "login-form", heading: "A simple login form" },
-  { name: "login-dialog", heading: "Login Dialog" },
-  { name: "feedback-form", heading: "A contact form with Zod validation." },
-  { name: "stats-card", heading: "Stats Card" },
-  { name: "order-table", heading: "Order Table" },
-  { name: "field-pin-input", heading: "Field Pin Input" },
-  { name: "input-siblings", heading: "Input Siblings" },
-];
-
 const SCREENSHOTS_DIR = path.join(process.cwd(), "public", "screenshots");
 const REGISTRY_PATH = path.join(process.cwd(), "registry.json");
 
@@ -52,30 +33,18 @@ export async function screenshotAndUpdateRegistry() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
-  // 1. Screenshot iframe-based demos
-  for (const demo of iframeDemos) {
-    await page.goto(baseUrl + demo.url);
-    await page.waitForTimeout(1000);
-    await page.screenshot({
-      path: path.join(SCREENSHOTS_DIR, `${demo.name}.png`),
-      fullPage: true,
-    });
-    console.log(`Screenshot saved: ${demo.name}`);
-  }
-
-  // 2. Screenshot homepage-based demos
+  // Screenshot all preview blocks on homepage using data-preview attribute
   await page.goto(baseUrl + "/");
-  for (const demo of homepageDemos) {
-    const card = await page
-      .locator(`h2:text-is('${demo.heading}')`)
-      .first()
-      .locator("..")
-      .locator("..");
-    await expect(card).toBeVisible();
-    await card.screenshot({
-      path: path.join(SCREENSHOTS_DIR, `${demo.name}.png`),
-    });
-    console.log(`Screenshot saved: ${demo.name}`);
+  const previewBlocks = await page.locator("main > div[data-preview]");
+  const count = await previewBlocks.count();
+  for (let i = 0; i < count; i++) {
+    const block = previewBlocks.nth(i);
+    const previewName = await block.getAttribute("data-preview");
+    if (!previewName) continue;
+    const screenshotPath = path.join(SCREENSHOTS_DIR, `${previewName}.png`);
+    await expect(block).toBeVisible();
+    await block.screenshot({ path: screenshotPath });
+    console.log(`Screenshot saved: ${previewName}`);
   }
 
   await browser.close();
@@ -85,22 +54,27 @@ export async function screenshotAndUpdateRegistry() {
   const registry = JSON.parse(registryRaw);
   const items = registry.items;
 
+  // Build a set of all screenshot names
+  const screenshotFiles = await fs.readdir(SCREENSHOTS_DIR);
+  const nameToFile = new Map();
+  for (const file of screenshotFiles) {
+    if (file.endsWith(".png")) {
+      nameToFile.set(file.replace(/\.png$/, ""), `/screenshots/${file}`);
+    }
+  }
+
   for (const item of items) {
     // Remove top-level screenshot field if present
     if (item.screenshot) {
       delete item.screenshot;
     }
-    const screenshotPath = `/screenshots/${item.name}.png`;
-    const absScreenshotPath = path.join(SCREENSHOTS_DIR, `${item.name}.png`);
-    try {
-      await fs.access(absScreenshotPath);
+    // Match by registry name
+    const screenshot = nameToFile.get(item.name);
+    if (screenshot) {
       if (!item.meta) item.meta = {};
-      item.meta.screenshot = screenshotPath;
-    } catch {
-      // Screenshot does not exist, skip
-      if (item.meta && item.meta.screenshot) {
-        delete item.meta.screenshot;
-      }
+      item.meta.screenshot = screenshot;
+    } else if (item.meta && item.meta.screenshot) {
+      delete item.meta.screenshot;
     }
   }
 
