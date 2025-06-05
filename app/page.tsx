@@ -8,7 +8,6 @@ import { FieldPinInput } from "@/registry/new-york/blocks/field-pin-input/field-
 import { StatsCard } from "@/registry/new-york/blocks/stats-card/stats-card";
 import { OrderTable } from "@/registry/new-york/blocks/order-table/order-table";
 import { LoginDialog } from "@/registry/new-york/blocks/login-dialog/login-dialog";
-import { DashboardLayout02 } from "@/registry/new-york/blocks/dashboard-layout-02/dashboard-layout-02";
 import Link from "next/link";
 // This page displays items from the custom registry.
 // You are free to implement this with your own design as needed.
