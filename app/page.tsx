@@ -5,10 +5,11 @@ import { AvatarDropdown } from "@/registry/new-york/blocks/avatar-dropdown/avata
 import { FeedbackForm } from "@/registry/new-york/blocks/feedback-form/feedback-form";
 import { InputSiblings } from "@/registry/new-york/blocks/input-siblings/input-siblings";
 import { FieldPinInput } from "@/registry/new-york/blocks/field-pin-input/field-pin-input";
-import { DashboardLayout } from "@/registry/new-york/blocks/dashboard-layout/dashboard-layout";
 import { StatsCard } from "@/registry/new-york/blocks/stats-card/stats-card";
 import { OrderTable } from "@/registry/new-york/blocks/order-table/order-table";
 import { LoginDialog } from "@/registry/new-york/blocks/login-dialog/login-dialog";
+import { DashboardLayout02 } from "@/registry/new-york/blocks/dashboard-layout-02/dashboard-layout-02";
+import Link from "next/link";
 // This page displays items from the custom registry.
 // You are free to implement this with your own design as needed.
 
@@ -24,9 +25,14 @@ export default function Home() {
       <main className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,600px),1fr))] gap-4">
         <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm text-muted-foreground sm:pl-3">
+            <Link
+              href="/dashboard-layout"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground sm:pl-3 hover:underline focus:underline"
+            >
               Dashboard Layout
-            </h2>
+            </Link>
             <OpenInV0Button name="dashboard-layout" className="w-fit" />
           </div>
           <iframe
@@ -129,6 +135,25 @@ export default function Home() {
           <div className="flex items-center justify-center min-h-[80px] relative">
             <LoginDialog />
           </div>
+        </div>
+
+        <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
+          <div className="flex items-center justify-between">
+            <Link
+              href="/dashboard-layout-02"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground sm:pl-3 hover:underline focus:underline"
+            >
+              Dashboard Layout 02
+            </Link>
+            <OpenInV0Button name="dashboard-layout-02" className="w-fit" />
+          </div>
+          <iframe
+            src="/dashboard-layout-02"
+            className="flex flex-1 items-center justify-center min-h-[400px] relative"
+            style={{ width: "100%", border: "none" }}
+          />
         </div>
       </main>
     </div>
