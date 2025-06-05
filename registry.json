@@ -145,6 +145,20 @@
           "type": "registry:block"
         }
       ]
+    },
+    {
+      "name": "stats-card",
+      "type": "registry:component",
+      "title": "Stats Card",
+      "description": "A card for showing a label, a large value, and an icon indicating positive/negative result.",
+      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/stats-card/stats-card.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
