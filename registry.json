@@ -20,7 +20,8 @@
           "path": "registry/new-york/blocks/login-form/login-form.tsx",
           "type": "registry:block"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/login-form.png"
     },
     {
       "name": "avatar-dropdown",
@@ -39,7 +40,8 @@
           "path": "registry/new-york/blocks/avatar-dropdown/avatar-dropdown.tsx",
           "type": "registry:block"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/avatar-dropdown.png"
     },
     {
       "name": "input-siblings",
@@ -67,14 +69,19 @@
           "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/types.ts",
           "type": "registry:hook"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/input-siblings.png"
     },
     {
       "name": "field-pin-input",
       "type": "registry:block",
       "title": "Field Pin Input",
       "description": "A minimal 4-digit PIN input field using custom hooks for sibling input logic.",
-      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "dependencies": [
+        "@mui/material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
       "registryDependencies": [
         "https://mui-registry.vercel.app/r/input-siblings.json"
       ],
@@ -87,7 +94,8 @@
           "path": "registry/new-york/blocks/field-pin-input/hooks/usePinInput.ts",
           "type": "registry:hook"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/field-pin-input.png"
     },
     {
       "name": "feedback-form",
@@ -106,7 +114,8 @@
           "path": "registry/new-york/blocks/feedback-form/feedback-form.tsx",
           "type": "registry:block"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/feedback-form.png"
     },
     {
       "name": "mui-nextjs-app-router",
@@ -144,7 +153,8 @@
           "path": "registry/new-york/blocks/dashboard-layout/dashboard-layout.tsx",
           "type": "registry:block"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/dashboard-layout.png"
     },
     {
       "name": "stats-card",
@@ -163,21 +173,26 @@
           "path": "registry/new-york/blocks/stats-card/stats-card.tsx",
           "type": "registry:component"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/stats-card.png"
     },
     {
       "name": "order-table",
       "type": "registry:block",
       "title": "Order Table",
       "description": "A table of orders using MUI X DataGrid, with columns for order number, customer, cost, date, and status.",
-      "dependencies": ["@mui/material", "@mui/x-data-grid"],
+      "dependencies": [
+        "@mui/material",
+        "@mui/x-data-grid"
+      ],
       "registryDependencies": [],
       "files": [
         {
           "path": "registry/new-york/blocks/order-table/order-table.tsx",
           "type": "registry:block"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/order-table.png"
     },
     {
       "name": "login-dialog",
@@ -196,7 +211,8 @@
           "path": "registry/new-york/blocks/login-dialog/login-dialog.tsx",
           "type": "registry:block"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/login-dialog.png"
     },
     {
       "name": "dashboard-layout-02",
@@ -215,7 +231,8 @@
           "path": "registry/new-york/blocks/dashboard-layout-02/dashboard-layout-02.tsx",
           "type": "registry:block"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/dashboard-layout-02.png"
     },
     {
       "name": "dashboard-layout-03",
@@ -234,7 +251,8 @@
           "path": "registry/new-york/blocks/dashboard-layout-03/dashboard-layout-03.tsx",
           "type": "registry:block"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/dashboard-layout-03.png"
     },
     {
       "name": "dashboard-layout-04",
@@ -253,7 +271,8 @@
           "path": "registry/new-york/blocks/dashboard-layout-04/dashboard-layout-04.tsx",
           "type": "registry:block"
         }
-      ]
+      ],
+      "screenshot": "/screenshots/dashboard-layout-04.png"
     }
   ]
 }
