@@ -215,6 +215,20 @@
           "type": "registry:block"
         }
       ]
+    },
+    {
+      "name": "dashboard-layout-04",
+      "type": "registry:block",
+      "title": "Dashboard Layout 04",
+      "description": "A dashboard layout with sidebar and header, styled to match the provided image.",
+      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/dashboard-layout-04/dashboard-layout-04.tsx",
+          "type": "registry:block"
+        }
+      ]
     }
   ]
 }
