@@ -32,9 +32,8 @@ export default function Home() {
           <iframe
             src="/dashboard-layout"
             className="flex flex-1 items-center justify-center min-h-[400px] relative"
-          >
-            <DashboardLayout />
-          </iframe>
+            style={{ width: "100%", border: "none" }}
+          />
         </div>
         <div className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative">
           <div className="flex items-center justify-between">
