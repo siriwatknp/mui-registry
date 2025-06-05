@@ -159,6 +159,20 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "order-table",
+      "type": "registry:block",
+      "title": "Order Table",
+      "description": "A table of orders using MUI X DataGrid, with columns for order number, customer, cost, date, and status.",
+      "dependencies": ["@mui/material", "@mui/x-data-grid"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/order-table/order-table.tsx",
+          "type": "registry:block"
+        }
+      ]
     }
   ]
 }
