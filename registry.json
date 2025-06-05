@@ -201,6 +201,20 @@
           "type": "registry:block"
         }
       ]
+    },
+    {
+      "name": "dashboard-layout-03",
+      "type": "registry:block",
+      "title": "Dashboard Layout 03",
+      "description": "A modern dashboard layout sidebar with logo, navigation, tooltips, and logout, styled to match the provided image.",
+      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/dashboard-layout-03/dashboard-layout-03.tsx",
+          "type": "registry:block"
+        }
+      ]
     }
   ]
 }
