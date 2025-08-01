@@ -317,6 +317,26 @@
         "screenshot": "/screenshots/grid-card.png",
         "docs": "A flexible grid container for cards. Accepts an 'idealWidth' prop to control the minimum width of each card."
       }
+    },
+    {
+      "name": "theme-minimal",
+      "type": "registry:theme",
+      "title": "Minimal Theme",
+      "description": "A minimal theme reset for MUI.",
+      "dependencies": [
+        "@mui/material"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/themes/minimal/minimal-theme.tsx",
+          "type": "registry:theme"
+        }
+      ],
+      "meta": {
+        "author": "auto-generated",
+        "screenshot": "/screenshots/theme-minimal.png",
+        "docs": "A minimal theme reset for MUI."
+      }
     }
   ]
 }

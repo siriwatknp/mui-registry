@@ -258,6 +258,27 @@ export default function Home() {
             <InputSiblings />
           </div>
         </div>
+
+        <div
+          data-preview="theme-minimal"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[450px] relative"
+        >
+          <div className="flex items-center justify-between">
+            <Link
+              href="/theme-minimal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground sm:pl-3 hover:underline focus:underline"
+            >
+              Minimal Theme Preview
+            </Link>
+          </div>
+          <iframe
+            src="/theme-minimal"
+            className="flex flex-1 items-center justify-center min-h-[400px] relative"
+            style={{ width: "100%", border: "none" }}
+          />
+        </div>
       </main>
     </div>
   );
