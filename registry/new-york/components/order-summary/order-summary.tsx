@@ -18,36 +18,25 @@ export function OrderSummary() {
         maxWidth: 480,
         mx: "auto",
         borderRadius: 3,
-        boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
       }}
     >
-      <CardContent sx={{ p: 4 }}>
+      <CardContent>
         <Typography variant="h5" component="h2" fontWeight="bold" gutterBottom>
           Order Summary
         </Typography>
 
-        <Box sx={{ display: "flex", gap: 3, mt: 4, mb: 4 }}>
+        <Box sx={{ display: "flex", gap: 2, mt: 3, mb: 3 }}>
           <Box
+            component="img"
+            src="https://placehold.co/400"
+            alt="Cosmic Adventure movie poster"
             sx={{
               width: 120,
-              height: 160,
-              bgcolor: "#e5e5e5",
-              borderRadius: 2,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              aspectRatio: "1",
+              borderRadius: 1,
+              objectFit: "cover",
             }}
-          >
-            <Box
-              component="span"
-              sx={{
-                width: 40,
-                height: 40,
-                bgcolor: "#d4d4d4",
-                borderRadius: "50%",
-              }}
-            />
-          </Box>
+          />
           <Box sx={{ flex: 1 }}>
             <Typography variant="h6" fontWeight="bold" gutterBottom>
               Cosmic Adventure
@@ -61,9 +50,9 @@ export function OrderSummary() {
           </Box>
         </Box>
 
-        <Divider sx={{ my: 3 }} />
+        <Divider sx={{ my: 2.5 }} />
 
-        <Stack spacing={2.5}>
+        <Stack spacing={1.5}>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography variant="body1">Theater:</Typography>
             <Typography variant="body1" fontWeight="medium">
@@ -94,9 +83,14 @@ export function OrderSummary() {
         </Stack>
 
         <Box
-          sx={{ mt: 4, pt: 3, borderTop: "1px solid", borderColor: "divider" }}
+          sx={{
+            mt: 3,
+            pt: 2.5,
+            borderTop: "1px solid",
+            borderColor: "divider",
+          }}
         >
-          <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
             <Typography variant="h6" fontWeight="bold">
               Total Amount:
             </Typography>
@@ -109,17 +103,9 @@ export function OrderSummary() {
             variant="contained"
             fullWidth
             size="large"
+            color="error"
             sx={{
-              bgcolor: "#dc2626",
-              color: "white",
-              py: 1.5,
-              borderRadius: 2,
-              fontSize: "1.125rem",
-              fontWeight: "medium",
               textTransform: "none",
-              "&:hover": {
-                bgcolor: "#b91c1c",
-              },
             }}
           >
             Pay $35
