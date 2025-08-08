@@ -91,3 +91,79 @@ Build a demo:
 - Demo pages: `app/{name}/page.tsx`
 - Screenshots: `public/screenshots/{name}.png`
 - Built registry files: `public/r/{name}.json`
+
+## UI and Styling Rules
+
+STRICTLY FOLLOW THESE RULES:
+
+### `sx` prop
+
+- Keep `sx` props to a minimum. The `sx` prop should be used for structuring layout when composing elements to form a bigger component.
+- Don't overuse custom padding, margin, border, box-shadow, etc. Leave it to the theme, unless explicitly asked to do so.
+- Don't hardcode colors, spacing, etc. Use the theme variables instead. For colors, try to replicate the color from the mockup by using `color` prop on the component that matches the most, if not, fallback to the `primary` color of the theme (usually don't need to specify the color prop).
+- Avoid setting explicit `height` on components - let the padding and line-height determine the natural height
+- Avoid direct access static tokens (palette, spacing, borderRadius, shadows) from the theme, use alias tokens as much as possible.
+
+  ```diff
+  - sx={theme => ({ borderRadius: (theme) => (theme.vars || theme).shape.borderRadius * 3 })}
+  + sx={{ borderRadius: 3 }}
+
+  - sx={theme => ({ color: (theme.vars || theme).palette.primary.main })}
+  + sx={{ color: "primary.main" }}
+  ```
+
+- For responsive design, if it's a single field that needs to be responsive, use `sx={{ width: { xs: "100%", md: "50%" } }}`. For multiple fields, use `theme.breakpoints.up` to create a responsive layout.
+
+  ```tsx
+  <Box sx={theme => ({
+    width: "100%",
+    fontSize: 16,
+    [theme.breakpoints.up("md")]: {
+      width: "50%",
+      fontSize: 14,
+    },
+  })}>
+  ```
+
+### Theme usage
+
+- Use callback functions with `theme.vars` instead of raw CSS variable strings for type safety
+- When using `theme.vars` for getting `palette|shape`, always fallback to the theme like this `(theme.vars || theme).*`.
+- For typography properties, use `theme.typography` directly (NOT `theme.vars.typography` or `(theme.vars || theme).typography`).
+- Finally, there should be no type errors after created/updated the component theme file.
+
+### Mockup images or videos
+
+- Don't use fake divs to replicate images from the mockup. Instead, use `<Box component="img" />` with empty `src` and proper `alt`, style it via the `sx` prop with proper `aspectRatio` and other CSS that is needed.
+- When real images or videos are not provided or could not be found, use [placeholder](https://placehold.co/) to generate a placeholder image or video. Make sure to use the correct aspect ratio and proper size, for example, if the mockup is 3:4, the src should be `https://placehold.co/600x400` or for square, use `https://placehold.co/400`.
+
+### Spacing guidelines
+
+When using `Stack` component or `Box` component with `display: flex`, the spacing should follow:
+
+- Spacing value should be 0.5 step. Don't use random decimal like `1.2` just to match the mockup.
+- For texts and icons, the spacing should be between 0.5 and 1.5 depending on the font size of the texts.
+- For components, the spacing should be between 1 and 2 depending on the size of the components.
+
+### Dark mode
+
+- If the provided mockup comes with dark styles, don't try to replicate the mockup with dark palette. Instead, build the component as if it's in light mode, and then use `className="dark"` at the root of the component to apply dark mode styles.
+- Don't ever import the them from `useTheme` hook to check dark mode. Instead, use `theme.applyStyles('dark', styles)` to apply dark mode styles.
+
+  ```diff
+  - const theme = useTheme();
+  - const isDarkMode = theme.palette.mode === "dark";
+
+    <Card
+      sx={theme => ({
+        maxWidth: 600,
+        mx: "auto",
+        borderRadius: 2,
+  -     bgcolor: isDarkMode ? "grey.900" : "background.paper",
+  +     bgcolor: "background.paper",
+  +     ...theme.applyStyles('dark', {
+  +       bgcolor: "grey.900",
+  +     }),
+      })}
+    >
+  ```

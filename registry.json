@@ -5,9 +5,9 @@
   "items": [
     {
       "name": "login-form",
-      "type": "registry:block",
+      "type": "registry:component",
       "title": "Login Form",
-      "description": "A simple Login Form block",
+      "description": "A simple Login Form component",
       "dependencies": [
         "@mui/material",
         "@emotion/react",
@@ -17,8 +17,8 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/login-form/login-form.tsx",
-          "type": "registry:block"
+          "path": "registry/new-york/components/login-form/login-form.tsx",
+          "type": "registry:component"
         }
       ],
       "meta": {
@@ -27,7 +27,7 @@
     },
     {
       "name": "avatar-dropdown",
-      "type": "registry:block",
+      "type": "registry:component",
       "title": "Avatar Dropdown",
       "description": "An avatar that opens a dropdown menu with user management and settings options.",
       "dependencies": [
@@ -39,8 +39,8 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/avatar-dropdown/avatar-dropdown.tsx",
-          "type": "registry:block"
+          "path": "registry/new-york/components/avatar-dropdown/avatar-dropdown.tsx",
+          "type": "registry:component"
         }
       ],
       "meta": {
@@ -54,23 +54,23 @@
       "description": "A set of input components demonstrating sibling input logic and custom hooks.",
       "files": [
         {
-          "path": "registry/new-york/blocks/input-siblings/input-siblings.tsx",
-          "type": "registry:block"
+          "path": "registry/new-york/components/input-siblings/input-siblings.tsx",
+          "type": "registry:component"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useInput.ts",
+          "path": "registry/new-york/components/input-siblings/hooks/useInputSiblings/useInput.ts",
           "type": "registry:hook"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useInputSiblings.ts",
+          "path": "registry/new-york/components/input-siblings/hooks/useInputSiblings/useInputSiblings.ts",
           "type": "registry:hook"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useSeparatorInput.ts",
+          "path": "registry/new-york/components/input-siblings/hooks/useInputSiblings/useSeparatorInput.ts",
           "type": "registry:hook"
         },
         {
-          "path": "registry/new-york/blocks/input-siblings/hooks/useInputSiblings/types.ts",
+          "path": "registry/new-york/components/input-siblings/hooks/useInputSiblings/types.ts",
           "type": "registry:hook"
         }
       ],
@@ -80,7 +80,7 @@
     },
     {
       "name": "field-pin-input",
-      "type": "registry:block",
+      "type": "registry:component",
       "title": "Field Pin Input",
       "description": "A minimal 4-digit PIN input field using custom hooks for sibling input logic.",
       "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
@@ -89,11 +89,11 @@
       ],
       "files": [
         {
-          "path": "registry/new-york/blocks/field-pin-input/field-pin-input.tsx",
-          "type": "registry:block"
+          "path": "registry/new-york/components/field-pin-input/field-pin-input.tsx",
+          "type": "registry:component"
         },
         {
-          "path": "registry/new-york/blocks/field-pin-input/hooks/usePinInput.ts",
+          "path": "registry/new-york/components/field-pin-input/hooks/usePinInput.ts",
           "type": "registry:hook"
         }
       ],
@@ -103,9 +103,9 @@
     },
     {
       "name": "feedback-form",
-      "type": "registry:block",
+      "type": "registry:component",
       "title": "Feedback Form",
-      "description": "A feedback form block for collecting user feedback.",
+      "description": "A feedback form component for collecting user feedback.",
       "dependencies": [
         "@mui/material",
         "@emotion/react",
@@ -115,8 +115,8 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/feedback-form/feedback-form.tsx",
-          "type": "registry:block"
+          "path": "registry/new-york/components/feedback-form/feedback-form.tsx",
+          "type": "registry:component"
         }
       ],
       "meta": {
@@ -136,7 +136,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/mui-nextjs-app-router/mui-nextjs-app-router.tsx",
+          "path": "registry/new-york/pages/mui-nextjs-app-router/mui-nextjs-app-router.tsx",
           "type": "registry:page",
           "target": "app/layout.tsx"
         }
@@ -178,7 +178,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/stats-card/stats-card.tsx",
+          "path": "registry/new-york/components/stats-card/stats-card.tsx",
           "type": "registry:component"
         }
       ],
@@ -188,15 +188,15 @@
     },
     {
       "name": "order-table",
-      "type": "registry:block",
+      "type": "registry:component",
       "title": "Order Table",
       "description": "A table of orders using MUI X DataGrid, with columns for order number, customer, cost, date, and status.",
       "dependencies": ["@mui/material", "@mui/x-data-grid"],
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/order-table/order-table.tsx",
-          "type": "registry:block"
+          "path": "registry/new-york/components/order-table/order-table.tsx",
+          "type": "registry:component"
         }
       ],
       "meta": {
@@ -205,7 +205,7 @@
     },
     {
       "name": "login-dialog",
-      "type": "registry:block",
+      "type": "registry:component",
       "title": "Login Dialog",
       "description": "A button that opens a dialog with a login form (title, email, password, submit button) and basic validation.",
       "dependencies": [
@@ -217,8 +217,8 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/login-dialog/login-dialog.tsx",
-          "type": "registry:block"
+          "path": "registry/new-york/components/login-dialog/login-dialog.tsx",
+          "type": "registry:component"
         }
       ],
       "meta": {
@@ -299,7 +299,7 @@
       "dependencies": ["@mui/material"],
       "files": [
         {
-          "path": "registry/new-york/blocks/grid-card/grid-card.tsx",
+          "path": "registry/new-york/components/grid-card/grid-card.tsx",
           "type": "registry:component"
         }
       ],
@@ -311,19 +311,35 @@
     },
     {
       "name": "order-summary",
-      "type": "registry:block",
+      "type": "registry:component",
       "title": "Order Summary",
       "description": "A movie ticket order summary card with payment button.",
       "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
       "registryDependencies": [],
       "files": [
         {
-          "path": "registry/new-york/blocks/order-summary/order-summary.tsx",
-          "type": "registry:block"
+          "path": "registry/new-york/components/order-summary/order-summary.tsx",
+          "type": "registry:component"
         }
       ],
       "meta": {
         "screenshot": "/screenshots/order-summary.png"
+      }
+    },
+    {
+      "name": "booking-summary",
+      "type": "registry:component",
+      "title": "Booking Summary",
+      "description": "A detailed movie ticket booking summary with pricing breakdown",
+      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "files": [
+        {
+          "path": "registry/new-york/components/booking-summary/booking-summary.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/booking-summary.png"
       }
     },
     {
