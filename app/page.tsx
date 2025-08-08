@@ -1,15 +1,16 @@
 import * as React from "react";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { LoginForm } from "@/registry/new-york/blocks/login-form/login-form";
-import { AvatarDropdown } from "@/registry/new-york/blocks/avatar-dropdown/avatar-dropdown";
-import { FeedbackForm } from "@/registry/new-york/blocks/feedback-form/feedback-form";
-import { InputSiblings } from "@/registry/new-york/blocks/input-siblings/input-siblings";
-import { FieldPinInput } from "@/registry/new-york/blocks/field-pin-input/field-pin-input";
-import { StatsCard } from "@/registry/new-york/blocks/stats-card/stats-card";
-import { OrderTable } from "@/registry/new-york/blocks/order-table/order-table";
-import { LoginDialog } from "@/registry/new-york/blocks/login-dialog/login-dialog";
+import { LoginForm } from "@/registry/new-york/components/login-form/login-form";
+import { AvatarDropdown } from "@/registry/new-york/components/avatar-dropdown/avatar-dropdown";
+import { FeedbackForm } from "@/registry/new-york/components/feedback-form/feedback-form";
+import { InputSiblings } from "@/registry/new-york/components/input-siblings/input-siblings";
+import { FieldPinInput } from "@/registry/new-york/components/field-pin-input/field-pin-input";
+import { StatsCard } from "@/registry/new-york/components/stats-card/stats-card";
+import { OrderTable } from "@/registry/new-york/components/order-table/order-table";
+import { LoginDialog } from "@/registry/new-york/components/login-dialog/login-dialog";
+import { OrderSummary } from "@/registry/new-york/components/order-summary/order-summary";
 import Link from "next/link";
-import { GridCard } from "@/registry/new-york/blocks/grid-card/grid-card";
+import { GridCard } from "@/registry/new-york/components/grid-card/grid-card";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -26,6 +27,27 @@ export default function Home() {
         </p>
       </header>
       <main className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,600px),1fr))] gap-4">
+        {/* Order Summary */}
+        <div
+          data-preview="order-summary"
+          className="flex flex-col gap-4 border rounded-lg p-4 min-h-[200px] relative"
+        >
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm text-muted-foreground sm:pl-3">
+              Order Summary
+            </h2>
+            <div className="flex gap-2">
+              <Link
+                href="/order-summary"
+                className="text-sm text-muted-foreground hover:underline"
+              >
+                Preview →
+              </Link>
+              <OpenInV0Button name="order-summary" />
+            </div>
+          </div>
+          <OrderSummary />
+        </div>
         {/* GridCard Demo */}
         <div
           data-preview="grid-card"

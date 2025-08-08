@@ -1,10 +1,10 @@
 import React from "react";
-import { useInputSiblings } from "@/registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useInputSiblings";
+import { useInputSiblings } from "@/registry/new-york/components/input-siblings/hooks/useInputSiblings/useInputSiblings";
 import {
   useIsFirstMount,
   useInput,
-} from "@/registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useInput";
-import type { InputHanders } from "@/registry/new-york/blocks/input-siblings/hooks/useInputSiblings/types";
+} from "@/registry/new-york/components/input-siblings/hooks/useInputSiblings/useInput";
+import type { InputHanders } from "@/registry/new-york/components/input-siblings/hooks/useInputSiblings/types";
 
 const numberValidator = (value: string) => new RegExp(/\d/).test(value);
 const alphanumericValidator = (value: string) =>

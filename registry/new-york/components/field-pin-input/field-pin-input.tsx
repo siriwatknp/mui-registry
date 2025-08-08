@@ -6,7 +6,7 @@ import FilledInput from "@mui/material/FilledInput";
 import {
   usePinInput,
   UsePinInputOptions,
-} from "@/registry/new-york/blocks/field-pin-input/hooks/usePinInput";
+} from "@/registry/new-york/components/field-pin-input/hooks/usePinInput";
 
 type PinInputProps = {
   children: Array<React.ReactElement>;

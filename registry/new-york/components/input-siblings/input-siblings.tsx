@@ -1,8 +1,8 @@
 "use client";
 
-import { useInput } from "@/registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useInput";
-import { useInputSiblings } from "@/registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useInputSiblings";
-import { useSeparatorInput } from "@/registry/new-york/blocks/input-siblings/hooks/useInputSiblings/useSeparatorInput";
+import { useInput } from "@/registry/new-york/components/input-siblings/hooks/useInputSiblings/useInput";
+import { useInputSiblings } from "@/registry/new-york/components/input-siblings/hooks/useInputSiblings/useInputSiblings";
+import { useSeparatorInput } from "@/registry/new-york/components/input-siblings/hooks/useInputSiblings/useSeparatorInput";
 
 function SingleInput() {
   const { getInputProps } = useInput({

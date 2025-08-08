@@ -83,11 +83,7 @@
       "type": "registry:block",
       "title": "Field Pin Input",
       "description": "A minimal 4-digit PIN input field using custom hooks for sibling input logic.",
-      "dependencies": [
-        "@mui/material",
-        "@emotion/react",
-        "@emotion/styled"
-      ],
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
       "registryDependencies": [
         "https://mui-registry.vercel.app/r/input-siblings.json"
       ],
@@ -195,10 +191,7 @@
       "type": "registry:block",
       "title": "Order Table",
       "description": "A table of orders using MUI X DataGrid, with columns for order number, customer, cost, date, and status.",
-      "dependencies": [
-        "@mui/material",
-        "@mui/x-data-grid"
-      ],
+      "dependencies": ["@mui/material", "@mui/x-data-grid"],
       "registryDependencies": [],
       "files": [
         {
@@ -303,9 +296,7 @@
       "type": "registry:component",
       "title": "Grid Card",
       "description": "A component for organizing cards using CSS grid with an idealWidth prop.",
-      "dependencies": [
-        "@mui/material"
-      ],
+      "dependencies": ["@mui/material"],
       "files": [
         {
           "path": "registry/new-york/blocks/grid-card/grid-card.tsx",
@@ -319,16 +310,31 @@
       }
     },
     {
+      "name": "order-summary",
+      "type": "registry:block",
+      "title": "Order Summary",
+      "description": "A movie ticket order summary card with payment button.",
+      "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/order-summary/order-summary.tsx",
+          "type": "registry:block"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/order-summary.png"
+      }
+    },
+    {
       "name": "theme-minimal",
       "type": "registry:theme",
       "title": "Minimal Theme",
       "description": "A minimal theme reset for MUI.",
-      "dependencies": [
-        "@mui/material"
-      ],
+      "dependencies": ["@mui/material"],
       "files": [
         {
-          "path": "registry/new-york/themes/minimal/minimal-theme.tsx",
+          "path": "registry/new-york/themes/minimal/theme.ts",
           "type": "registry:theme"
         }
       ],
