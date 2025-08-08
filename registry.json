@@ -26,6 +26,28 @@
       }
     },
     {
+      "name": "payment-form2",
+      "type": "registry:component",
+      "title": "Payment Form 2",
+      "description": "A comprehensive payment form with credit card, PayPal, and Amazon payment options",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/components/payment-form2/payment-form2.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/payment-form2.png"
+      }
+    },
+    {
       "name": "avatar-dropdown",
       "type": "registry:component",
       "title": "Avatar Dropdown",
@@ -340,6 +362,22 @@
       ],
       "meta": {
         "screenshot": "/screenshots/booking-summary.png"
+      }
+    },
+    {
+      "name": "payment-form",
+      "type": "registry:component",
+      "title": "Payment Form",
+      "description": "A payment form with multiple payment methods including credit card, PayPal, and Apple Pay",
+      "dependencies": ["@mui/material", "@mui/icons-material"],
+      "files": [
+        {
+          "path": "registry/new-york/components/payment-form/payment-form.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/payment-form.png"
       }
     },
     {

@@ -1,6 +1,12 @@
 {
   "permissions": {
-    "allow": ["Bash(pnpm registry:build:*)"],
+    "allow": [
+      "Bash(pnpm registry:build:*)",
+      "mcp__mui-mcp__useMuiDocs",
+      "WebFetch(domain:mui.com)",
+      "mcp__mui-mcp__fetchDocs"
+    ],
     "deny": []
-  }
+  },
+  "enabledMcpjsonServers": ["browser-tools", "mui-mcp", "playwright"]
 }

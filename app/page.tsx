@@ -11,6 +11,8 @@ import { LoginDialog } from "@/registry/new-york/components/login-dialog/login-d
 import { OrderSummary } from "@/registry/new-york/components/order-summary/order-summary";
 import { GridCard } from "@/registry/new-york/components/grid-card/grid-card";
 import { BookingSummary } from "@/registry/new-york/components/booking-summary/booking-summary";
+import { PaymentForm } from "@/registry/new-york/components/payment-form/payment-form";
+import { PaymentForm2 } from "@/registry/new-york/components/payment-form2/payment-form2";
 import {
   GridWidget,
   GridWidgetItem,
@@ -170,6 +172,24 @@ export default function Home() {
           minHeight="450px"
           registryType="block"
         />
+
+        <PreviewFrame
+          name="payment-form"
+          title="Payment Form"
+          minHeight="700px"
+          registryType="component"
+        >
+          <PaymentForm />
+        </PreviewFrame>
+
+        <PreviewFrame
+          name="payment-form2"
+          title="Payment Form 2"
+          minHeight="700px"
+          registryType="component"
+        >
+          <PaymentForm2 />
+        </PreviewFrame>
 
         <PreviewFrame
           name="avatar-dropdown"

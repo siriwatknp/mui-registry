@@ -100,7 +100,7 @@ STRICTLY FOLLOW THESE RULES:
 
 - Keep `sx` props to a minimum. The `sx` prop should be used for structuring layout when composing elements to form a bigger component.
 - Don't overuse custom padding, margin, border, box-shadow, etc. Leave it to the theme, unless explicitly asked to do so.
-- Don't hardcode colors, spacing, etc. Use the theme variables instead. For colors, try to replicate the color from the mockup by using `color` prop on the component that matches the most, if not, fallback to the `primary` color of the theme (usually don't need to specify the color prop).
+- Don't hardcode colors, spacing, etc. Use the theme variables instead. For colors, try to replicate the color from the mockup by using `color` prop on the component that matches the most, if not, fallback to the `primary` color of the theme (usually don't need to specify the color prop). However, some cases can be allowed, for example, a CTA button with solid background color.
 - Avoid setting explicit `height` on components - let the padding and line-height determine the natural height
 - Avoid direct access static tokens (palette, spacing, borderRadius, shadows) from the theme, use alias tokens as much as possible.
 
