@@ -50,30 +50,26 @@ export function LoginDialog() {
       <Button variant="contained" onClick={handleOpen}>
         Login
       </Button>
-      <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
-        <DialogTitle
-          sx={{ pb: 0, px: 4, pt: 3, fontWeight: 600, fontSize: 24 }}
-        >
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth="xs"
+        fullWidth
+        sx={(theme) => ({
+          [theme.breakpoints.up("md")]: {
+            "--_spacing-row": "32px",
+            "--_spacing-col": "32px",
+          },
+        })}
+      >
+        <DialogTitle sx={{ pb: 0, fontWeight: 600, fontSize: 24 }}>
           Login
         </DialogTitle>
-        <DialogContent
-          sx={{
-            pt: 1,
-            pb: 3,
-            px: 4,
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-          }}
-        >
+        <DialogContent>
           <DialogContentText sx={{ mb: 2, color: "text.secondary" }}>
             Please enter your credentials to continue
           </DialogContentText>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-          >
+          <Box component="form" onSubmit={handleSubmit}>
             <TextField
               label="Email"
               type="email"
@@ -122,16 +118,14 @@ export function LoginDialog() {
                 Forgot password?
               </Button>
             </Box>
-            <DialogActions
-              sx={{ px: 0, pt: 2, justifyContent: "flex-end", gap: 1 }}
-            >
-              <Button onClick={handleClose}>Cancel</Button>
-              <Button type="submit" variant="contained">
-                Login
-              </Button>
-            </DialogActions>
           </Box>
         </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button type="submit" variant="contained">
+            Login
+          </Button>
+        </DialogActions>
       </Dialog>
     </>
   );

@@ -65,9 +65,7 @@ export function FeedbackForm() {
           subheader="Let us know how we can improve."
         />
         <Divider />
-        <CardContent
-          style={{ display: "flex", flexDirection: "column", gap: 16 }}
-        >
+        <CardContent>
           <TextField
             id="name"
             name="name"
@@ -117,7 +115,6 @@ export function FeedbackForm() {
         <CardActions>
           <Button
             type="submit"
-            size="small"
             disabled={pending}
             variant="contained"
             color="primary"

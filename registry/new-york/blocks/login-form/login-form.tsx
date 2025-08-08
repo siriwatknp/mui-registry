@@ -93,11 +93,7 @@ export function LoginForm() {
           }
         />
         <CardContent>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-          >
+          <Box component="form" onSubmit={handleSubmit}>
             <TextField
               id="field-email"
               label="Email"

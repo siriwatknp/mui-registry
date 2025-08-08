@@ -1,13 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-
-const theme = createTheme({
-  cssVariables: true,
-  // experimental_modularCssLayers: "@layer theme,base,mui,components,utilties;",
-});
+import theme from "@/registry/new-york/themes/minimal/theme";
 
 interface AppThemeProps {
   children: React.ReactNode;
