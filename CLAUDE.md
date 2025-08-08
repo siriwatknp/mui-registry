@@ -125,6 +125,37 @@ STRICTLY FOLLOW THESE RULES:
   })}>
   ```
 
+- For container queries, use `theme.containerQueries.up()` instead of hardcoded pixel values:
+
+  ```tsx
+  <Box sx={theme => ({
+    // Use theme.containerQueries.up() for container queries
+    [theme.containerQueries?.up("sm") || "@container (min-width: 600px)"]: {
+      gridColumn: "span 6",
+    },
+    [theme.containerQueries?.up("md") || "@container (min-width: 900px)"]: {
+      gridColumn: "span 7",
+    },
+  })}>
+  ```
+
+- When supporting both container and media queries, use class selectors for conditional styling:
+
+  ```tsx
+  <Box sx={theme => ({
+    // Default container query styles
+    [theme.containerQueries?.up("md") || "@container (min-width: 900px)"]: {
+      width: "50%",
+    },
+    // Media query styles when parent has specific class
+    ".responsive-media &": {
+      [theme.breakpoints.up("md")]: {
+        width: "50%",
+      },
+    },
+  })}>
+  ```
+
 ### Theme usage
 
 - Use callback functions with `theme.vars` instead of raw CSS variable strings for type safety

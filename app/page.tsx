@@ -11,6 +11,10 @@ import { LoginDialog } from "@/registry/new-york/components/login-dialog/login-d
 import { OrderSummary } from "@/registry/new-york/components/order-summary/order-summary";
 import { GridCard } from "@/registry/new-york/components/grid-card/grid-card";
 import { BookingSummary } from "@/registry/new-york/components/booking-summary/booking-summary";
+import {
+  GridWidget,
+  GridWidgetItem,
+} from "@/registry/new-york/components/grid-widget/grid-widget";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -27,6 +31,76 @@ export default function Home() {
         </p>
       </header>
       <main className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,600px),1fr))] gap-4">
+        {/* Grid Widget Demo */}
+        <PreviewFrame
+          name="grid-widget"
+          title="Grid Widget"
+          registryType="component"
+          fullWidth
+        >
+          <GridWidget>
+            <GridWidgetItem ratio="full">
+              <Card>
+                <CardContent>
+                  <Typography variant="h6">Full Width</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    This spans the full width of the grid
+                  </Typography>
+                </CardContent>
+              </Card>
+            </GridWidgetItem>
+            <GridWidgetItem ratio="wide">
+              <Card>
+                <CardContent>
+                  <Typography variant="h6">Wide</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    This spans 7 columns on md+ screens
+                  </Typography>
+                </CardContent>
+              </Card>
+            </GridWidgetItem>
+            <GridWidgetItem ratio="normal">
+              <Card>
+                <CardContent>
+                  <Typography variant="h6">Normal</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    This spans 5 columns on md+ screens
+                  </Typography>
+                </CardContent>
+              </Card>
+            </GridWidgetItem>
+            <GridWidgetItem ratio="narrow">
+              <Card>
+                <CardContent>
+                  <Typography variant="h6">Narrow (2 rows)</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    This spans 5 columns and 2 rows on md+ screens
+                  </Typography>
+                </CardContent>
+              </Card>
+            </GridWidgetItem>
+            <GridWidgetItem ratio="wide">
+              <Card>
+                <CardContent>
+                  <Typography variant="h6">Wide</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Another wide card with 7 columns
+                  </Typography>
+                </CardContent>
+              </Card>
+            </GridWidgetItem>
+            <GridWidgetItem ratio="wide">
+              <Card>
+                <CardContent>
+                  <Typography variant="h6">Normal</Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Another normal card
+                  </Typography>
+                </CardContent>
+              </Card>
+            </GridWidgetItem>
+          </GridWidget>
+        </PreviewFrame>
         {/* Booking Summary */}
         <PreviewFrame
           name="booking-summary"

@@ -359,6 +359,23 @@
         "screenshot": "/screenshots/theme-minimal.png",
         "docs": "A minimal theme reset for MUI."
       }
+    },
+    {
+      "name": "grid-widget",
+      "type": "registry:component",
+      "title": "Grid Widget",
+      "description": "A responsive grid layout with 5 and 7 column spans for creating asymmetric layouts.",
+      "dependencies": ["@mui/material"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/components/grid-widget/grid-widget.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/grid-widget.png"
+      }
     }
   ]
 }
