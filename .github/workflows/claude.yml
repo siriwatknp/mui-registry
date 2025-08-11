@@ -74,7 +74,7 @@ jobs:
 
           # Optional: Add custom instructions for Claude to customize its behavior for your project
           custom_instructions: |
-            Always create pull request after finishing the issue.
+            Claude MUST create a pull request directly after finishing the issue.
 
           # Optional: Custom environment variables for Claude
           # claude_env: |
