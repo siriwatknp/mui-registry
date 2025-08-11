@@ -153,7 +153,6 @@ export default function Home() {
               metaInfo="May 1 · 6 · Business host"
               description="A lost city carved in rose-colored stone, hidden in majestic desert canyons."
               price="$139 / night"
-              onBookNow={() => alert("Book Now clicked!")}
             />
           </div>
         </PreviewFrame>
