@@ -33,6 +33,23 @@ export default function Home() {
         </p>
       </header>
       <main className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,600px),1fr))] gap-4">
+        {/* Checkout Demo - GridWidget with OrderSummary and PaymentForm2 */}
+        <PreviewFrame
+          name="checkout-demo"
+          title="Checkout Demo"
+          registryType="component"
+          fullWidth
+          minHeight="800px"
+        >
+          <GridWidget columns="1/2" responsive="media">
+            <GridWidgetItem ratio="normal">
+              <OrderSummary />
+            </GridWidgetItem>
+            <GridWidgetItem ratio="wide">
+              <PaymentForm2 />
+            </GridWidgetItem>
+          </GridWidget>
+        </PreviewFrame>
         {/* Grid Widget Demo */}
         <PreviewFrame
           name="grid-widget"
