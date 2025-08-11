@@ -414,6 +414,28 @@
       "meta": {
         "screenshot": "/screenshots/grid-widget.png"
       }
+    },
+    {
+      "name": "site-header-01",
+      "type": "registry:component",
+      "title": "Site Header 01",
+      "description": "A clean horizontal header with logo, navigation menu, and action buttons.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/components/site-header-01/site-header-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/site-header-01.png"
+      }
     }
   ]
 }

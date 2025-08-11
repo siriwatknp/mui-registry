@@ -17,6 +17,7 @@ import {
   GridWidget,
   GridWidgetItem,
 } from "@/registry/new-york/components/grid-widget/grid-widget";
+import { SiteHeader01 } from "@/registry/new-york/components/site-header-01/site-header-01";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -33,6 +34,16 @@ export default function Home() {
         </p>
       </header>
       <main className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,600px),1fr))] gap-4">
+        {/* Site Header 01 */}
+        <PreviewFrame
+          name="site-header-01"
+          title="Site Header 01"
+          fullWidth
+          minHeight="80px"
+          registryType="component"
+        >
+          <SiteHeader01 />
+        </PreviewFrame>
         {/* Checkout Demo - GridWidget with OrderSummary and PaymentForm2 */}
         <PreviewFrame
           name="checkout-demo"
