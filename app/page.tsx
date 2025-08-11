@@ -17,6 +17,7 @@ import {
   GridWidget,
   GridWidgetItem,
 } from "@/registry/new-york/components/grid-widget/grid-widget";
+import { ProductCard02 } from "@/registry/new-york/components/product-card-02/product-card-02";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -50,6 +51,28 @@ export default function Home() {
             </GridWidgetItem>
           </GridWidget>
         </PreviewFrame>
+        {/* Product Card 02 */}
+        <PreviewFrame
+          name="product-card-02"
+          title="Product Card 02"
+          registryType="component"
+        >
+          <div className="flex items-center justify-center min-h-[400px] relative">
+            <ProductCard02
+              title="Apple iPhone 15 Pro"
+              image="https://placehold.co/400x400/f5f5f5/666666?text=iPhone+15+Pro"
+              originalPrice={999.00}
+              currentPrice={899.00}
+              discountPercentage={10}
+              rating={5}
+              reviewCount={97}
+              onFavoriteToggle={() => console.log("Favorite toggled")}
+              onCompare={() => console.log("Compare clicked")}
+              onAddToCart={() => console.log("Add to cart clicked")}
+            />
+          </div>
+        </PreviewFrame>
+
         {/* Grid Widget Demo */}
         <PreviewFrame
           name="grid-widget"
