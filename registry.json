@@ -414,6 +414,28 @@
       "meta": {
         "screenshot": "/screenshots/grid-widget.png"
       }
+    },
+    {
+      "name": "product-card-01",
+      "type": "registry:component",
+      "title": "Product Card",
+      "description": "A product card usually for e-commerce website",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/components/product-card-01/product-card-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/product-card-01.png"
+      }
     }
   ]
 }
