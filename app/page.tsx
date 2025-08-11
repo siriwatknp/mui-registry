@@ -17,6 +17,7 @@ import {
   GridWidget,
   GridWidgetItem,
 } from "@/registry/new-york/components/grid-widget/grid-widget";
+import { ProductCard03 } from "@/registry/new-york/components/product-card-03/product-card-03";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -135,6 +136,26 @@ export default function Home() {
           registryType="component"
         >
           <OrderSummary />
+        </PreviewFrame>
+        {/* Product Card 03 */}
+        <PreviewFrame
+          name="product-card-03"
+          title="Product Card 03"
+          registryType="component"
+        >
+          <div className="flex items-center justify-center min-h-[480px] relative">
+            <ProductCard03
+              title="Petra, Jordan"
+              image="https://placehold.co/400x240/8B4513/FFFFFF?text=Ancient+Monuments"
+              tags={["Adventure", "Ancient Monuments"]}
+              rating={4.8}
+              topRated={true}
+              metaInfo="May 1 · 6 · Business host"
+              description="A lost city carved in rose-colored stone, hidden in majestic desert canyons."
+              price="$139 / night"
+              onBookNow={() => alert("Book Now clicked!")}
+            />
+          </div>
         </PreviewFrame>
         {/* GridCard Demo */}
         <PreviewFrame
