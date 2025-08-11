@@ -133,7 +133,6 @@ export default function Home() {
               brand="NIKE"
               price="$38.00"
               image="https://placehold.co/400x300/ff4500/ffffff?text=Sneaker"
-              onAddToCart={() => console.log('Added to cart')}
             />
           </div>
         </PreviewFrame>
