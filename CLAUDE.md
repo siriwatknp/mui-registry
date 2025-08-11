@@ -113,6 +113,33 @@ STRICTLY FOLLOW THESE RULES:
   + sx={{ color: "primary.main" }}
   ```
 
+- To access the theme, use callback as a value (recommended) or as an array item (DON'T use callback within an object):
+
+  ```js
+  // ✅ Correct, use callback as a value
+  sx={theme => ({
+    color: (theme.vars || theme).palette.primary.main,
+  })}
+
+  // ✅ Correct, use callback as an array item
+  sx={[
+    {
+      borderRadius: 2,
+    },
+    theme => ({
+      color: (theme.vars || theme).palette.primary.main,
+    })
+  ]}
+
+  // ❌ Incorrect, use callback within an object
+  sx={{
+    borderRadius: 2,
+    ...theme => ({
+      color: (theme.vars || theme).palette.primary.main,
+    })
+  }}
+  ```
+
 - For responsive design, if it's a single field that needs to be responsive, use `sx={{ width: { xs: "100%", md: "50%" } }}`. For multiple fields, use `theme.breakpoints.up` to create a responsive layout.
 
   ```tsx
@@ -198,4 +225,34 @@ When using `Stack` component or `Box` component with `display: flex`, the spacin
   +     }),
       })}
     >
+  ```
+
+  ```js
+  // ✅ Correct, use callback as a value
+  <Card
+    sx={theme => ({
+      maxWidth: 600,
+      mx: "auto",
+      borderRadius: 2,
+      bgcolor: "background.paper",
+      ...theme.applyStyles('dark', {
+        bgcolor: "grey.900",
+      }),
+    })}
+  >
+  ```
+
+  ```js
+  // ❌ Incorrect, use callback within an object
+  <Card
+    sx={{
+      maxWidth: 600,
+      mx: "auto",
+      borderRadius: 2,
+      bgcolor: "background.paper",
+      ...theme => theme.applyStyles('dark', {
+        bgcolor: "grey.900",
+      }),
+    }}
+  >
   ```
