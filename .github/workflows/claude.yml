@@ -74,12 +74,7 @@ jobs:
 
           # Optional: Add custom instructions for Claude to customize its behavior for your project
           custom_instructions: |
-            When working on an issue labeled "clone-mockup":
-            1. Create a new branch named after the component/block
-            2. Implement the component/block based on the screenshot
-            3. Commit your changes with a descriptive message
-            4. Create a pull request that references the issue
-            Always use git and gh commands to create branches and PRs
+            Always create pull request after finishing the issue.
 
           # Optional: Custom environment variables for Claude
           # claude_env: |
