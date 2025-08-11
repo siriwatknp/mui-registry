@@ -77,6 +77,7 @@ Build a demo:
 - For components, import the component and render directly in `app/page.tsx` (unless explicitly asked to not do so)
 - For blocks, create a decidated demo page in `app/{name}/page.tsx` and render it as iframe in `app/page.tsx` (unless explicitly asked to not do so)
 - DON'T create demo for other types unless explicitly asked to do so.
+- DON'T pass functions to the component props from the demo page.
 
 ## Important Notes
 
