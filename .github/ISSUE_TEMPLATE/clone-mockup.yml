@@ -51,50 +51,15 @@ body:
       required: true
 
   - type: textarea
-    id: description
+    id: details
     attributes:
-      label: Description
-      description: Brief description of the UI element and its purpose
+      label: Details
+      description: Any additional context, description, or specific requirements
       placeholder: |
-        This is a pricing card component that displays...
-    validations:
-      required: false
-
-  - type: textarea
-    id: requirements
-    attributes:
-      label: Special Requirements
-      description: Any specific requirements or customizations needed
-      placeholder: |
-        - Should support dark mode
-        - Must be responsive
-        - Include hover effects
-        - Use specific MUI components (e.g., Card, Button)
-    validations:
-      required: false
-
-  - type: checkboxes
-    id: features
-    attributes:
-      label: Features
-      description: Select the features this UI element should have
-      options:
-        - label: Dark mode support
-        - label: Responsive design
-        - label: Form validation (if applicable)
-        - label: Animation/transitions
-        - label: Accessibility (ARIA labels, keyboard navigation)
-
-  - type: textarea
-    id: additional-context
-    attributes:
-      label: Additional Context
-      description: Any other context or references that might help
-      placeholder: |
-        - Link to similar components
-        - Color scheme preferences
-        - Font preferences
-        - etc.
+        - Description of the UI element and its purpose
+        - Links to similar components
+        - Special features or behaviors needed
+        - Color scheme or styling preferences
     validations:
       required: false
 
