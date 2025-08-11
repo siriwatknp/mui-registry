@@ -22,8 +22,8 @@ body:
       label: Registry Item Type
       description: What type of registry item should this be?
       options:
-        - Block (Complex UI section with multiple files)
         - Component (Simple reusable component)
+        - Block (Complex UI section with multiple files)
       default: 0
     validations:
       required: true
