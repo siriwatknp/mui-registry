@@ -18,6 +18,7 @@ import {
   GridWidgetItem,
 } from "@/registry/new-york/components/grid-widget/grid-widget";
 import { SiteHeader01 } from "@/registry/new-york/components/site-header-01/site-header-01";
+import { ProductCard01 } from "@/registry/new-york/components/product-card-01/product-card-01";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -130,6 +131,21 @@ export default function Home() {
               </Card>
             </GridWidgetItem>
           </GridWidget>
+        </PreviewFrame>
+        {/* Product Card */}
+        <PreviewFrame
+          name="product-card-01"
+          title="Product Card"
+          registryType="component"
+        >
+          <div className="flex items-center justify-center min-h-[400px] relative">
+            <ProductCard01
+              title="Snickers Off-White 2024"
+              brand="NIKE"
+              price="$38.00"
+              image="https://placehold.co/400x300/ff4500/ffffff?text=Sneaker"
+            />
+          </div>
         </PreviewFrame>
         {/* Booking Summary */}
         <PreviewFrame

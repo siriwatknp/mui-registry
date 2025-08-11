@@ -97,6 +97,20 @@ Build a demo:
 
 STRICTLY FOLLOW THESE RULES:
 
+### Button vs IconButton
+
+If the mockup shows a button with high contrast background color, use `Button` component with customized border radius (if necessary) because the `IconButton` doesn't support variant prop.
+
+For example:
+
+```jsx
+<Button variant="contained" sx={{ borderRadius: 99 }}>
+  <AddIcon />
+</Button>
+```
+
+Only use `IconButton` for secondary actions, or list of buttons with same size that show only icons.
+
 ### `sx` prop
 
 - Keep `sx` props to a minimum. The `sx` prop should be used for structuring layout when composing elements to form a bigger component.

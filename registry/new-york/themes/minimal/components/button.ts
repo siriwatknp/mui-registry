@@ -36,7 +36,7 @@ export const buttonTheme: ThemeOptions["components"] = {
             props: { color: "default" },
             style: {
               "&:hover, &:focus-visible": {
-                color: (theme.vars || theme).palette.text.primary,
+                "--Icon-color": (theme.vars || theme).palette.text.primary,
               },
             },
           },

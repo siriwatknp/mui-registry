@@ -416,16 +416,33 @@
       }
     },
     {
-      "name": "site-header-01",
+      "name": "product-card-01",
       "type": "registry:component",
-      "title": "Site Header 01",
-      "description": "A clean horizontal header with logo, navigation menu, and action buttons.",
+      "title": "Product Card",
+      "description": "A product card usually for e-commerce website",
       "dependencies": [
         "@mui/material",
         "@mui/icons-material",
         "@emotion/react",
         "@emotion/styled"
       ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/components/product-card-01/product-card-01.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/product-card-01.png"
+      }
+    },
+    {
+      "name": "site-header-01",
+      "type": "registry:component",
+      "title": "Site Header 01",
+      "description": "A clean horizontal header with logo, navigation menu, and action buttons.",
+      "dependencies": ["@mui/material"],
       "registryDependencies": [],
       "files": [
         {
