@@ -63,8 +63,11 @@ body:
     validations:
       required: false
 
-  - type: markdown
+  - type: textarea
+    id: claude-instructions
     attributes:
+      label: "Instructions for Claude (DO NOT EDIT)"
+      description: "This section contains instructions for Claude. Please do not modify."
       value: |
         ---
 
@@ -75,10 +78,12 @@ body:
         2. Create a new registry item (block or component as specified)
         3. Follow the MUI Registry guidelines in CLAUDE.md
         4. Ensure Material UI components are used
-        5. Add proper dark mode support if requested
-        6. Update registry.json
-        7. Create a demo page if it's a block
+        5. Implement dark mode support, responsive design, and accessibility by default
+        6. Update registry.json with the new item metadata
+        7. Create a demo page in `app/{name}/page.tsx` if it's a block
         8. Run `pnpm registry:build` to generate the JSON file
         9. Create a PR with the implementation
 
-        The implementation should match the visual design as closely as possible while following MUI best practices.
+        The implementation should match the visual design as closely as possible while following MUI best practices and guidelines from CLAUDE.md.
+    validations:
+      required: true
