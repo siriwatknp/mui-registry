@@ -36,14 +36,6 @@ pnpm lint
   - `themes/`: MUI theme configurations
   - `ui/`: Shared UI components
 
-### Component Types
-
-- **registry:block**: Complete UI sections (login forms, dashboards, etc.)
-- **registry:component**: Reusable components (cards, inputs, etc.)
-- **registry:theme**: MUI theme configurations
-- **registry:lib**: Library integrations (e.g., Next.js App Router setup)
-- **registry:hook**: Custom React hooks
-
 ### Key Technologies
 
 - **Next.js 15** with App Router
@@ -56,8 +48,8 @@ pnpm lint
 
 Decide the type of the new item:
 
-- **registry:block**: Use for complex components with multiple files or layout templates.
-- **registry:component**: Use for simple components (small - medium size), e.g. cards, inputs, etc.
+- **registry:component**: Use for simple components, usually several components import in a single file (small - medium size), e.g. cards, inputs, etc.
+- **registry:block**: Use for complex components with multiple files inside or layout templates.
 - **registry:theme**: MUI theme configurations
 - **registry:lib**: Library integrations (e.g., Next.js App Router setup)
 - **registry:hook**: Custom React hooks

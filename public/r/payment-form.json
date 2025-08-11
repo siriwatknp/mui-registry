@@ -4,7 +4,10 @@
   "type": "registry:component",
   "title": "Payment Form",
   "description": "A payment form with multiple payment methods including credit card, PayPal, and Apple Pay",
-  "dependencies": ["@mui/material", "@mui/icons-material"],
+  "dependencies": [
+    "@mui/material",
+    "@mui/icons-material"
+  ],
   "files": [
     {
       "path": "registry/new-york/components/payment-form/payment-form.tsx",

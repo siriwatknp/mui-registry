@@ -18,6 +18,7 @@ import {
   GridWidgetItem,
 } from "@/registry/new-york/components/grid-widget/grid-widget";
 import { ProductCard01 } from "@/registry/new-york/components/product-card-01/product-card-01";
+import { SiteHeader01 } from "@/registry/new-york/components/site-header-01/site-header-01";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -205,6 +206,16 @@ export default function Home() {
           minHeight="450px"
           registryType="block"
         />
+
+        <PreviewFrame
+          name="site-header-01"
+          title="Site Header 01"
+          fullWidth
+          minHeight="120px"
+          registryType="component"
+        >
+          <SiteHeader01 />
+        </PreviewFrame>
 
         <PreviewFrame
           name="payment-form"
