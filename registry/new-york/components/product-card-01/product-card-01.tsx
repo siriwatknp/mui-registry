@@ -79,22 +79,24 @@ export function ProductCard01({
           </Box>
           <IconButton
             onClick={onAddToCart}
-            sx={{
-              bgcolor: "grey.900",
-              color: "common.white",
-              width: 40,
-              height: 40,
-              "&:hover": {
-                bgcolor: "grey.800"
+            sx={[
+              {
+                bgcolor: "grey.900",
+                color: "common.white",
+                width: 40,
+                height: 40,
+                "&:hover": {
+                  bgcolor: "grey.800"
+                }
               },
-              ...theme => theme.applyStyles('dark', {
+              theme => theme.applyStyles('dark', {
                 bgcolor: "grey.100",
                 color: "grey.900",
                 "&:hover": {
                   bgcolor: "grey.200"
                 }
               })
-            }}
+            ]}
           >
             <AddIcon fontSize="small" />
           </IconButton>
