@@ -414,6 +414,28 @@
       "meta": {
         "screenshot": "/screenshots/grid-widget.png"
       }
+    },
+    {
+      "name": "product-card-03",
+      "type": "registry:component",
+      "title": "Product Card 03",
+      "description": "A travel/accommodation product card with image, tags, rating, and booking functionality.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/components/product-card-03/product-card-03.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/product-card-03.png"
+      }
     }
   ]
 }
