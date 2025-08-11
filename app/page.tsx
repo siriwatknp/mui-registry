@@ -17,6 +17,7 @@ import {
   GridWidget,
   GridWidgetItem,
 } from "@/registry/new-york/components/grid-widget/grid-widget";
+import { ProductCard02 } from "@/registry/new-york/components/product-card-02/product-card-02";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -156,6 +157,17 @@ export default function Home() {
               </Card>
             ))}
           </GridCard>
+        </PreviewFrame>
+
+        {/* Product Card 02 */}
+        <PreviewFrame
+          name="product-card-02"
+          title="Product Card 02"
+          registryType="component"
+        >
+          <div className="flex items-center justify-center min-h-[450px] relative">
+            <ProductCard02 />
+          </div>
         </PreviewFrame>
 
         <PreviewFrame

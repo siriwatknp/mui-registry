@@ -414,6 +414,28 @@
       "meta": {
         "screenshot": "/screenshots/grid-widget.png"
       }
+    },
+    {
+      "name": "product-card-02",
+      "type": "registry:component",
+      "title": "Product Card 02",
+      "description": "A modern product card with image, rating, pricing, discount display, and action buttons for favorites and comparison.",
+      "dependencies": [
+        "@mui/material",
+        "@mui/icons-material",
+        "@emotion/react",
+        "@emotion/styled"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "registry/new-york/components/product-card-02/product-card-02.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "meta": {
+        "screenshot": "/screenshots/product-card-02.png"
+      }
     }
   ]
 }
