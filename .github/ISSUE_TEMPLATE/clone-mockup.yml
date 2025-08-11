@@ -1,0 +1,119 @@
+name: Clone UI Mockup
+description: Request to clone a UI mockup into a MUI Registry block or component
+title: "[Clone] "
+labels: ["clone-mockup", "needs-claude"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📋 UI Mockup Clone Request
+
+        This template helps @claude read your UI screenshot and build a corresponding MUI Registry block or component.
+
+        **Instructions:**
+        1. Upload a clear screenshot of the UI you want to clone
+        2. Specify whether this should be a block or component
+        3. @claude will analyze the screenshot and create a PR with the implementation
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Registry Item Type
+      description: What type of registry item should this be?
+      options:
+        - Block (Complex UI section with multiple files)
+        - Component (Simple reusable component)
+      default: 0
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Item Name
+      description: Proposed name for the block/component (kebab-case)
+      placeholder: e.g., pricing-card, login-form, dashboard-sidebar
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: UI Screenshot
+      description: |
+        Upload a screenshot of the UI you want to clone.
+        You can drag and drop images here or paste from clipboard.
+
+        **Important:** Make sure the screenshot is clear and shows the complete UI element.
+      placeholder: Drag and drop your screenshot here...
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Brief description of the UI element and its purpose
+      placeholder: |
+        This is a pricing card component that displays...
+    validations:
+      required: false
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Special Requirements
+      description: Any specific requirements or customizations needed
+      placeholder: |
+        - Should support dark mode
+        - Must be responsive
+        - Include hover effects
+        - Use specific MUI components (e.g., Card, Button)
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: features
+    attributes:
+      label: Features
+      description: Select the features this UI element should have
+      options:
+        - label: Dark mode support
+        - label: Responsive design
+        - label: Form validation (if applicable)
+        - label: Animation/transitions
+        - label: Accessibility (ARIA labels, keyboard navigation)
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other context or references that might help
+      placeholder: |
+        - Link to similar components
+        - Color scheme preferences
+        - Font preferences
+        - etc.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        ## 🤖 For Claude
+
+        @claude - Please read the screenshot above and:
+        1. Analyze the UI design and structure
+        2. Create a new registry item (block or component as specified)
+        3. Follow the MUI Registry guidelines in CLAUDE.md
+        4. Ensure Material UI components are used
+        5. Add proper dark mode support if requested
+        6. Update registry.json
+        7. Create a demo page if it's a block
+        8. Run `pnpm registry:build` to generate the JSON file
+        9. Create a PR with the implementation
+
+        The implementation should match the visual design as closely as possible while following MUI best practices.
