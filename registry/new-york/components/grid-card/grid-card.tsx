@@ -26,7 +26,11 @@ export function GridCard({
         {
           display: "grid",
           gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, ${minWidth}), 1fr))`,
-          gap: 2,
+          gap: {
+            xs: 2,
+            md: 4,
+            xl: 6,
+          },
         },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
