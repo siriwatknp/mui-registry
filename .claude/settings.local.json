@@ -4,9 +4,15 @@
       "Bash(pnpm registry:build:*)",
       "mcp__mui-mcp__useMuiDocs",
       "WebFetch(domain:mui.com)",
-      "mcp__mui-mcp__fetchDocs"
+      "mcp__mui-mcp__fetchDocs",
+      "Bash(pnpm lint:*)",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": []
   },
-  "enabledMcpjsonServers": ["browser-tools", "mui-mcp", "playwright"]
+  "enabledMcpjsonServers": [
+    "browser-tools",
+    "mui-mcp",
+    "playwright"
+  ]
 }

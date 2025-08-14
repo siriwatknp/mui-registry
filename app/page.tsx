@@ -3,8 +3,6 @@ import { PreviewFrame } from "@/components/preview-frame";
 import { LoginForm } from "@/registry/new-york/components/login-form/login-form";
 import { AvatarDropdown } from "@/registry/new-york/components/avatar-dropdown/avatar-dropdown";
 import { FeedbackForm } from "@/registry/new-york/components/feedback-form/feedback-form";
-import { InputSiblings } from "@/registry/new-york/components/input-siblings/input-siblings";
-import { FieldPinInput } from "@/registry/new-york/components/field-pin-input/field-pin-input";
 import { StatsCard } from "@/registry/new-york/components/stats-card/stats-card";
 import { OrderTable } from "@/registry/new-york/components/order-table/order-table";
 import { LoginDialog } from "@/registry/new-york/components/login-dialog/login-dialog";

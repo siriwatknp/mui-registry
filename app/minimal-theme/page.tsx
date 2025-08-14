@@ -426,24 +426,28 @@ function App() {
       getActions: ({ id }) => {
         return [
           <GridActionsCellItem
+            key="edit"
             icon={<EditIcon />}
             label="Edit"
             onClick={() => console.log("Edit", id)}
             color="inherit"
           />,
           <GridActionsCellItem
+            key="delete"
             icon={<DeleteIcon />}
             label="Delete"
             onClick={() => console.log("Delete", id)}
             color="inherit"
           />,
           <GridActionsCellItem
+            key="print"
             icon={<PrintIcon />}
             label="Print"
             onClick={() => console.log("Print", id)}
             showInMenu
           />,
           <GridActionsCellItem
+            key="save"
             icon={<SaveIcon />}
             label="Save"
             onClick={() => console.log("Save", id)}
@@ -2467,7 +2471,7 @@ function App() {
                   </TableHead>
                   <TableBody>
                     <TableRow hover>
-                      <TableCell>MacBook Pro 16"</TableCell>
+                      <TableCell>MacBook Pro 16&quot;</TableCell>
                       <TableCell>Electronics</TableCell>
                       <TableCell align="right">$2,399</TableCell>
                       <TableCell align="right">12</TableCell>
@@ -3301,7 +3305,7 @@ function App() {
                 <DialogTitle>Full Width Dialog</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
-                    This dialog uses fullWidth prop with maxWidth="sm". You can
+                    This dialog uses fullWidth prop with maxWidth=&quot;sm&quot;. You can
                     change maxWidth to xs, sm, md, lg, or xl.
                   </DialogContentText>
                   <Box sx={{ mt: 3 }}>
@@ -3501,7 +3505,7 @@ function App() {
                     Full Screen Content
                   </Typography>
                   <Typography sx={{ mb: 2 }}>
-                    This is a full-screen dialog. It's useful for complex forms,
+                    This is a full-screen dialog. It&apos;s useful for complex forms,
                     editors, or when you need maximum screen space.
                   </Typography>
                   <Box sx={{ mt: 4 }}>
