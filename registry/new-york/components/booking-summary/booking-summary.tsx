@@ -21,8 +21,6 @@ export function BookingSummary() {
   return (
     <Card
       sx={(theme) => ({
-        maxWidth: 600,
-        mx: "auto",
         bgcolor: "background.paper",
         borderRadius: 2,
         ...theme.applyStyles("dark", {

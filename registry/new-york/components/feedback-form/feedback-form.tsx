@@ -44,8 +44,8 @@ export function FeedbackForm() {
           ...prev,
           errors: Object.fromEntries(
             Object.entries(result.error.flatten().fieldErrors).map(
-              ([key, value]) => [key, value?.[0] ?? ""]
-            )
+              ([key, value]) => [key, value?.[0] ?? ""],
+            ),
           ) as Record<keyof typeof state.errors, string>,
         }));
         setPending(false);
@@ -54,11 +54,11 @@ export function FeedbackForm() {
       setPending(false);
       // Optionally handle successful feedback submission here
     },
-    []
+    [],
   );
 
   return (
-    <form onSubmit={handleSubmit} style={{ width: "100%", maxWidth: 400 }}>
+    <form onSubmit={handleSubmit} style={{ width: "100%" }}>
       <Card variant="outlined">
         <CardHeader
           title="We value your feedback!"

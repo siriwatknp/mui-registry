@@ -15,8 +15,6 @@ export function OrderSummary() {
   return (
     <Card
       sx={{
-        maxWidth: 480,
-        mx: "auto",
         borderRadius: 3,
       }}
     >

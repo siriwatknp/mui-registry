@@ -439,28 +439,6 @@
     },
     {
       "name": "site-header-01",
-      "type": "registry:block",
-      "title": "Site Header 01",
-      "description": "A responsive site header with logo, navigation links, CTA button and support icon with proper accessibility",
-      "dependencies": [
-        "@mui/material",
-        "@mui/icons-material",
-        "@emotion/react",
-        "@emotion/styled"
-      ],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "registry/new-york/blocks/site-header-01/site-header-01.tsx",
-          "type": "registry:block"
-        }
-      ],
-      "meta": {
-        "screenshot": "/screenshots/site-header-01.png"
-      }
-    },
-    {
-      "name": "site-header-01",
       "type": "registry:component",
       "title": "Site Header 01",
       "description": "An accessible site header with navigation, CTA button, and support icon",

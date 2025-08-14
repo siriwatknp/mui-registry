@@ -27,7 +27,7 @@ export function ProductCard01({
   onAddToCart,
 }: ProductCard01Props) {
   return (
-    <Card sx={{ maxWidth: 320, borderRadius: 3, boxShadow: 2 }}>
+    <Card sx={{ borderRadius: 3, boxShadow: 2 }}>
       <CardMedia
         component="img"
         height={240}

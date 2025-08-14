@@ -42,7 +42,7 @@ export function PaymentForm2() {
     };
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container sx={{ py: 4 }}>
       <Typography variant="h3" component="h1" sx={{ mb: 2, fontWeight: 600 }}>
         Payment
       </Typography>

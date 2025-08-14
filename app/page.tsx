@@ -32,7 +32,7 @@ export default function Home() {
           A registry for distributing MUI code.
         </p>
       </header>
-      <main className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,600px),1fr))] gap-4">
+      <main className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,600px),1fr))] grid-flow-dense gap-4">
         {/* Checkout Demo - GridWidget with OrderSummary and PaymentForm2 */}
         <PreviewFrame
           name="checkout-demo"
@@ -127,12 +127,14 @@ export default function Home() {
           registryType="component"
         >
           <div className="flex items-center justify-center min-h-[400px] relative">
-            <ProductCard01
-              title="Snickers Off-White 2024"
-              brand="NIKE"
-              price="$38.00"
-              image="https://placehold.co/400x300/ff4500/ffffff?text=Sneaker"
-            />
+            <div style={{ maxWidth: 320 }}>
+              <ProductCard01
+                title="Snickers Off-White 2024"
+                brand="NIKE"
+                price="$38.00"
+                image="https://placehold.co/400x300/ff4500/ffffff?text=Sneaker"
+              />
+            </div>
           </div>
         </PreviewFrame>
         {/* Booking Summary */}
@@ -141,7 +143,9 @@ export default function Home() {
           title="Booking Summary"
           registryType="component"
         >
-          <BookingSummary />
+          <div style={{ maxWidth: 600, margin: "0 auto" }}>
+            <BookingSummary />
+          </div>
         </PreviewFrame>
         {/* Order Summary */}
         <PreviewFrame
@@ -149,7 +153,9 @@ export default function Home() {
           title="Order Summary"
           registryType="component"
         >
-          <OrderSummary />
+          <div style={{ maxWidth: 480, margin: "0 auto" }}>
+            <OrderSummary />
+          </div>
         </PreviewFrame>
         {/* GridCard Demo */}
         <PreviewFrame
@@ -221,7 +227,9 @@ export default function Home() {
           minHeight="700px"
           registryType="component"
         >
-          <PaymentForm />
+          <div style={{ maxWidth: 600, margin: "0 auto" }}>
+            <PaymentForm />
+          </div>
         </PreviewFrame>
 
         <PreviewFrame
@@ -230,7 +238,9 @@ export default function Home() {
           minHeight="700px"
           registryType="component"
         >
-          <PaymentForm2 />
+          <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+            <PaymentForm2 />
+          </div>
         </PreviewFrame>
 
         <PreviewFrame
@@ -273,7 +283,9 @@ export default function Home() {
           registryType="component"
         >
           <div className="flex items-center justify-center min-h-[500px] relative">
-            <FeedbackForm />
+            <div style={{ maxWidth: 400 }}>
+              <FeedbackForm />
+            </div>
           </div>
         </PreviewFrame>
 
