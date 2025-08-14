@@ -126,6 +126,7 @@ import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import type { TreeViewBaseItem } from "@mui/x-tree-view/models";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import theme from "@/registry/new-york/themes/minimal/theme";
+import { HelpOutline } from "@mui/icons-material";
 
 function ColorSchemeToggle() {
   const { mode, setMode } = useColorScheme();
@@ -3305,8 +3306,9 @@ function App() {
                 <DialogTitle>Full Width Dialog</DialogTitle>
                 <DialogContent>
                   <DialogContentText>
-                    This dialog uses fullWidth prop with maxWidth=&quot;sm&quot;. You can
-                    change maxWidth to xs, sm, md, lg, or xl.
+                    This dialog uses fullWidth prop with
+                    maxWidth=&quot;sm&quot;. You can change maxWidth to xs, sm,
+                    md, lg, or xl.
                   </DialogContentText>
                   <Box sx={{ mt: 3 }}>
                     <TextField
@@ -3505,8 +3507,8 @@ function App() {
                     Full Screen Content
                   </Typography>
                   <Typography sx={{ mb: 2 }}>
-                    This is a full-screen dialog. It&apos;s useful for complex forms,
-                    editors, or when you need maximum screen space.
+                    This is a full-screen dialog. It&apos;s useful for complex
+                    forms, editors, or when you need maximum screen space.
                   </Typography>
                   <Box sx={{ mt: 4 }}>
                     <TextField fullWidth label="Title" margin="normal" />
@@ -3968,7 +3970,7 @@ function App() {
                   <Typography variant="subtitle2" gutterBottom>
                     As icon buttons:
                   </Typography>
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction="row" alignItems="center" spacing={1}>
                     <IconButton>
                       <HomeIcon />
                     </IconButton>
@@ -3986,6 +3988,25 @@ function App() {
                     </IconButton>
                     <IconButton size="large">
                       <RefreshIcon fontSize="large" />
+                    </IconButton>
+                    <IconButton
+                      size="large"
+                      sx={{
+                        bgcolor: "text.primary",
+                        color: "background.paper",
+                        "&:hover": {
+                          bgcolor: "text.secondary",
+                          color: "background.paper",
+                        },
+                        "&:focus-visible": {
+                          outline: "2px solid",
+                          outlineColor: "primary.main",
+                          outlineOffset: 2,
+                        },
+                      }}
+                      aria-label="Get help and support"
+                    >
+                      <HelpOutline />
                     </IconButton>
                   </Stack>
                 </Box>

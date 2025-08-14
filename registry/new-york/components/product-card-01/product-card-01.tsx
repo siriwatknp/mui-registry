@@ -30,12 +30,15 @@ export function ProductCard01({
     <Card sx={{ borderRadius: 3, boxShadow: 2 }}>
       <CardMedia
         component="img"
-        height={240}
         image={image}
         alt={imageAlt || title}
         sx={{
           borderRadius: "12px 12px 0 0",
           objectFit: "cover",
+          aspectRatio: {
+            xs: "1",
+            md: "16/10",
+          },
         }}
       />
       <CardContent sx={{ p: 2.5 }}>
