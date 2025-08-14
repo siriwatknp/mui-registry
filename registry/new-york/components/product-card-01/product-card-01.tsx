@@ -85,6 +85,7 @@ export function ProductCard01({
             </Typography>
           </Box>
           <Button
+            variant="contained"
             onClick={onAddToCart}
             sx={{
               borderRadius: 99,

@@ -300,28 +300,6 @@ export default function Home() {
             <OrderTable />
           </div>
         </PreviewFrame>
-
-        <PreviewFrame
-          name="field-pin-input"
-          title="Field Pin Input"
-          minHeight="450px"
-          registryType="component"
-        >
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <FieldPinInput />
-          </div>
-        </PreviewFrame>
-
-        <PreviewFrame
-          name="input-siblings"
-          title="Input Siblings"
-          minHeight="450px"
-          registryType="component"
-        >
-          <div className="flex items-center justify-center min-h-[400px] relative">
-            <InputSiblings />
-          </div>
-        </PreviewFrame>
       </main>
     </div>
   );

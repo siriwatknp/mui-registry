@@ -7,14 +7,14 @@ export const selectTheme: ThemeOptions["components"] = {
     },
     styleOverrides: {
       select: {
-        "&.MuiInputBase-input": {
-          paddingRight: 32,
-        },
         "&.MuiOutlinedInput-input": {
           padding: "8px 14px",
         },
         "&.MuiFilledInput-input": {
           padding: "25px 12px 8px",
+        },
+        "&.MuiInputBase-input": {
+          paddingRight: 32,
         },
         variants: [
           {

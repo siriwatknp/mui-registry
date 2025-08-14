@@ -20,7 +20,6 @@ import PaymentIcon from "@mui/icons-material/Payment";
 export function BookingSummary() {
   return (
     <Card
-      className="dark"
       sx={(theme) => ({
         maxWidth: 600,
         mx: "auto",

@@ -27,7 +27,7 @@ export function PaymentForm() {
 
   const handlePaymentMethodChange = (
     _event: React.MouseEvent<HTMLElement>,
-    newMethod: string | null,
+    newMethod: string | null
   ) => {
     if (newMethod !== null) {
       setPaymentMethod(newMethod);
@@ -36,7 +36,6 @@ export function PaymentForm() {
 
   return (
     <Card
-      className="dark"
       sx={(theme) => ({
         maxWidth: 600,
         mx: "auto",

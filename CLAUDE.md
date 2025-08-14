@@ -212,7 +212,7 @@ When using `Stack` component or `Box` component with `display: flex`, the spacin
 
 ### Dark mode
 
-- If the provided mockup comes with dark styles, don't try to replicate the mockup with dark palette. Instead, build the component as if it's in light mode, and then use `className="dark"` at the root of the component to apply dark mode styles.
+- If the provided mockup comes with dark styles, don't try to replicate the mockup with dark palette. Instead, build the component as if it's in light mode.
 - Don't ever import the them from `useTheme` hook to check dark mode. Instead, use `theme.applyStyles('dark', styles)` to apply dark mode styles.
 
   ```diff
