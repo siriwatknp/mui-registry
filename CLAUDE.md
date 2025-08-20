@@ -301,6 +301,61 @@ Common use cases:
 - Assign arc colors with `colors` prop with array of strings
 - Remove spacing around the chart by setting `margin` to `{ left: 0, right: 0, top: 0, bottom: 0 }`
 
+### TextField and Form Best Practices
+
+1. **Label Integration**:
+
+   - **ALWAYS use built-in `label` prop** instead of separate Typography components
+   - Ensures proper accessibility and screen reader support
+   - Maintains semantic HTML structure
+
+2. **Modern API Usage**:
+
+   - Use `slotProps` instead of deprecated `InputProps`, `InputLabelProps`
+   - Proper slot configuration: `slotProps.input`, `slotProps.inputLabel`, `slotProps.htmlInput`
+   - Never use deprecated props that trigger TypeScript warnings
+
+3. **Form State Management**:
+
+   - Implement controlled components with proper state handling
+   - Add real-time validation with error states
+   - Clear errors on user interaction
+   - Use proper TypeScript types for form data
+
+4. **Accessibility Requirements**:
+
+   - Include `required` prop for mandatory fields
+   - Provide `error` and `helperText` for validation feedback
+   - Ensure proper ARIA attributes
+   - Support full keyboard navigation
+
+5. **Input Constraints & Validation**:
+
+   ```tsx
+   // ✅ CORRECT: Proper TextField with all best practices
+   <TextField
+     fullWidth
+     required
+     label="Card Number"
+     placeholder="1234 5678 9012 3456"
+     variant="outlined"
+     value={formData.cardNumber}
+     onChange={handleInputChange("cardNumber")}
+     error={!!errors.cardNumber}
+     helperText={errors.cardNumber || "Enter 16-digit card number"}
+   />
+
+   // ❌ INCORRECT: Poor accessibility and deprecated API
+   <Box>
+     <Typography variant="body2">CARD NUMBER</Typography>
+     <TextField
+       fullWidth
+       placeholder="1234..."
+       InputProps={{ /* deprecated */ }}
+     />
+   </Box>
+   ```
+
 ### `sx` prop
 
 - Keep `sx` props to a minimum. The `sx` prop should be used for structuring layout when composing elements to form a bigger component.
