@@ -138,7 +138,7 @@ Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues and you
 ### Step 5: Post task
 
 - Kill the dev server and close the MCP playwright browser
-- Run @script/create-registry-json.js with meaningful title and description.
+- At the root terminal, run `node scripts/create-registry-json.js <registry_name> "Title" "Description"` with meaningful title and description.
 - Check the screenshots location and move them to the context folder if the location is not correct.
 - Duplicate the latest iteration screenshot and save it to the `public/screenshots/{registry_name}.png`.
 
