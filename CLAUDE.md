@@ -73,11 +73,17 @@ You MUST check the context session file to understand the requirements and act a
 
 Then, you MUST the gather the required MUI components and follow the links from the llms.txt to get the latest information of the components (for any links without a host from the llms.txt, use `https://mui.com` as the host).
 
+- ALWAYS fetch component documentation from mui.com WITH `.md` extension, e.g. `https://mui.com/material-ui/react-button.md` or `https://mui.com/x/react-charts/lines.md`.
+- DO NOT read other files in the project.
+- DO NOT read the main page `app/page.tsx`.
+
 Finally, build the registry at @registry/new-york/{type}/{name}/{name}.tsx and render it to the preview page at @app/{name}/page.tsx.
+
+Before moving to the next step, you MUST ensure there are no type errors in the code by running `pnpm lint` and `npx tsc --noEmit`.
 
 ### Step 3: Review/Update Iteration
 
-At the beginning of this step, run the development server and USE `mcp\_\_playwright` tool to open the preview page.
+At the beginning of this step, run the development server and USE [PlayWright MCP tool](#playwright-mcp-tool) to open the preview page.
 
 Do the following:
 
@@ -109,7 +115,7 @@ At the end of each iteration, you MUST write down the critical issues (both acce
 ---
 ```
 
-Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues.
+Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues and you MUST ensure there are no type errors in the code by running `pnpm lint` and `npx tsc --noEmit`.
 
 Iterate on this process at least 2 times (there must be at least 2 review iterations) until no critical issues are found.
 
@@ -508,3 +514,9 @@ Material UI Specific Guidance:
 Always consider the balance between ideal accessibility and practical implementation constraints, but never compromise on critical accessibility requirements that would exclude users with disabilities.
 
 When uncertain about a specific pattern, acknowledge the ambiguity and provide multiple accessible approaches with their trade-offs, preferring MUI's built-in solutions when available.
+
+## PlayWright MCP tool
+
+- Use `mcp\_\_playwright` tool to open the browser.
+- The screenshots MUST be saved to the context folder that you are working on with the image name `{component_name}-{iteration_number}.png`.
+  - Manually move the screenshot to the context folder if the location is not correct.

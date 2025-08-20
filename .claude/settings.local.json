@@ -6,13 +6,13 @@
       "WebFetch(domain:mui.com)",
       "mcp__mui-mcp__fetchDocs",
       "Bash(pnpm lint:*)",
-      "mcp__ide__getDiagnostics"
+      "mcp__ide__getDiagnostics",
+      "Bash(pnpm dev:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_close"
     ],
     "deny": []
   },
-  "enabledMcpjsonServers": [
-    "browser-tools",
-    "mui-mcp",
-    "playwright"
-  ]
+  "enabledMcpjsonServers": ["browser-tools", "mui-mcp", "playwright"]
 }
