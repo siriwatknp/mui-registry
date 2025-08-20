@@ -1,17 +1,5 @@
 {
   "mcpServers": {
-    "browser-tools": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["@agentdeskai/browser-tools-mcp@latest"],
-      "env": {}
-    },
-    "mui-mcp": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@mui/mcp@latest"],
-      "env": {}
-    },
     "playwright": {
       "type": "stdio",
       "command": "npx",
