@@ -75,18 +75,43 @@ Then, you MUST the gather the required MUI components and follow the links from 
 
 Finally, build the registry at @registry/new-york/{type}/{name}/{name}.tsx and render it to the preview page at @app/{name}/page.tsx.
 
-### Step 3: Review the component
+### Step 3: Review/Update Iteration
 
-In this step, you need to run the development server and USE `mcp\_\_playwright` tool to open the preview page and do the following:
+At the beginning of this step, run the development server and USE `mcp\_\_playwright` tool to open the preview page.
 
-1. You MUST act as the [Accessibility Expert](#accessibility-expert) to audit the component for accessibility.
-2. You MUST act as the [UX/UI Designer](#uxui-designer) to visualize the component and gave feedbacks comparing to the initial mockup.
+Do the following:
 
-In the end, you MUST write down the critical issues (both accessibility and UI) that need to be fixed to the context session file.
+1. For each iteration, take a screenshot of the component and save it to the context folder with the name `{component_name}-{iteration_number}.png` (DO NOT save to other places).
+2. You MUST act as the [Accessibility Expert](#accessibility-expert) to audit the component for accessibility.
+3. You MUST act as the [UX/UI Designer](#uxui-designer) to visualize the screenshot and gave feedbacks comparing to the initial mockup.
 
-### Step 4: Iterate on critical issues
+At the end of each iteration, you MUST write down the critical issues (both accessibility and UI) that need to be fixed to the context session file in this format:
 
-If there are critical issues that need to be fixed, you MUST act as the [UI Engineer](#ui-engineer) and continue to improve the component until no critical issues are found.
+```md
+...previous content...
+
+---
+
+## Review Iteration <iteration_number>
+
+**Critical Issues:**
+
+- <issue_1>
+- <issue_2>
+- ...
+
+**Improvements:**
+
+- <improvement_1>
+- <improvement_2>
+- ...
+
+---
+```
+
+Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues.
+
+Iterate on this process at least 2 times (there must be at least 2 review iterations) until no critical issues are found.
 
 ### Step 5: Post task
 
