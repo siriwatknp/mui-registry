@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "dev:screenshot": "npx tsx scripts/screenshot-demos.ts --port=3001",
-    "build": "next build",
+    "build": "pnpm registry:build && next build",
     "start": "next start",
     "lint": "next lint",
-    "registry:build": "shadcn build && node -e \"require('fs').copyFileSync('registry.json', 'public/r/registry.json')\""
+    "registry:build": "node scripts/generate-registry.js"
   },
   "dependencies": {
     "@emotion/cache": "11.14.0",

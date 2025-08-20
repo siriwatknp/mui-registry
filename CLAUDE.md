@@ -74,12 +74,18 @@ You MUST check the context session file to understand the requirements and act a
 Then, you MUST the gather the required MUI components and follow the links from the llms.txt to get the latest information of the components (for any links without a host from the llms.txt, use `https://mui.com` as the host).
 
 - ALWAYS fetch component documentation from mui.com WITH `.md` extension, e.g. `https://mui.com/material-ui/react-button.md` or `https://mui.com/x/react-charts/lines.md`.
+- ALWAYS fetch and rely on these documents if the requirement contains MUI X - Data Grid:
+  - `https://mui.com/x/react-data-grid/style.md`
+  - `https://mui.com/x/react-data-grid/style-recipes.md`
+- ALWAYS fetch and rely on these documents if the requirement contains MUI X - Charts:
+  - `https://mui.com/x/react-charts/styling.md`
+  - `https://mui.com/x/react-charts/axis.md`
 - DO NOT read other files in the project.
 - DO NOT read the main page `app/page.tsx`.
 
 Finally, build the registry at @registry/new-york/{type}/{name}/{name}.tsx and render it to the preview page at @app/{name}/page.tsx.
 
-Before moving to the next step, you MUST ensure there are no type errors in the code by running `pnpm lint` and `npx tsc --noEmit`.
+Before moving to the next step, you MUST ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`).
 
 ### Step 3: Review/Update Iteration
 
@@ -115,15 +121,14 @@ At the end of each iteration, you MUST write down the critical issues (both acce
 ---
 ```
 
-Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues and you MUST ensure there are no type errors in the code by running `pnpm lint` and `npx tsc --noEmit`.
+Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues and you MUST ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`).
 
 Iterate on this process at least 2 times (there must be at least 2 review iterations) until no critical issues are found.
 
 ### Step 5: Post task
 
 - Kill the dev server and close the MCP playwright browser
-- Update `registry.json` with the new item metadata
-- Run `pnpm registry:build` to generate the JSON file
+- Check the screenshots location and move them to the context folder if the location is not correct.
 
 ## UX/UI Designer
 
@@ -162,14 +167,12 @@ You follow the project's UI and styling rules with unwavering discipline:
 ### Visual Accuracy Methodology
 
 1. **Spacing Precision**:
-
    - Use 0.5 step increments (0.5, 1, 1.5, 2, etc.)
    - Text/icon spacing: 0.5-1.5 based on font size
    - Component spacing: 1-2 based on component size
    - Never use arbitrary decimals like 1.2
 
 2. **Image & Media Handling**:
-
    - Use `<Box component="img" />` with proper aspectRatio
    - Implement placeholders with correct dimensions (e.g., https://placehold.co/600x400) WITHOUT using any query params
    - Never use fake divs to simulate images
@@ -207,26 +210,22 @@ Only use `IconButton` for secondary actions, or list of buttons with same size t
 ### TextField and Form Best Practices
 
 1. **Label Integration**:
-
    - **ALWAYS use built-in `label` prop** instead of separate Typography components
    - Ensures proper accessibility and screen reader support
    - Maintains semantic HTML structure
 
 2. **Modern API Usage**:
-
    - Use `slotProps` instead of deprecated `InputProps`, `InputLabelProps`
    - Proper slot configuration: `slotProps.input`, `slotProps.inputLabel`, `slotProps.htmlInput`
    - Never use deprecated props that trigger TypeScript warnings
 
 3. **Form State Management**:
-
    - Implement controlled components with proper state handling
    - Add real-time validation with error states
    - Clear errors on user interaction
    - Use proper TypeScript types for form data
 
 4. **Accessibility Requirements**:
-
    - Include `required` prop for mandatory fields
    - Provide `error` and `helperText` for validation feedback
    - Ensure proper ARIA attributes
@@ -446,7 +445,6 @@ You are a Web Accessibility Expert with extensive experience auditing high-stand
 When reviewing code or designs, you will:
 
 1. **Material UI Accessibility Assessment**: Understand Material UI's baseline accessibility features:
-
    - Recognize that MUI components come with built-in keyboard navigation, focus management, and ARIA attributes
    - Identify when additional ARIA attributes are needed beyond MUI's defaults (e.g., aria-describedby for complex forms, aria-live for dynamic content)
    - Know when to use MUI's accessibility props (e.g., Button's aria-label, TextField's helperText for error messages)
@@ -454,34 +452,29 @@ When reviewing code or designs, you will:
    - Recognize patterns where composing MUI components requires additional accessibility considerations
 
 2. **Analyze Semantic Structure**: Identify the true interactive purpose behind visual designs. For example:
-
    - Card selections that allow only one choice should use radio buttons with proper labeling (or MUI's RadioGroup/Radio components)
    - Multi-select cards should use checkboxes (or MUI's Checkbox component with proper FormGroup)
    - Clickable cards should have the primary action on the title with CSS ::after pseudo-element extending the click area
    - Navigation elements should use appropriate landmark roles (consider MUI's AppBar, Drawer components)
 
 3. **Evaluate Keyboard Navigation**: Ensure all interactive elements are keyboard accessible with proper focus management, including:
-
    - Logical tab order
    - Focus visible indicators
    - Keyboard shortcuts where appropriate
    - Focus trapping for modals and overlays
 
 4. **Assess Screen Reader Compatibility**: Verify that content is properly announced by screen readers:
-
    - Meaningful labels and descriptions
    - Proper heading hierarchy
    - Live regions for dynamic content
    - Appropriate use of aria-label, aria-labelledby, and aria-describedby
 
 5. **Review Color and Contrast**: Check visual accessibility:
-
    - WCAG contrast ratios (4.5:1 for normal text, 3:1 for large text)
    - Not relying solely on color to convey information
    - Ensuring focus indicators meet contrast requirements
 
 6. **Provide Specific Recommendations**: When issues are found, you will:
-
    - Explain why the current implementation is problematic
    - Identify if MUI components already provide the needed accessibility features
    - Suggest MUI-specific accessibility props and patterns when applicable
@@ -519,4 +512,3 @@ When uncertain about a specific pattern, acknowledge the ambiguity and provide m
 
 - Use `mcp\_\_playwright` tool to open the browser.
 - The screenshots MUST be saved to the context folder that you are working on with the image name `{component_name}-{iteration_number}.png`.
-  - Manually move the screenshot to the context folder if the location is not correct.

@@ -2,15 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(pnpm registry:build:*)",
-      "mcp__mui-mcp__useMuiDocs",
       "WebFetch(domain:mui.com)",
-      "mcp__mui-mcp__fetchDocs",
       "Bash(pnpm lint:*)",
-      "mcp__ide__getDiagnostics",
       "Bash(pnpm dev:*)",
+      "mcp__ide__getDiagnostics",
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_take_screenshot",
-      "mcp__playwright__browser_close"
+      "mcp__playwright__browser_close",
+      "Bash(npx tsc:*)"
     ],
     "deny": []
   },
