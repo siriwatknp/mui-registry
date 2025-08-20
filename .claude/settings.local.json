@@ -13,5 +13,5 @@
     ],
     "deny": []
   },
-  "enabledMcpjsonServers": ["browser-tools", "mui-mcp", "playwright"]
+  "enabledMcpjsonServers": ["playwright"]
 }
