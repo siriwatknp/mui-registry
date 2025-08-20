@@ -138,8 +138,9 @@ Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues and you
 ### Step 5: Post task
 
 - Kill the dev server and close the MCP playwright browser
-- Create a registry item using this [schema](https://ui.shadcn.com/schema/registry-item.json) and save it to the `public/r/{registry_name}.json`.
+- Run @script/create-registry-json.js with meaningful title and description.
 - Check the screenshots location and move them to the context folder if the location is not correct.
+- Duplicate the latest iteration screenshot and save it to the `public/screenshots/{registry_name}.png`.
 
 ## UX/UI Designer
 
