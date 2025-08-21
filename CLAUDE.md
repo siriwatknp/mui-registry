@@ -225,6 +225,10 @@ import { BarChart } from "@mui/x-charts/BarChart";
 
 Then, you can adjust the spacing/padding of the chart to match the design analysis.
 
+### Chip
+
+- For subtle background, ALWAYS use `<Chip variant="filled" color="success|error|info|warning|secondary">`.
+
 ### TextField and Form Best Practices
 
 1. **Label Integration**:
