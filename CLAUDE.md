@@ -545,7 +545,7 @@ When uncertain about a specific pattern, acknowledge the ambiguity and provide m
 ## PlayWright MCP tool
 
 - Use `mcp\_\_playwright` tool to open the browser.
-- The browser size should be 1200x630 pixels (width: 1200, height: 630).
+- The browser size should be 1280x768 pixels (width: 1280, height: 768).
 - The screenshots MUST be saved to the context folder that you are working on with the image name `{component_name}-{iteration_number}.png`.
 
 ## Visual design analysis
@@ -573,6 +573,7 @@ The [built-in theme](#built-in-theme) is being used for the component. You MUST 
 ### Layout
 
 - Which elements should be in the same row/column?
+- What position of the elements are in the section? (e.g. left, right, center, top, bottom, etc.)
 - What layout (Flebox or CSS Grid) to use to build the section?
 - What size of the components should be?
 
