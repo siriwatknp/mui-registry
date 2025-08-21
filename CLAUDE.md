@@ -181,17 +181,20 @@ You follow the project's UI and styling rules with unwavering discipline:
 
 ### Button vs IconButton
 
-If the mockup shows a button with high contrast background color, use `Button` component with customized border radius (if necessary) because the `IconButton` doesn't support variant prop.
+- If the mockup shows a button with high contrast background color, use `Button` component with customized border radius (if necessary) because the `IconButton` doesn't support variant prop.
 
-For example:
+  For example:
 
-```jsx
-<Button variant="contained" sx={{ borderRadius: 99 }}>
-  <AddIcon />
-</Button>
-```
+  ```jsx
+  <Button variant="contained" sx={{ borderRadius: 99 }}>
+    <AddIcon />
+  </Button>
+  ```
 
-Only use `IconButton` for secondary actions, or list of buttons with same size that show only icons.
+  Only use `IconButton` for secondary actions, or list of buttons with same size that show only icons.
+
+- There is no need to use `textTransform: "none"` on the button. The [built-in theme](#built-in-theme) already has this style.
+- DO NOT customize the button with `grey` tokens. Instead, use the `primary` color of the theme.
 
 ### Charts
 
