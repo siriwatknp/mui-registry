@@ -75,7 +75,7 @@ const theme = createTheme({
           text: "rgb(30, 110, 244)", // blue increased contrast
         },
         background: {
-          default: "rgb(242, 242, 247)", // systemGrayLight
+          default: "rgb(248, 248, 248)",
         },
       },
     },
