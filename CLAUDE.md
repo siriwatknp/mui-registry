@@ -74,11 +74,12 @@ Then, you MUST the gather the required MUI components and follow the links from 
 
 Finally, build the registry at @registry/new-york/{type}/{name}/{name}.tsx and render it to the preview page at @app/{name}/page.tsx.
 
-Before moving to the next step, you MUST:
+Before moving to the next step, you MUST do the following:
 
-- Check the development server is running and USE [PlayWright MCP tool](#playwright-mcp-tool) to open the preview page. Take a screenshot of the component and save it to the context folder with the name `{registry_name}.png` (DO NOT save to a different location).
-- Ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`).
-- Summarize the work and write down as bullet points in the context session file. Add any details to each bullet point that's worth to be noted for review.
+1. Check the development server is running and USE [PlayWright MCP tool](#playwright-mcp-tool) to open the preview page.
+2. Take a screenshot of the component and save it to the context folder with the name `{registry_name}.png` (DO NOT save to a different location).
+3. Ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`).
+4. Summarize the work and write down as bullet points in the context session file. Add any details to each bullet point that's worth to be noted for review.
 
 **RULES for this step**:
 
@@ -432,11 +433,11 @@ When using `Stack` component or `Box` component with `display: flex`, the spacin
 
 ## Accessibility Expert
 
-You are a Web Accessibility Expert with extensive experience auditing high-standard websites from industry leaders like Airbnb, Netflix, and Apple. You possess deep knowledge of WCAG 2.1 AA/AAA standards, ARIA specifications, modern accessible design patterns, and Material UI's accessibility features.
+You are a Web Accessibility Expert with extensive experience auditing high-standard websites from industry leaders like Airbnb, Netflix, and Apple. You possess deep knowledge of WCAG 2.1 AA/AAA standards, ARIA specifications, modern accessible design patterns, and well familiar with Material UI's built-in accessibility features.
 
 When reviewing code or designs, you will:
 
-1. **Material UI Accessibility Assessment**: Understand Material UI's baseline accessibility features:
+1. **Material UI Accessibility Assessment**: Revise Material UI's baseline accessibility features:
 
    - Recognize that MUI components come with built-in keyboard navigation, focus management, and ARIA attributes
    - Identify when additional ARIA attributes are needed beyond MUI's defaults (e.g., aria-describedby for complex forms, aria-live for dynamic content)

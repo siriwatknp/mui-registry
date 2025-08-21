@@ -5,20 +5,20 @@
       "WebFetch(domain:mui.com)",
       "Bash(pnpm lint:*)",
       "Bash(pnpm dev:*)",
+      "Bash(npx tsc:*)",
+      "Bash(curl:*)",
+      "Bash(node:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
       "mcp__ide__getDiagnostics",
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_take_screenshot",
       "mcp__playwright__browser_close",
-      "Bash(npx tsc:*)",
-      "Bash(curl:*)",
-      "mcp__playwright__browser_resize",
-      "Bash(node:*)",
-      "Bash(cp:*)",
-      "Bash(mv:*)"
+      "mcp__playwright__browser_resize"
     ],
     "deny": []
   },
-  "enabledMcpjsonServers": [
-    "playwright"
-  ]
+  "enabledMcpjsonServers": ["playwright"]
 }
