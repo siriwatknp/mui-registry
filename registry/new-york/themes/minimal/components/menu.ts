@@ -29,6 +29,7 @@ export const menuTheme: ThemeOptions["components"] = {
         fontSize: theme.typography.body2.fontSize,
         padding: "6px",
         borderRadius: 4,
+        minHeight: 40,
         margin: 0,
         transition: theme.transitions.create(["background-color"], {
           duration: theme.transitions.duration.shortest,

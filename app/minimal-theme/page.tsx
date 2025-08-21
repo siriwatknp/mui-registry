@@ -120,6 +120,7 @@ import {
   type GridRowParams,
 } from "@mui/x-data-grid";
 import LinearProgress from "@mui/material/LinearProgress";
+import CircularProgress from "@mui/material/CircularProgress";
 import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
 import { RichTreeView } from "@mui/x-tree-view/RichTreeView";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
@@ -148,7 +149,7 @@ const SlideTransition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement;
   },
-  ref: React.Ref<unknown>
+  ref: React.Ref<unknown>,
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -294,8 +295,8 @@ function App() {
             params.value === "Active"
               ? "success"
               : params.value === "Pending"
-              ? "warning"
-              : "default"
+                ? "warning"
+                : "default"
           }
           size="small"
           variant="outlined"
@@ -404,7 +405,7 @@ function App() {
     startDate: new Date(
       2020 + Math.floor(Math.random() * 4),
       Math.floor(Math.random() * 12),
-      Math.floor(Math.random() * 28) + 1
+      Math.floor(Math.random() * 28) + 1,
     ).toLocaleDateString(),
   }));
 
@@ -683,8 +684,8 @@ function App() {
                             size === "small"
                               ? "small"
                               : size === "large"
-                              ? "large"
-                              : "medium"
+                                ? "large"
+                                : "medium"
                           }
                         />
                       </Button>
@@ -701,8 +702,8 @@ function App() {
                             size === "small"
                               ? "small"
                               : size === "large"
-                              ? "large"
-                              : "medium"
+                                ? "large"
+                                : "medium"
                           }
                         />
                       </Button>
@@ -1476,7 +1477,7 @@ function App() {
               </Typography>
               <Autocomplete
                 options={groupedOptions.sort(
-                  (a, b) => -b.category.localeCompare(a.category)
+                  (a, b) => -b.category.localeCompare(a.category),
                 )}
                 groupBy={(option) => option.category}
                 getOptionLabel={(option) => option.title}
@@ -3081,7 +3082,7 @@ function App() {
                         </Button>
                       </CardActions>
                     </Card>
-                  )
+                  ),
                 )}
               </Box>
             </Box>
@@ -3350,7 +3351,7 @@ function App() {
                         () => `Cras mattis consectetur purus sit amet fermentum.
         Cras justo odio, dapibus ac facilisis in, egestas eget quam.
         Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
+        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                       )
                       .join("\n\n")}
                   </DialogContentText>
@@ -4056,6 +4057,325 @@ function App() {
                     <StarIcon sx={{ color: "#feca57" }} />
                   </Stack>
                 </Box>
+              </Stack>
+            </Box>
+          </Box>
+          <Divider sx={{ my: 4 }} />
+          <Box sx={{ my: 4 }}>
+            <Typography variant="h4" component="h2" gutterBottom>
+              Progress
+            </Typography>
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Circular Progress - Indeterminate
+              </Typography>
+              <Stack direction="row" spacing={3} alignItems="center">
+                <CircularProgress />
+                <CircularProgress color="secondary" />
+                <CircularProgress color="success" />
+                <CircularProgress color="inherit" />
+                <CircularProgress color="warning" />
+                <CircularProgress color="error" />
+                <CircularProgress color="info" />
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Circular Progress - Sizes
+              </Typography>
+              <Stack direction="row" spacing={3} alignItems="center">
+                <CircularProgress size={20} />
+                <CircularProgress size={30} />
+                <CircularProgress size={40} />
+                <CircularProgress size={50} />
+                <CircularProgress size={60} />
+                <CircularProgress size={80} />
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Circular Progress - Determinate
+              </Typography>
+              <Stack direction="row" spacing={3} alignItems="center">
+                <CircularProgress variant="determinate" value={25} />
+                <CircularProgress
+                  variant="determinate"
+                  value={50}
+                  color="secondary"
+                />
+                <CircularProgress
+                  variant="determinate"
+                  value={75}
+                  color="success"
+                />
+                <CircularProgress
+                  variant="determinate"
+                  value={100}
+                  color="error"
+                />
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Circular Progress - With Label
+              </Typography>
+              <Stack direction="row" spacing={3} alignItems="center">
+                <Box sx={{ position: "relative", display: "inline-flex" }}>
+                  <CircularProgress variant="determinate" value={40} />
+                  <Box
+                    sx={{
+                      top: 0,
+                      left: 0,
+                      bottom: 0,
+                      right: 0,
+                      position: "absolute",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="caption"
+                      component="div"
+                      color="text.secondary"
+                    >
+                      40%
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ position: "relative", display: "inline-flex" }}>
+                  <CircularProgress
+                    variant="determinate"
+                    value={65}
+                    size={60}
+                    color="secondary"
+                  />
+                  <Box
+                    sx={{
+                      top: 0,
+                      left: 0,
+                      bottom: 0,
+                      right: 0,
+                      position: "absolute",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      component="div"
+                      color="text.secondary"
+                    >
+                      65%
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ position: "relative", display: "inline-flex" }}>
+                  <CircularProgress
+                    variant="determinate"
+                    value={90}
+                    size={80}
+                    color="success"
+                  />
+                  <Box
+                    sx={{
+                      top: 0,
+                      left: 0,
+                      bottom: 0,
+                      right: 0,
+                      position: "absolute",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography
+                      variant="h6"
+                      component="div"
+                      color="text.secondary"
+                    >
+                      90%
+                    </Typography>
+                  </Box>
+                </Box>
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Linear Progress - Indeterminate
+              </Typography>
+              <Stack spacing={2}>
+                <LinearProgress />
+                <LinearProgress color="secondary" />
+                <LinearProgress color="success" />
+                <LinearProgress color="inherit" />
+                <LinearProgress color="warning" />
+                <LinearProgress color="error" />
+                <LinearProgress color="info" />
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Linear Progress - Determinate
+              </Typography>
+              <Stack spacing={2}>
+                <LinearProgress variant="determinate" value={10} />
+                <LinearProgress
+                  variant="determinate"
+                  value={30}
+                  color="secondary"
+                />
+                <LinearProgress
+                  variant="determinate"
+                  value={50}
+                  color="success"
+                />
+                <LinearProgress
+                  variant="determinate"
+                  value={70}
+                  color="warning"
+                />
+                <LinearProgress
+                  variant="determinate"
+                  value={90}
+                  color="error"
+                />
+                <LinearProgress
+                  variant="determinate"
+                  value={100}
+                  color="info"
+                />
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Linear Progress - Buffer
+              </Typography>
+              <Stack spacing={2}>
+                <LinearProgress variant="buffer" value={30} valueBuffer={40} />
+                <LinearProgress
+                  variant="buffer"
+                  value={50}
+                  valueBuffer={70}
+                  color="secondary"
+                />
+                <LinearProgress
+                  variant="buffer"
+                  value={60}
+                  valueBuffer={80}
+                  color="success"
+                />
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Linear Progress - Query
+              </Typography>
+              <Stack spacing={2}>
+                <LinearProgress variant="query" />
+                <LinearProgress variant="query" color="secondary" />
+                <LinearProgress variant="query" color="success" />
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Linear Progress - With Label
+              </Typography>
+              <Stack spacing={3}>
+                <Box>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Box sx={{ width: "100%", mr: 1 }}>
+                      <LinearProgress variant="determinate" value={40} />
+                    </Box>
+                    <Box sx={{ minWidth: 35 }}>
+                      <Typography variant="body2" color="text.secondary">
+                        40%
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+                <Box>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Box sx={{ width: "100%", mr: 1 }}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={65}
+                        color="secondary"
+                      />
+                    </Box>
+                    <Box sx={{ minWidth: 35 }}>
+                      <Typography variant="body2" color="text.secondary">
+                        65%
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+                <Box>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Box sx={{ width: "100%", mr: 1 }}>
+                      <LinearProgress
+                        variant="determinate"
+                        value={85}
+                        color="success"
+                      />
+                    </Box>
+                    <Box sx={{ minWidth: 35 }}>
+                      <Typography variant="body2" color="text.secondary">
+                        85%
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Linear Progress - Custom Height
+              </Typography>
+              <Stack spacing={2}>
+                <LinearProgress sx={{ height: 2 }} />
+                <LinearProgress sx={{ height: 6 }} color="secondary" />
+                <LinearProgress sx={{ height: 10 }} color="success" />
+                <LinearProgress
+                  sx={{ height: 10, borderRadius: 5 }}
+                  variant="determinate"
+                  value={60}
+                  color="warning"
+                />
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Circular Progress - Custom Thickness
+              </Typography>
+              <Stack direction="row" spacing={3} alignItems="center">
+                <CircularProgress thickness={1} />
+                <CircularProgress thickness={2.5} />
+                <CircularProgress thickness={4} />
+                <CircularProgress thickness={5.5} />
+                <CircularProgress thickness={7} />
+              </Stack>
+            </Box>
+            <Divider sx={{ my: 3 }} />
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" gutterBottom>
+                Circular Progress - Disabled Shrink
+              </Typography>
+              <Stack direction="row" spacing={3} alignItems="center">
+                <CircularProgress disableShrink />
+                <CircularProgress disableShrink color="secondary" />
+                <CircularProgress disableShrink color="success" size={50} />
               </Stack>
             </Box>
           </Box>
@@ -4780,7 +5100,7 @@ function App() {
                     <Button
                       onClick={() => {
                         setExpandedTreeItems((oldExpanded) =>
-                          oldExpanded.length === 0 ? ["1", "5", "6", "7"] : []
+                          oldExpanded.length === 0 ? ["1", "5", "6", "7"] : [],
                         );
                       }}
                     >

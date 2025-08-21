@@ -68,6 +68,7 @@ export const textFieldTheme: ThemeOptions["components"] = {
       root: ({ theme }) => ({
         [theme.breakpoints.up(768)]: {
           fontSize: theme.typography.body2.fontSize,
+          lineHeight: "1.42857em", // 20px
         },
       }),
       input: () => ({

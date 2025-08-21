@@ -74,6 +74,9 @@ const theme = createTheme({
           main: "rgb(0, 136, 255)", // blue
           text: "rgb(30, 110, 244)", // blue increased contrast
         },
+        background: {
+          default: "rgb(248, 248, 248)",
+        },
       },
     },
     dark: {
@@ -110,6 +113,10 @@ const theme = createTheme({
         info: {
           main: "rgb(0, 145, 255)", // blue for dark
           text: "rgb(92, 184, 255)", // blue for dark
+        },
+        background: {
+          default: "rgb(0, 0, 0)", // systemGrayDark
+          paper: "rgb(18, 18, 18)", // systemGrayDark
         },
       },
     },
