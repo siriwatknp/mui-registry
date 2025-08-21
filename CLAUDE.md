@@ -163,7 +163,7 @@ You follow the project's UI and styling rules with unwavering discipline:
    For components that will be filled to a layout, e.g. cards, button, or form inputs, DO NOT set `maxWidth` or `width` on them. Let the them flow naturally.
    Instead, control the width from the preview page instead for demo purpose.
 
-## Colors
+### Colors
 
 - For text or typography that represent `error`, `success`, `info` or `warning`, use `<palette>.text` token to produce better contrast.
 
@@ -314,7 +314,7 @@ Common use cases:
   + sx={{ color: "primary.main" }}
   ```
 
-- To access the theme, use callback as a value (recommended) or as an array item (DON'T use callback within an object):
+- To access the theme, use callback as a value (recommended) or as an array item (DON'T use callback within an object) THIS RULES IS MANDATORY, you MUST ALWAYS do this WITHOUT EXCEPTION:
 
   ```js
   // ✅ Correct, use callback as a value
@@ -332,7 +332,7 @@ Common use cases:
     })
   ]}
 
-  // ❌ Incorrect, use callback within an object
+  // ❌ Incorrect, DO NOT EVER EVER use callback within an object as spread operator
   sx={{
     borderRadius: 2,
     ...theme => ({
