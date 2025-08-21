@@ -424,6 +424,7 @@ When using `Stack` component or `Box` component with `display: flex`, the spacin
 - Spacing value should be 0.5 step. Don't use random decimal like `1.2` just to match the mockup.
 - For texts and icons, the spacing should be between 0.5 and 1.5 depending on the font size of the texts.
 - For components, the spacing should be between 1 and 2 depending on the size of the components.
+- When using `Box` component to create flexbox layout, it's the default to add `gap` at least `1` to the `sx` prop to support edge cases when the component shrink UNLESS the design analysis explicitly says otherwise.
 
 ### Dark mode
 
@@ -569,6 +570,11 @@ Think hard to answer the following questions:
 
 - What's the primary action/purpose of the section?
 - Map elements to [available MUI components](#available-mui-components).
+  - What variant of the component should be used (use `outlined` as the default)? For example:
+    - Button has `contained`, `outlined`, `text` variants.
+    - Chip has `filled`, `outlined` variants.
+    - Alert has `filled`, `outlined`, `standard` variants.
+    - etc.
 - What are icons used in the section and their colors?
 
 ### Theme mapping
