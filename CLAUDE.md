@@ -280,6 +280,15 @@ Then, you can adjust the spacing/padding of the chart to match the design analys
    </Box>
    ```
 
+### PieChart
+
+Common use cases:
+
+- Hide the legend by using `slotProps.legend.sx.display = "none"`
+- Format the value with `valueFormatter: (params) => `${params.value}%``
+- Assign arc colors with `colors` prop with array of strings
+- Remove spacing around the chart by setting `margin` to `{ left: 0, right: 0, top: 0, bottom: 0 }`
+
 ### `sx` prop
 
 - Keep `sx` props to a minimum. The `sx` prop should be used for structuring layout when composing elements to form a bigger component.
