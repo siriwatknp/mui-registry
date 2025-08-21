@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "payment-overview-card",
+  "type": "registry:block",
+  "title": "Payment Overview Card",
+  "description": "A card component displaying payment summary with total outstanding amount and upcoming payment date",
+  "dependencies": [
+    "@mui/material",
+    "@emotion/react",
+    "@emotion/styled"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "registry/new-york/blocks/payment-overview-card/payment-overview-card.tsx",
+      "content": "\"use client\";\n\nimport Box from \"@mui/material/Box\";\nimport Card from \"@mui/material/Card\";\nimport Divider from \"@mui/material/Divider\";\nimport Stack from \"@mui/material/Stack\";\nimport Typography from \"@mui/material/Typography\";\n\nexport default function PaymentOverviewCard() {\n  return (\n    <Card\n      sx={(theme) => ({\n        p: 3,\n        display: \"flex\",\n        alignItems: \"stretch\",\n        gap: 3,\n        borderRadius: 2,\n        boxShadow: 1,\n      })}\n    >\n      <Box\n        component=\"section\"\n        aria-label=\"Total Outstanding\"\n        sx={{ flex: 1, display: \"flex\", gap: 2 }}\n      >\n        <Box\n          aria-hidden=\"true\"\n          sx={(theme) => ({\n            display: \"flex\",\n            gap: 0.5,\n            alignItems: \"flex-start\",\n            height: 20,\n          })}\n        >\n          <Box\n            sx={(theme) => ({\n              width: 4,\n              height: 16,\n              bgcolor: (theme.vars || theme).palette.primary.main,\n              opacity: 0.3,\n              borderRadius: 0.5,\n            })}\n          />\n          <Box\n            sx={(theme) => ({\n              width: 4,\n              height: 20,\n              bgcolor: (theme.vars || theme).palette.primary.main,\n              opacity: 0.6,\n              borderRadius: 0.5,\n            })}\n          />\n        </Box>\n        <Stack spacing={0.5}>\n          <Typography\n            variant=\"body2\"\n            sx={(theme) => ({\n              color: (theme.vars || theme).palette.text.secondary,\n            })}\n          >\n            Total Outstanding\n          </Typography>\n          <Typography\n            variant=\"h5\"\n            component=\"div\"\n            sx={(theme) => ({\n              fontWeight: 600,\n              color: (theme.vars || theme).palette.text.primary,\n            })}\n          >\n            $58,764.25\n          </Typography>\n        </Stack>\n      </Box>\n\n      <Divider orientation=\"vertical\" flexItem />\n\n      <Box\n        component=\"section\"\n        aria-label=\"Upcoming Payment\"\n        sx={{ flex: 1, display: \"flex\", gap: 2 }}\n      >\n        <Box\n          aria-hidden=\"true\"\n          sx={(theme) => ({\n            display: \"flex\",\n            gap: 0.5,\n            alignItems: \"flex-start\",\n            height: 20,\n          })}\n        >\n          <Box\n            sx={(theme) => ({\n              width: 8,\n              height: 8,\n              bgcolor: (theme.vars || theme).palette.primary.main,\n              opacity: 0.3,\n              borderRadius: 0.5,\n              alignSelf: \"center\",\n            })}\n          />\n          <Box\n            sx={(theme) => ({\n              width: 8,\n              height: 12,\n              bgcolor: (theme.vars || theme).palette.primary.main,\n              opacity: 0.6,\n              borderRadius: 0.5,\n              alignSelf: \"flex-end\",\n            })}\n          />\n        </Box>\n        <Stack spacing={0.5}>\n          <Typography\n            variant=\"body2\"\n            sx={(theme) => ({\n              color: (theme.vars || theme).palette.text.secondary,\n            })}\n          >\n            Upcoming Payment\n          </Typography>\n          <Typography\n            variant=\"h5\"\n            component=\"div\"\n            sx={(theme) => ({\n              fontWeight: 600,\n              color: (theme.vars || theme).palette.text.primary,\n            })}\n          >\n            April 1st, 2022\n          </Typography>\n        </Stack>\n      </Box>\n    </Card>\n  );\n}",
+      "type": "registry:block"
+    }
+  ],
+  "meta": {
+    "screenshot": "/screenshots/payment-overview-card.png"
+  }
+}
