@@ -583,9 +583,27 @@ The [built-in theme](#built-in-theme) is being used for the component. You MUST 
 
 ### Ascii mockup representation
 
-**IMPORTANT**: You MUST provide the ascii mockup representation of the section. Build it as close as possible to the mockup because it's significant to the final result quality.
+**IMPORTANT**: You MUST provide the ascii mockup representation of the section.
 
-All lines MUST have aligned ending/closing tag.
+- Build it as close as possible to the mockup because it's significant to the final result quality.
+- Pay attention to the horizontal alignment of elements. For example, if the two elements are in the same row, they should be on the same baseline. For example,
+
+  ```md
+  // ✅ Correct
+  ┌───────────────────┐
+  │ Rows read [+4.4%] │
+  │ 643,015 from 615,752 │
+  └───────────────────┘
+
+  // ❌ Incorrect
+  ┌───────────────────┐
+  │ Rows read [+4.4%] │
+  │ 643,015 │
+  │ from 615,752 │
+  └───────────────────┘
+  ```
+
+- All lines MUST have aligned ending/closing tag.
 
 ## Available MUI components
 
