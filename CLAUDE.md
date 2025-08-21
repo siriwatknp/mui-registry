@@ -64,6 +64,8 @@ The file is located at @.claude/tasks/<registry-name>/context-session.md.
 
 Next, you MUST act as the [UX/UI Designer](#uxui-designer) to analyze the mockup and write down the important structure to build the component.
 
+Finally, you MUST involve the [Accessibility Expert](#accessibility-expert) to provide the critical accessibility attention points for each section of the mockup.
+
 ### Step 2: Build the component
 
 You MUST check the context session file to understand the requirements and act as the [UI Engineer](#ui-engineer) to build the registry item to match the visual design analysis as close as possible.
@@ -72,56 +74,18 @@ Then, you MUST the gather the required MUI components and follow the links from 
 
 Finally, build the registry at @registry/new-york/{type}/{name}/{name}.tsx and render it to the preview page at @app/{name}/page.tsx.
 
-Before moving to the next step, you MUST ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`).
+Before moving to the next step, you MUST:
 
-Summarize the work and write down as bullet points in the context session file. Add any details to each bullet point that's worth to be noted for review.
+- Check the development server is running and USE [PlayWright MCP tool](#playwright-mcp-tool) to open the preview page. Take a screenshot of the component and save it to the context folder with the name `{registry_name}.png` (DO NOT save to a different location).
+- Ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`).
+- Summarize the work and write down as bullet points in the context session file. Add any details to each bullet point that's worth to be noted for review.
 
 **RULES for this step**:
 
 - DO NOT read other files in the project.
 - DO NOT read the main page `app/page.tsx`.
 
-### Step 3: Review/Update Iteration
-
-At the beginning of this step, run the development server and USE [PlayWright MCP tool](#playwright-mcp-tool) to open the preview page.
-
-Take a screenshot of the component and save it to the context folder with the name `{component_name}-{iteration_number}.png` (DO NOT save to other places). The review process will be done by [Accessibility Expert](#accessibility-expert) and [UX/UI Designer](#uxui-designer).
-
-- You MUST act as the [Accessibility Expert](#accessibility-expert) to audit the critical accessibility issues that require immediate fixes.
-- You MUST act as the [UX/UI Designer](#uxui-designer) to visualize the screenshot and list down the design issues that need to be fixed. Think hard to include only the design issues that will lift up the quality of the next result such as:
-
-  - "The input and buttons are not horizontally aligned and have different height"
-  - "The container has too much padding top compare to other sides"
-  - "The chart lines should be smooth, not ridid"
-  - "The buttons should be connected with outlined border around and outlined separator"
-
-- You MUST write down the bullet points that need to be fixed to the context session file in this format:
-
-```md
-...previous content...
-
----
-
-## Issues
-
-**Accessibility:**
-
-- <issue_1>
-- <issue_2>
-- ...
-
-**Design:**
-
-- <issue_1>
-- <issue_2>
-- ...
-
----
-```
-
-Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues and you MUST ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`). Similarly, summarize the work and write down as bullet points in the context session file. Add any details to each bullet point that's worth to be noted for review.
-
-### Step 4: Post task
+### Step 3: Post task
 
 - Kill the dev server and close the MCP playwright browser
 - At the root terminal, run `node scripts/create-registry-json.js <registry_name> "Title" "Description"` with meaningful title and description.
@@ -134,7 +98,7 @@ You are a Staff UX/UI Designer with profound expertise in visual design extracti
 
 You have great taste and aesthetic from world class design agencies and companies like Apple, Netflix, Vercel, Linear, etc. to build the component.
 
-Your goal is to do [Visual Design Analysis](#visual-design-analysis) to create a detailed context session that captures the visual hierarchy, layout patterns, and component relationships that map to MUI ecosystem design language. It's not about identifying specific hard-coded values of the mockup, but the design language of the [built-in theme](#built-in-theme) that translated from the mockup.
+Your goal is to do [Visual Design Analysis](#visual-design-analysis) to create a detailed context session that captures the every details of visual hierarchy, layout patterns, and component relationships that map to MUI ecosystem design language. It's not about identifying specific hard-coded values of the mockup, but the design language of the [built-in theme](#built-in-theme) that translated from the mockup.
 
 ## UI Engineer
 

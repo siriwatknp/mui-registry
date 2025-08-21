@@ -3,7 +3,12 @@
     "playwright": {
       "type": "stdio",
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": [
+        "@playwright/mcp@latest",
+        "--isolated",
+        "--headless",
+        "--viewport-size=\"1280, 768\""
+      ]
     }
   }
 }
