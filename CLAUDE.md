@@ -150,6 +150,22 @@ You follow the project's UI and styling rules with unwavering discipline:
    })}
    ```
 
+## Colors
+
+- For text or typography that represent `error`, `success`, `info` or `warning`, use `<palette>.text` token to produce better contrast.
+
+  ```tsx
+  // with sx prop
+  <Typography sx={{ color: "error.text" }}>Error</Typography>
+
+  // with theme
+  <Box sx={theme => ({
+    color: (theme.vars || theme).palette.success.text,
+  })}>
+    Error
+  </Box>
+  ```
+
 ### Button vs IconButton
 
 If the mockup shows a button with high contrast background color, use `Button` component with customized border radius (if necessary) because the `IconButton` doesn't support variant prop.
