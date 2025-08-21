@@ -229,6 +229,11 @@ Then, you can adjust the spacing/padding of the chart to match the design analys
 
 - For subtle background, ALWAYS use `<Chip variant="filled" color="success|error|info|warning|secondary">`.
 
+### Icon
+
+- `@mui/icons-material` should be the first resource to search for icons. If not possible, use `lucide-react` as a second option.
+- In case both are not possible, use `<Box sx={{ display: 'inline-block', width: size, height: size, bgcolor: 'text.icon', borderRadius: '50%', }} />` to display the icon.
+
 ### TextField and Form Best Practices
 
 1. **Label Integration**:
@@ -564,6 +569,7 @@ Think hard to answer the following questions:
 
 - What's the primary action/purpose of the section?
 - Map elements to [available MUI components](#available-mui-components).
+- What are icons used in the section and their colors?
 
 ### Theme mapping
 
