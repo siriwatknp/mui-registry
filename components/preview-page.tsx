@@ -12,9 +12,12 @@ export function PreviewComponent({
   className = "",
 }: PreviewComponentProps) {
   return (
-    <div className={`min-h-screen p-8 ${className}`}>
+    <div className={`min-h-screen ${className}`}>
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
+        <div
+          className="flex items-center justify-center p-8 min-w-[1280px] min-h-[768px]"
+          data-preview
+        >
           {children}
         </div>
       </div>

@@ -20,12 +20,27 @@ function getPort() {
   return 3000;
 }
 
-const SCREENSHOTS_DIR = path.join(process.cwd(), "public", "screenshots");
-const REGISTRY_PATH = path.join(process.cwd(), "registry.json");
+// Helper to get URLs from CLI arguments
+function getUrlsFromArgs(): string[] {
+  // Filter out --port arguments and get remaining args
+  const urls = process.argv
+    .slice(2)
+    .filter((arg) => !arg.startsWith("--port"))
+    .filter((arg) => {
+      // Skip the value after --port if it's not a flag
+      const prevArg = process.argv[process.argv.indexOf(arg) - 1];
+      return !prevArg || !prevArg.startsWith("--port") || prevArg.includes("=");
+    });
 
-export async function screenshotAndUpdateRegistry() {
+  return urls;
+}
+
+const SCREENSHOTS_DIR = path.join(process.cwd(), "public", "screenshots");
+
+export async function screenshotDemos() {
   const port = getPort();
   const baseUrl = `http://localhost:${port}`;
+  const urlsToCapture = getUrlsFromArgs();
 
   // Ensure screenshots directory exists
   await fs.mkdir(SCREENSHOTS_DIR, { recursive: true });
@@ -33,58 +48,102 @@ export async function screenshotAndUpdateRegistry() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
-  // Screenshot all preview blocks on homepage using data-preview attribute
-  await page.goto(baseUrl + "/");
-  const previewBlocks = await page.locator("main > div[data-preview]");
-  const count = await previewBlocks.count();
-  for (let i = 0; i < count; i++) {
-    const block = previewBlocks.nth(i);
-    const previewName = await block.getAttribute("data-preview");
-    if (!previewName) continue;
-    const screenshotPath = path.join(SCREENSHOTS_DIR, `${previewName}.png`);
-    await expect(block).toBeVisible();
-    await block.screenshot({ path: screenshotPath });
-    console.log(`Screenshot saved: ${previewName}`);
+  if (urlsToCapture.length > 0) {
+    // Screenshot specific URLs provided as arguments
+    for (const url of urlsToCapture) {
+      // Handle both full URLs and paths
+      const fullUrl = url.startsWith("http")
+        ? url
+        : `${baseUrl}${url.startsWith("/") ? url : "/" + url}`;
+
+      // Extract the name from the URL path
+      const urlPath = url.startsWith("http") 
+        ? new URL(url).pathname 
+        : url;
+      const imageName = urlPath.replace(/^\/+|\/+$/g, '').replace(/\//g, '-') || 'index';
+
+      try {
+        await page.goto(fullUrl, { waitUntil: "networkidle" });
+
+        // Wait for animations to finish
+        await page.waitForTimeout(1000);
+
+        // Try to find preview blocks on the page
+        const previewBlocks = page.locator("div[data-preview]");
+        const count = await previewBlocks.count();
+
+        if (count > 0) {
+          for (let i = 0; i < count; i++) {
+            const block = previewBlocks.nth(i);
+            await expect(block).toBeVisible();
+            
+            // Wait for any animations within the block
+            await page.evaluate(() => {
+              return new Promise((resolve) => {
+                requestAnimationFrame(() => {
+                  requestAnimationFrame(() => {
+                    resolve(undefined);
+                  });
+                });
+              });
+            });
+            
+            // Use the URL-based name for the screenshot
+            const screenshotPath = path.join(
+              SCREENSHOTS_DIR,
+              `${imageName}${count > 1 ? `-${i + 1}` : ''}.png`
+            );
+            await block.screenshot({ path: screenshotPath, animations: "disabled" });
+            console.log(`Screenshot saved: ${imageName}${count > 1 ? `-${i + 1}` : ''} from ${url}`);
+          }
+        } else {
+          console.log(`No preview blocks found at ${url}`);
+        }
+      } catch (error) {
+        console.error(`Error capturing screenshots from ${url}:`, error);
+      }
+    }
+  } else {
+    // Default behavior: Screenshot all preview blocks on homepage
+    await page.goto(baseUrl + "/", { waitUntil: "networkidle" });
+    
+    // Wait for animations to finish
+    await page.waitForTimeout(1000);
+    
+    const previewBlocks = page.locator("div[data-preview]");
+    const count = await previewBlocks.count();
+    for (let i = 0; i < count; i++) {
+      const block = previewBlocks.nth(i);
+      const previewName = await block.getAttribute("data-preview");
+      if (!previewName) continue;
+      
+      await expect(block).toBeVisible();
+      
+      // Wait for any animations within the block
+      await page.evaluate(() => {
+        return new Promise((resolve) => {
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              resolve(undefined);
+            });
+          });
+        });
+      });
+      
+      const screenshotPath = path.join(SCREENSHOTS_DIR, `${previewName}.png`);
+      await block.screenshot({ path: screenshotPath, animations: "disabled" });
+      console.log(`Screenshot saved: ${previewName}`);
+    }
   }
 
   await browser.close();
 
-  // 3. Update registry.json with meta.screenshot fields
-  const registryRaw = await fs.readFile(REGISTRY_PATH, "utf-8");
-  const registry = JSON.parse(registryRaw);
-  const items = registry.items;
-
-  // Build a set of all screenshot names
-  const screenshotFiles = await fs.readdir(SCREENSHOTS_DIR);
-  const nameToFile = new Map();
-  for (const file of screenshotFiles) {
-    if (file.endsWith(".png")) {
-      nameToFile.set(file.replace(/\.png$/, ""), `/screenshots/${file}`);
-    }
-  }
-
-  for (const item of items) {
-    // Remove top-level screenshot field if present
-    if (item.screenshot) {
-      delete item.screenshot;
-    }
-    // Match by registry name
-    const screenshot = nameToFile.get(item.name);
-    if (screenshot) {
-      if (!item.meta) item.meta = {};
-      item.meta.screenshot = screenshot;
-    } else if (item.meta && item.meta.screenshot) {
-      delete item.meta.screenshot;
-    }
-  }
-
-  await fs.writeFile(REGISTRY_PATH, JSON.stringify(registry, null, 2) + "\n");
-  console.log("registry.json updated with meta.screenshot fields.");
+  console.log("Screenshot capture completed.");
 }
 
 // If run directly, execute the function
 if (require.main === module) {
-  screenshotAndUpdateRegistry().catch((err) => {
+  screenshotDemos().catch((err) => {
     console.error(err);
     process.exit(1);
   });
