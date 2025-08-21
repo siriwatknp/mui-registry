@@ -27,12 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <InitColorSchemeScript attribute="class" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <InitColorSchemeScript attribute="class" />
         <AppRouterCacheProvider
           options={{
             enableCssLayer: true,
