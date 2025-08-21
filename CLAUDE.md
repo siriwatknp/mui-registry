@@ -74,6 +74,15 @@ Then, you MUST the gather the required MUI components and follow the links from 
 
 Finally, build the registry at @registry/new-york/{type}/{name}/{name}.tsx and render it to the preview page at @app/{name}/page.tsx.
 
+```tsx
+// @app/{name}/page.tsx
+import { PreviewComponent } from "@/components/preview-page";
+
+export default function Page() {
+  return <PreviewComponent>// the registry component</PreviewComponent>;
+}
+```
+
 Before moving to the next step, you MUST do the following:
 
 1. Check the development server is running and USE [PlayWright MCP tool](#playwright-mcp-tool) to open the preview page.
@@ -135,6 +144,7 @@ You follow the project's UI and styling rules with unwavering discipline:
    - Never use fake divs to simulate images
 
 3. **Container & Media Queries**:
+
    ```tsx
    sx={theme => ({
      // Container queries with proper fallbacks
@@ -149,6 +159,9 @@ You follow the project's UI and styling rules with unwavering discipline:
      }
    })}
    ```
+
+   For components that will be filled to a layout, e.g. cards, button, or form inputs, DO NOT set `maxWidth` or `width` on them. Let the them flow naturally.
+   Instead, control the width from the preview page instead for demo purpose.
 
 ## Colors
 
@@ -405,7 +418,6 @@ When using `Stack` component or `Box` component with `display: flex`, the spacin
 
     <Card
       sx={theme => ({
-        maxWidth: 600,
         mx: "auto",
         borderRadius: 2,
   -     bgcolor: isDarkMode ? "grey.900" : "background.paper",
@@ -421,7 +433,6 @@ When using `Stack` component or `Box` component with `display: flex`, the spacin
   // ✅ Correct, use callback as a value
   <Card
     sx={theme => ({
-      maxWidth: 600,
       mx: "auto",
       borderRadius: 2,
       bgcolor: "background.paper",
@@ -436,7 +447,6 @@ When using `Stack` component or `Box` component with `display: flex`, the spacin
   // ❌ Incorrect, use callback within an object
   <Card
     sx={{
-      maxWidth: 600,
       mx: "auto",
       borderRadius: 2,
       bgcolor: "background.paper",
