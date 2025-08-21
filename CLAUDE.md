@@ -57,6 +57,8 @@ You MUST follow the following steps to build the component, this is non-negotiab
 
 ### Step 1: Prepare the context
 
+Think of the <registry_name> with exactly three words (with `-` as separator) that represent the mockup.
+
 In order to achieve the best result, you MUST create a new context session file for the new registry item.
 The file is located at @.claude/tasks/<registry-name>/context-session.md.
 
@@ -64,13 +66,15 @@ Next, you MUST act as the [UX/UI Designer](#uxui-designer) to analyze the mockup
 
 ### Step 2: Build the component
 
-You MUST check the context session file to understand the requirements and act as the [UI Engineer](#ui-engineer) to build the registry item.
+You MUST check the context session file to understand the requirements and act as the [UI Engineer](#ui-engineer) to build the registry item to match the visual design analysis as close as possible.
 
 Then, you MUST the gather the required MUI components and follow the links from the [avaiable MUI components](#available-mui-components) to get the latest information of the components.
 
 Finally, build the registry at @registry/new-york/{type}/{name}/{name}.tsx and render it to the preview page at @app/{name}/page.tsx.
 
 Before moving to the next step, you MUST ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`).
+
+Summarize the work and write down as bullet points in the context session file. Add any details to each bullet point that's worth to be noted for review.
 
 **RULES for this step**:
 
@@ -81,49 +85,41 @@ Before moving to the next step, you MUST ensure there are no errors in the code 
 
 At the beginning of this step, run the development server and USE [PlayWright MCP tool](#playwright-mcp-tool) to open the preview page.
 
-There are 3 iterations in total for this step:
+Take a screenshot of the component and save it to the context folder with the name `{component_name}-{iteration_number}.png` (DO NOT save to other places). The review process will be done by [Accessibility Expert](#accessibility-expert) and [UX/UI Designer](#uxui-designer).
 
-For each iteration, take a screenshot of the component and save it to the context folder with the name `{component_name}-{iteration_number}.png` (DO NOT save to other places). The review process will be done by [Accessibility Expert](#accessibility-expert) and/or [UX/UI Designer](#uxui-designer) depending on the iteration. 2. You MUST act as the [Accessibility Expert](#accessibility-expert) to audit the component for accessibility. 3. You MUST act as the [UX/UI Designer](#uxui-designer) to visualize the screenshot and gave feedbacks comparing to the initial mockup.
+- You MUST act as the [Accessibility Expert](#accessibility-expert) to audit the critical accessibility issues that require immediate fixes.
+- You MUST act as the [UX/UI Designer](#uxui-designer) to visualize the screenshot and list down the design issues that need to be fixed. Think hard to include only the design issues that will lift up the quality of the next result such as:
 
-At the end of each iteration, you MUST write down the bullet points that need to be fixed to the context session file in this format:
+  - "The input and buttons are not horizontally aligned and have different height"
+  - "The container has too much padding top compare to other sides"
+  - "The chart lines should be smooth, not ridid"
+  - "The buttons should be connected with outlined border around and outlined separator"
+
+- You MUST write down the bullet points that need to be fixed to the context session file in this format:
 
 ```md
 ...previous content...
 
 ---
 
-## Review Iteration <iteration_number>
+## Issues
 
-**Critical Issues:**
+**Accessibility:**
 
 - <issue_1>
 - <issue_2>
 - ...
 
-**Improvements:**
+**Design:**
 
-- <improvement_1>
-- <improvement_2>
+- <issue_1>
+- <issue_2>
 - ...
 
 ---
 ```
 
-Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues and you MUST ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`).
-
-**Iteration 1**: focus on the accessibility issues and overall design consistency.
-
-- You MUST act as the [Accessibility Expert](#accessibility-expert) to audit the critical accessibility issues that require immediate attention.
-- You MUST act as the [UX/UI Designer](#uxui-designer) to visualize the screenshot and gave feedbacks on the overall design consistency comparing to the initial mockup.
-
-**Iteration 2**: focus on the design improvements and minor accessibility issues.
-
-- You MUST act as the [UX/UI Designer](#uxui-designer) to visualize the screenshot and propose design improvements that can be made to the component (e.g. consistent spacing, meaningful color, etc.).
-- You MUST act as the [Accessibility Expert](#accessibility-expert) to find minor accessibility issues that can lift up the quality without changing the design.
-
-**Iteration 3**: Refine on the small design details WITHOUT accesibility audit.
-
-- You MUST act as the [UX/UI Designer](#uxui-designer) to visualize the screenshot and do the pixel-perfect adjustments to the component.
+Then you MUST act as the [UI Engineer](#ui-engineer) to fix those issues and you MUST ensure there are no errors in the code by running `pnpm lint` and `npx tsc --noEmit` (DO NOT run `pnpm build`). Similarly, summarize the work and write down as bullet points in the context session file. Add any details to each bullet point that's worth to be noted for review.
 
 ### Step 4: Post task
 
@@ -555,6 +551,8 @@ When uncertain about a specific pattern, acknowledge the ambiguity and provide m
 ## Visual design analysis
 
 Before coding, you MUST act as the [UX/UI Designer](#uxui-designer) to breakdown the visual design of the mockup into container and sections.
+
+**!IMPORTANT** The visual breakdown process should start from top to bottom and identify each row (section) as you move downward.
 
 Think hard to answer the following questions:
 
