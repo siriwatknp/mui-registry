@@ -5,49 +5,190 @@ const fs = require("fs");
 const path = require("path");
 
 // Usage: node scripts/create-registry-json.js <item-name> <item-title> <item-description>
-const [, , itemName, itemTitle, itemDescription] = process.argv;
+// Usage: node scripts/create-registry-json.js --all
+const [, , firstArg, itemTitle, itemDescription] = process.argv;
 
-if (!itemName) {
+if (!firstArg) {
   console.error(
-    "Usage: node scripts/create-registry-json.js <item-name> [title] [description]",
+    "Usage: node scripts/create-registry-json.js <item-name> [title] [description]"
   );
+  console.error("       node scripts/create-registry-json.js --all");
   process.exit(1);
 }
 
-// Check if it's a component or block
-const COMPONENT_PATH = path.join(
-  process.cwd(),
-  "registry",
-  "new-york",
-  "components",
-  itemName,
-  `${itemName}.tsx`,
-);
+const isAllFlag = firstArg === "--all";
+const itemName = isAllFlag ? null : firstArg;
 
-const BLOCK_PATH = path.join(
-  process.cwd(),
-  "registry",
-  "new-york",
-  "blocks",
-  itemName,
-  `${itemName}.tsx`,
-);
+// Type mapping configuration
+const TYPE_MAPPINGS = {
+  components: "component",
+  blocks: "block",
+  themes: "theme",
+  ui: "ui",
+};
 
-// Determine which path exists
-let ITEM_PATH;
-let ITEM_TYPE;
-if (fs.existsSync(COMPONENT_PATH)) {
-  ITEM_PATH = COMPONENT_PATH;
-  ITEM_TYPE = "component";
-} else if (fs.existsSync(BLOCK_PATH)) {
-  ITEM_PATH = BLOCK_PATH;
-  ITEM_TYPE = "block";
-} else {
-  ITEM_PATH = null;
-  ITEM_TYPE = null;
+const REGISTRY_TYPE_MAPPINGS = {
+  component: "registry:component",
+  block: "registry:block",
+  theme: "registry:theme",
+  ui: "registry:ui",
+};
+
+function scanRegistryFiles(dir = null) {
+  const registryPath = dir || path.join(process.cwd(), "registry");
+  const files = [];
+
+  function scanRecursive(currentPath) {
+    try {
+      const items = fs.readdirSync(currentPath, { withFileTypes: true });
+
+      for (const item of items) {
+        const fullPath = path.join(currentPath, item.name);
+
+        if (item.isDirectory()) {
+          scanRecursive(fullPath);
+        } else if (
+          item.isFile() &&
+          (item.name.endsWith(".ts") || item.name.endsWith(".tsx"))
+        ) {
+          files.push(fullPath);
+        }
+      }
+    } catch (error) {
+      console.warn(
+        `Warning: Could not read directory ${currentPath}: ${error.message}`
+      );
+    }
+  }
+
+  if (fs.existsSync(registryPath)) {
+    scanRecursive(registryPath);
+  }
+
+  return files;
 }
 
-const OUTPUT_PATH = path.join(process.cwd(), "public", "r", `${itemName}.json`);
+function inferTypeFromPath(filePath) {
+  const registryPath = path.join(process.cwd(), "registry");
+  const relativePath = path.relative(registryPath, filePath);
+  const pathSegments = relativePath.split(path.sep);
+
+  // First segment after registry/ is the type directory
+  const typeDir = pathSegments[0];
+
+  // Use mapping if available, otherwise use the directory name directly
+  return TYPE_MAPPINGS[typeDir] || typeDir;
+}
+
+function getRegistryType(type) {
+  return REGISTRY_TYPE_MAPPINGS[type] || `registry:${type}`;
+}
+
+function findAllRelatedFiles(itemPath, itemName, type) {
+  const itemDir = path.dirname(itemPath);
+  const registryPath = path.join(process.cwd(), "registry");
+  const allFiles = [];
+
+  function scanDirectory(dirPath) {
+    try {
+      const items = fs.readdirSync(dirPath, { withFileTypes: true });
+
+      for (const item of items) {
+        const fullPath = path.join(dirPath, item.name);
+
+        if (item.isDirectory()) {
+          scanDirectory(fullPath);
+        } else if (
+          item.isFile() &&
+          (item.name.endsWith(".ts") || item.name.endsWith(".tsx"))
+        ) {
+          const relativePath = path.relative(registryPath, fullPath);
+          allFiles.push({
+            path: fullPath,
+            relativePath: relativePath,
+            type: type,
+            name: itemName,
+          });
+        }
+      }
+    } catch (error) {
+      console.warn(
+        `Warning: Could not read directory ${dirPath}: ${error.message}`
+      );
+    }
+  }
+
+  scanDirectory(itemDir);
+  return allFiles;
+}
+
+function findMatchingFiles(name) {
+  const allFiles = scanRegistryFiles();
+  const matches = [];
+
+  for (const filePath of allFiles) {
+    const fileName = path.basename(filePath, path.extname(filePath));
+
+    // Check if this file matches the name we're looking for
+    if (fileName === name) {
+      const type = inferTypeFromPath(filePath);
+      const registryPath = path.join(process.cwd(), "registry");
+      const relativePath = path.relative(registryPath, filePath);
+
+      matches.push({
+        path: filePath,
+        relativePath: relativePath,
+        type: type,
+        name: fileName,
+      });
+    }
+  }
+
+  return matches;
+}
+
+function getAllRegistryItems() {
+  const allFiles = scanRegistryFiles();
+  const registryItems = new Map();
+
+  for (const filePath of allFiles) {
+    const fileName = path.basename(filePath, path.extname(filePath));
+    const type = inferTypeFromPath(filePath);
+    const registryPath = path.join(process.cwd(), "registry");
+    const relativePath = path.relative(registryPath, filePath);
+    const pathSegments = relativePath.split(path.sep);
+
+    // Determine the registry item name from the path structure
+    let registryItemName;
+
+    if (pathSegments.length >= 2) {
+      // For themes like themes/mui-plus/... -> mui-plus
+      // For components like components/button/... -> button
+      // For blocks like blocks/data-metrics/... -> data-metrics
+      registryItemName = pathSegments[1];
+    } else {
+      // Fallback to filename if structure is unexpected
+      registryItemName = fileName;
+    }
+
+    // Skip sub-files within registry items
+    // Only process files that match the registry item name
+    if (fileName !== registryItemName && fileName !== "index") {
+      continue;
+    }
+
+    if (!registryItems.has(registryItemName)) {
+      registryItems.set(registryItemName, {
+        path: filePath,
+        relativePath: relativePath,
+        type: type,
+        name: registryItemName,
+      });
+    }
+  }
+
+  return Array.from(registryItems.values());
+}
 
 function extractDependencies(content) {
   const dependencies = new Set();
@@ -68,42 +209,89 @@ function extractDependencies(content) {
   return Array.from(dependencies);
 }
 
-function createRegistryJson() {
-  // Check if item file exists
-  if (!ITEM_PATH) {
-    console.error(`Item file not found in components or blocks: ${itemName}`);
-    process.exit(1);
+function processRegistryFile(fileInfo, title = null, description = null) {
+  const { path: filePath, type, name } = fileInfo;
+  const OUTPUT_PATH = path.join(process.cwd(), "public", "r", `${name}.json`);
+
+  // Find all related files in the same directory structure
+  const allRelatedFiles = findAllRelatedFiles(filePath, name, type);
+
+  // Extract dependencies from all files
+  const allDependencies = new Set();
+  const files = [];
+
+  for (const fileData of allRelatedFiles) {
+    try {
+      const content = fs.readFileSync(fileData.path, "utf-8");
+      const fileDependencies = extractDependencies(content);
+
+      // Add to overall dependencies
+      fileDependencies.forEach((dep) => allDependencies.add(dep));
+
+      // Add to files array
+      files.push({
+        path: fileData.relativePath,
+        content: content,
+        type: getRegistryType(type),
+      });
+    } catch (error) {
+      console.warn(
+        `Warning: Could not read file ${fileData.path}: ${error.message}`
+      );
+    }
   }
 
-  // Read the item file
-  const itemContent = fs.readFileSync(ITEM_PATH, "utf-8");
+  const dependencies = Array.from(allDependencies);
 
-  // Extract dependencies
-  const dependencies = extractDependencies(itemContent);
+  // Check if JSON already exists
+  let existingJson = null;
+  if (fs.existsSync(OUTPUT_PATH)) {
+    try {
+      existingJson = JSON.parse(fs.readFileSync(OUTPUT_PATH, "utf-8"));
+    } catch (error) {
+      console.warn(
+        `Warning: Could not parse existing JSON file: ${error.message}`
+      );
+    }
+  }
+
+  // Determine title and description
+  let finalTitle, finalDescription;
+
+  if (title) {
+    finalTitle = title;
+  } else if (existingJson && existingJson.title) {
+    finalTitle = existingJson.title;
+  } else {
+    finalTitle = name
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
+  if (description) {
+    finalDescription = description;
+  } else if (existingJson && existingJson.description) {
+    finalDescription = existingJson.description;
+  } else {
+    finalDescription = `A ${name} ${type}.`;
+  }
+
+  // Get registry type
+  const registryType = getRegistryType(type);
 
   // Create the registry JSON structure
   const registryJson = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
-    name: itemName,
-    type: ITEM_TYPE === "block" ? "registry:block" : "registry:component",
-    title:
-      itemTitle ||
-      itemName
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" "),
-    description: itemDescription || `A ${itemName} ${ITEM_TYPE}.`,
+    name: name,
+    type: registryType,
+    title: finalTitle,
+    description: finalDescription,
     dependencies: dependencies,
     registryDependencies: [],
-    files: [
-      {
-        path: `registry/new-york/${ITEM_TYPE}s/${itemName}/${itemName}.tsx`,
-        content: itemContent,
-        type: ITEM_TYPE === "block" ? "registry:block" : "registry:component",
-      },
-    ],
+    files: files,
     meta: {
-      screenshot: `/screenshots/${itemName}.png`,
+      screenshot: `/screenshots/${name}.png`,
     },
   };
 
@@ -116,12 +304,64 @@ function createRegistryJson() {
   // Write the JSON file
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(registryJson, null, 2));
 
-  console.log(`✓ Created registry JSON: ${OUTPUT_PATH}`);
   console.log(
-    `  ${ITEM_TYPE === "block" ? "Block" : "Component"}: ${registryJson.title}`,
+    `✓ ${existingJson ? "Updated" : "Created"} registry JSON: ${OUTPUT_PATH}`
   );
+  console.log(
+    `  ${type.charAt(0).toUpperCase() + type.slice(1)}: ${registryJson.title}`
+  );
+  console.log(`  Files: ${files.length} file(s) included`);
   console.log(`  Dependencies: ${dependencies.join(", ")}`);
+
+  return registryJson;
+}
+
+// Legacy function for backward compatibility
+function createRegistryJson(name, title, description) {
+  const matches = findMatchingFiles(name);
+
+  if (matches.length === 0) {
+    console.error(`Item file not found for: ${name}`);
+    process.exit(1);
+  }
+
+  if (matches.length === 1) {
+    return processRegistryFile(matches[0], title, description);
+  }
+
+  // Multiple matches - process all
+  console.log(`Found ${matches.length} files matching '${name}':`);
+  const results = [];
+
+  matches.forEach((match, index) => {
+    console.log(
+      `\n[${index + 1}/${matches.length}] Processing: ${match.relativePath}`
+    );
+    results.push(processRegistryFile(match, title, description));
+  });
+
+  return results;
+}
+
+function processAllRegistries() {
+  const allItems = getAllRegistryItems();
+  console.log(`Found ${allItems.length} registry items:`);
+
+  allItems.forEach((itemInfo, index) => {
+    console.log(
+      `\n[${index + 1}/${allItems.length}] Processing: ${itemInfo.name} (${
+        itemInfo.type
+      })`
+    );
+    processRegistryFile(itemInfo);
+  });
+
+  console.log(`\n✓ Processed all ${allItems.length} registry items`);
 }
 
 // Run the script
-createRegistryJson();
+if (isAllFlag) {
+  processAllRegistries();
+} else {
+  createRegistryJson(itemName, itemTitle, itemDescription);
+}
