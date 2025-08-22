@@ -20,7 +20,7 @@ export const selectTheme: ThemeOptions["components"] = {
             padding: "21px 10px 4px",
           },
         },
-        "&.MuiInputBase-input": {
+        "&.MuiInputBase-input.MuiInputBase-input": {
           paddingRight: 32,
         },
       },

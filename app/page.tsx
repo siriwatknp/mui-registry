@@ -1,86 +1,114 @@
 "use client";
 
 import * as React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Box, Typography, Button, Chip, Stack } from "@mui/material";
 import { AppHeader } from "@/components/app-header";
-
-const navItems = [
-  { id: "login", label: "Login", active: true },
-  { id: "signup", label: "Sign up", active: false },
-  { id: "profile", label: "Profile", active: false },
-];
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <Box sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
       <AppHeader />
-      <div className="flex">
-        {/* Sidebar */}
-        <aside className="w-48 min-h-[calc(100vh-73px)] border-r bg-background p-4">
-          <nav className="space-y-1">
-            {navItems.map((item) => (
-              <Button
-                key={item.id}
-                variant="ghost"
-                className={cn(
-                  "w-full justify-start",
-                  item.active
-                    ? "bg-muted text-foreground"
-                    : "text-muted-foreground hover:bg-muted/50"
-                )}
-              >
-                {item.label}
-              </Button>
-            ))}
-          </nav>
-        </aside>
+      
+      {/* Hero Section */}
+      <Box
+        component="main"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "calc(100vh - 73px)",
+          px: 3,
+          textAlign: "center",
+        }}
+      >
+        {/* MUI Plus Chip */}
+        <Chip
+          label="MUI Plus"
+          variant="outlined"
+          sx={{
+            mb: 3,
+            borderColor: "text.secondary",
+            color: "text.secondary",
+            fontWeight: 500,
+          }}
+        />
 
-        {/* Main Content */}
-        <main className="flex-1 p-6">
-          {/* Card Section */}
-          <section className="mb-8">
-            <h2 className="text-sm font-medium mb-4 text-muted-foreground">
-              card
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[1, 2, 3].map((i) => (
-                <Card key={i} className="h-48">
-                  <CardContent className="flex items-center justify-center h-full">
-                    <div className="text-muted-foreground text-sm">
-                      Card {i}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
+        {/* Main Title */}
+        <Typography
+          variant="h1"
+          component="h1"
+          sx={{
+            fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem" },
+            fontWeight: 700,
+            lineHeight: 1.1,
+            mb: 3,
+            maxWidth: "12ch",
+            color: "text.primary",
+          }}
+        >
+          All you need for MUI project
+        </Typography>
 
-          {/* Full Page Section */}
-          <section>
-            <h2 className="text-sm font-medium mb-4 text-muted-foreground">
-              Full page
-            </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              <Card className="h-64 lg:col-span-2">
-                <CardContent className="flex items-center justify-center h-full">
-                  <div className="text-muted-foreground text-sm">
-                    Large Content Area
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="h-64">
-                <CardContent className="flex items-center justify-center h-full">
-                  <div className="text-muted-foreground text-sm">
-                    Side Content
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </section>
-        </main>
-      </div>
-    </div>
+        {/* Description */}
+        <Typography
+          variant="h6"
+          component="p"
+          sx={{
+            fontSize: { xs: "1.1rem", sm: "1.25rem" },
+            fontWeight: 400,
+            lineHeight: 1.5,
+            color: "text.secondary",
+            mb: 4,
+            maxWidth: "60ch",
+          }}
+        >
+          Hand-crafted MUI theme that isn&apos;t outdated. Build modern, accessible interfaces with our carefully designed components and thoughtful customizations.
+        </Typography>
+
+        {/* Action Buttons */}
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={2}
+          sx={{
+            width: { xs: "100%", sm: "auto" },
+          }}
+        >
+          <Button
+            component={Link}
+            href="/theme-preview"
+            variant="contained"
+            size="large"
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderRadius: 2,
+              textTransform: "none",
+              fontWeight: 600,
+              fontSize: "1rem",
+            }}
+          >
+            See theme
+          </Button>
+          <Button
+            component={Link}
+            href="/authentication"
+            variant="outlined"
+            size="large"
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderRadius: 2,
+              textTransform: "none",
+              fontWeight: 600,
+              fontSize: "1rem",
+            }}
+          >
+            Blocks
+          </Button>
+        </Stack>
+      </Box>
+    </Box>
   );
 }
