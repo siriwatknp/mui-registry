@@ -18,6 +18,7 @@
     }
   ],
   "meta": {
-    "screenshot": "/screenshots/transaction-history-list.png"
+    "screenshot": "/screenshots/transaction-history-list.png",
+    "category": "dashboard"
   }
 }

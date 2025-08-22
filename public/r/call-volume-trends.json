@@ -20,12 +20,6 @@
   ],
   "meta": {
     "screenshot": "/screenshots/call-volume-trends.png",
-    "category": "dashboard",
-    "tags": [
-      "analytics",
-      "charts",
-      "trends",
-      "line-chart"
-    ]
+    "category": "dashboard"
   }
 }

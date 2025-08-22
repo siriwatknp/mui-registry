@@ -18,6 +18,7 @@
     }
   ],
   "meta": {
-    "screenshot": "/screenshots/ticket-status-card.png"
+    "screenshot": "/screenshots/ticket-status-card.png",
+    "category": "dashboard"
   }
 }

@@ -20,6 +20,7 @@
     }
   ],
   "meta": {
-    "screenshot": "/screenshots/payroll-summary-card.png"
+    "screenshot": "/screenshots/payroll-summary-card.png",
+    "category": "dashboard"
   }
 }

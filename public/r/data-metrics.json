@@ -20,13 +20,6 @@
   ],
   "meta": {
     "screenshot": "/screenshots/data-metrics.png",
-    "category": "dashboard",
-    "tags": [
-      "metrics",
-      "data",
-      "charts",
-      "progress",
-      "analytics"
-    ]
+    "category": "dashboard"
   }
 }

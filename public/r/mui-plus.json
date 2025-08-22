@@ -108,13 +108,6 @@
   ],
   "meta": {
     "screenshot": "/screenshots/mui-plus.png",
-    "category": "theme",
-    "tags": [
-      "theme",
-      "minimal",
-      "professional",
-      "monochromatic",
-      "system-fonts"
-    ]
+    "category": "dashboard"
   }
 }

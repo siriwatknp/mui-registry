@@ -19,6 +19,7 @@
     }
   ],
   "meta": {
-    "screenshot": "/screenshots/sla-performance-card.png"
+    "screenshot": "/screenshots/sla-performance-card.png",
+    "category": "dashboard"
   }
 }

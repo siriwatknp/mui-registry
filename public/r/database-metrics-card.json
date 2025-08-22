@@ -19,6 +19,7 @@
     }
   ],
   "meta": {
-    "screenshot": "/screenshots/database-metrics-card.png"
+    "screenshot": "/screenshots/database-metrics-card.png",
+    "category": "dashboard"
   }
 }
