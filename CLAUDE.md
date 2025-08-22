@@ -536,79 +536,46 @@ When using `Stack` component or `Box` component with `display: flex`, the spacin
 
 ## Accessibility Expert
 
-You are a Web Accessibility Expert with extensive experience auditing high-standard websites from industry leaders like Airbnb, Netflix, and Apple. You possess deep knowledge of WCAG 2.1 AA/AAA standards, ARIA specifications, modern accessible design patterns, and well familiar with Material UI's built-in accessibility features.
+You are a Web Accessibility Expert with experience auditing industry-leading websites. You have deep knowledge of WCAG 2.1 AA/AAA standards and Material UI's built-in accessibility features.
 
-When reviewing code or designs, you will:
+### Core Assessment Areas
 
-1. **Material UI Accessibility Assessment**: Revise Material UI's baseline accessibility features:
+1. **MUI Accessibility Baseline**:
+   - MUI components include built-in keyboard navigation, focus management, and ARIA attributes
+   - Identify when additional ARIA is needed (aria-describedby for forms, aria-live for dynamic content)
+   - Use MUI's accessibility props (Button's aria-label, TextField's helperText)
+   - Recognize when composing MUI components needs extra accessibility considerations
 
-   - Recognize that MUI components come with built-in keyboard navigation, focus management, and ARIA attributes
-   - Identify when additional ARIA attributes are needed beyond MUI's defaults (e.g., aria-describedby for complex forms, aria-live for dynamic content)
-   - Know when to use MUI's accessibility props (e.g., Button's aria-label, TextField's helperText for error messages)
-   - Understand MUI's theme accessibility features (color contrast, focus indicators, typography scales)
-   - Recognize patterns where composing MUI components requires additional accessibility considerations
+2. **Semantic Structure**:
+   - Card selections: use RadioGroup/Radio for single choice, Checkbox/FormGroup for multi-select
+   - Clickable cards: primary action on title with CSS ::after for click area extension
+   - Navigation: use appropriate landmarks (AppBar, Drawer components)
 
-2. **Analyze Semantic Structure**: Identify the true interactive purpose behind visual designs. For example:
-
-   - Card selections that allow only one choice should use radio buttons with proper labeling (or MUI's RadioGroup/Radio components)
-   - Multi-select cards should use checkboxes (or MUI's Checkbox component with proper FormGroup)
-   - Clickable cards should have the primary action on the title with CSS ::after pseudo-element extending the click area
-   - Navigation elements should use appropriate landmark roles (consider MUI's AppBar, Drawer components)
-
-3. **Evaluate Keyboard Navigation**: Ensure all interactive elements are keyboard accessible with proper focus management, including:
-
-   - Logical tab order
-   - Focus visible indicators
-   - Keyboard shortcuts where appropriate
-   - Focus trapping for modals and overlays
-
-4. **Assess Screen Reader Compatibility**: Verify that content is properly announced by screen readers:
-
-   - Meaningful labels and descriptions
-   - Proper heading hierarchy
+3. **Keyboard & Screen Reader**:
+   - Logical tab order and focus indicators
+   - Focus trapping for modals/overlays
+   - Meaningful labels and heading hierarchy
    - Live regions for dynamic content
-   - Appropriate use of aria-label, aria-labelledby, and aria-describedby
 
-5. **Review Color and Contrast**: Check visual accessibility:
+4. **Visual Accessibility**:
+   - WCAG contrast ratios (4.5:1 normal text, 3:1 large text)
+   - Don't rely solely on color for information
+   - Focus indicators meet contrast requirements
 
-   - WCAG contrast ratios (4.5:1 for normal text, 3:1 for large text)
-   - Not relying solely on color to convey information
-   - Ensuring focus indicators meet contrast requirements
+### MUI-Specific Guidelines
 
-6. **Provide Specific Recommendations**: When issues are found, you will:
+- Check if MUI already provides needed accessibility features before custom ARIA
+- Common gotchas: IconButton needs aria-label, don't wrap disabled buttons in Tooltip
+- MUI follows WAI-ARIA practices by default
+- Prefer MUI's built-in solutions when available
 
-   - Explain why the current implementation is problematic
-   - Identify if MUI components already provide the needed accessibility features
-   - Suggest MUI-specific accessibility props and patterns when applicable
-   - Provide the exact HTML/ARIA pattern that should be used when additional attributes are needed
-   - Include code examples demonstrating the accessible approach with MUI components
-   - Reference specific WCAG criteria being violated
-   - Clarify when custom ARIA is needed vs when MUI's defaults are sufficient
+### Response Format
 
-7. **Suggest Industry-Standard Patterns**: Draw from your experience with leading websites to recommend:
-   - Proven accessible patterns from companies like Airbnb (e.g., their date picker accessibility)
-   - Netflix's approach to keyboard navigation in media players
-   - Apple's use of progressive enhancement for complex interactions
-
-Your responses should be:
-
-- Technically precise with specific WCAG criterion references
-- Practical with implementable solutions using Material UI components
-- Educational, explaining the 'why' behind recommendations
-- Clear about what MUI provides out-of-the-box vs what needs additional implementation
-- Prioritized by impact (critical vs nice-to-have improvements)
-
-Material UI Specific Guidance:
-
-- Always check if MUI components already provide the accessibility feature before suggesting custom ARIA
-- Understand that MUI follows WAI-ARIA authoring practices by default
-- Know common MUI accessibility gotchas (e.g., IconButton needs aria-label, Tooltip shouldn't wrap disabled buttons)
-- Recognize when composition of MUI components needs additional accessibility attributes
-- Be aware of MUI's built-in support for screen readers, keyboard navigation, and focus management
-
-Always consider the balance between ideal accessibility and practical implementation constraints, but never compromise on critical accessibility requirements that would exclude users with disabilities.
-
-When uncertain about a specific pattern, acknowledge the ambiguity and provide multiple accessible approaches with their trade-offs, preferring MUI's built-in solutions when available.
+- Reference specific WCAG criteria
+- Provide implementable MUI solutions
+- Explain rationale behind recommendations
+- Clarify MUI defaults vs additional requirements
+- Prioritize by impact (critical vs nice-to-have)
 
 ## PlayWright MCP tool
 
@@ -679,139 +646,101 @@ The [built-in theme](#built-in-theme) is being used for the component. You MUST 
 
 ### `@mui/material` components
 
-- [App Bar React component](https://mui.com/material-ui/react-app-bar.md): The App Bar displays information and actions relating to the current screen.
-- [Backdrop React Component](https://mui.com/material-ui/react-backdrop.md): The Backdrop component narrows the user's focus to a particular element on the screen.
-- [Bottom Navigation React component](https://mui.com/material-ui/react-bottom-navigation.md): The Bottom Navigation bar allows movement between primary destinations in an app.
-- [Circular, Linear progress React components](https://mui.com/material-ui/react-progress.md): Progress indicators commonly known as spinners, express an unspecified wait time or display the length of a process.
-- [CSS Baseline](https://mui.com/material-ui/react-css-baseline.md): The CssBaseline component helps to kickstart an elegant, consistent, and simple baseline to build upon.
-- [Detect click outside React component](https://mui.com/material-ui/react-click-away-listener.md): The Click-Away Listener component detects when a click event happens outside of its child element.
-- [How to customize](https://mui.com/material-ui/customization/how-to-customize.md): Learn how to customize Material UI components by taking advantage of different strategies for specific use cases.
-- [Image List React component](https://mui.com/material-ui/react-image-list.md): The Image List displays a collection of images in an organized grid.
-- [InitColorSchemeScript component](https://mui.com/material-ui/react-init-color-scheme-script.md): The InitColorSchemeScript component eliminates dark mode flickering in server-side-rendered applications.
-- [No SSR React component](https://mui.com/material-ui/react-no-ssr.md): The No-SSR component defers the rendering of children components from the server to the client.
-- [React Accordion component](https://mui.com/material-ui/react-accordion.md): The Accordion component lets users show and hide sections of related content on a page.
-- [React Alert component](https://mui.com/material-ui/react-alert.md): Alerts display brief messages for the user without interrupting their use of the app.
-- [React Autocomplete component](https://mui.com/material-ui/react-autocomplete.md): The autocomplete is a normal text input enhanced by a panel of suggested options.
-- [React Avatar component](https://mui.com/material-ui/react-avatar.md): Avatars are found throughout material design with uses in everything from tables to dialog menus.
-- [React Box](https://mui.com/material-ui/react-box.md): The Box component is a generic, theme-aware container with access to CSS utilities from MUI System.
-- [React Breadcrumbs component](https://mui.com/material-ui/react-breadcrumbs.md): A breadcrumbs is a list of links that help visualize a page's location within a site's hierarchical structure, it allows navigation up to any of the ancestors.
-- [React Button component](https://mui.com/material-ui/react-button.md): Buttons allow users to take actions, and make choices, with a single tap.
-- [React Button Group component](https://mui.com/material-ui/react-button-group.md): The ButtonGroup component can be used to group related buttons.
-- [React Card component](https://mui.com/material-ui/react-card.md): Cards contain content and actions about a single subject.
-- [React Checkbox component](https://mui.com/material-ui/react-checkbox.md): Checkboxes allow the user to select one or more items from a set.
-- [React Chip component](https://mui.com/material-ui/react-chip.md): Chips are compact elements that represent an input, attribute, or action.
-- [React Container component](https://mui.com/material-ui/react-container.md): The container centers your content horizontally. It's the most basic layout element.
-- [React Dialog component](https://mui.com/material-ui/react-dialog.md): Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
-- [React Divider component](https://mui.com/material-ui/react-divider.md): The Divider component provides a thin, unobtrusive line for grouping elements to reinforce visual hierarchy.
-- [React Drawer component](https://mui.com/material-ui/react-drawer.md): The navigation drawers (or "sidebars") provide ergonomic access to destinations in a site or app functionality such as switching accounts.
-- [React Floating Action Button (FAB) component](https://mui.com/material-ui/react-floating-action-button.md): A Floating Action Button (FAB) performs the primary, or most common, action on a screen.
-- [React Grid component](https://mui.com/material-ui/react-grid.md): The responsive layout grid adapts to screen size and orientation, ensuring consistency across layouts.
-- [React GridLegacy component](https://mui.com/material-ui/react-grid-legacy.md): The Material Design responsive layout grid adapts to screen size and orientation, ensuring consistency across layouts.
-- [React Icon Component](https://mui.com/material-ui/icons.md): Guidance and suggestions for using icons with Material UI.
-- [React List component](https://mui.com/material-ui/react-list.md): Lists are continuous, vertical indexes of text or images.
-- [React Masonry component](https://mui.com/material-ui/react-masonry.md): Masonry lays out contents of varying dimensions as blocks of the same width and different height with configurable gaps.
-- [React Menu component](https://mui.com/material-ui/react-menu.md): Menus display a list of choices on temporary surfaces.
-- [React Modal component](https://mui.com/material-ui/react-modal.md): The modal component provides a solid foundation for creating dialogs, popovers, lightboxes, or whatever else.
-- [React Pagination component](https://mui.com/material-ui/react-pagination.md): The Pagination component enables the user to select a specific page from a range of pages.
-- [React Popover component](https://mui.com/material-ui/react-popover.md): A Popover can be used to display some content on top of another.
-- [React Portal component](https://mui.com/material-ui/react-portal.md): The Portal component lets you render its children into a DOM node that exists outside of the Portal's own DOM hierarchy.
-- [React Radio Group component](https://mui.com/material-ui/react-radio-button.md): The Radio Group allows the user to select one option from a set.
-- [React Rating component](https://mui.com/material-ui/react-rating.md): Ratings provide insight regarding others' opinions and experiences, and can allow the user to submit a rating of their own.
-- [React Select component](https://mui.com/material-ui/react-select.md): Select components are used for collecting user provided information from a list of options.
-- [React Skeleton component](https://mui.com/material-ui/react-skeleton.md): Display a placeholder preview of your content before the data gets loaded to reduce load-time frustration.
-- [React Slider component](https://mui.com/material-ui/react-slider.md): Sliders allow users to make selections from a range of values.
-- [React Snackbar component](https://mui.com/material-ui/react-snackbar.md): Snackbars (also known as toasts) are used for brief notifications of processes that have been or will be performed.
-- [React Speed Dial component](https://mui.com/material-ui/react-speed-dial.md): When pressed, a floating action button can display three to six related actions in the form of a Speed Dial.
-- [React Stack component](https://mui.com/material-ui/react-stack.md): Stack is a container component for arranging elements vertically or horizontally.
-- [React Stepper component](https://mui.com/material-ui/react-stepper.md): Steppers convey progress through numbered steps. It provides a wizard-like workflow.
-- [React Switch component](https://mui.com/material-ui/react-switch.md): Switches toggle the state of a single setting on or off.
-- [React Table component](https://mui.com/material-ui/react-table.md): Tables display sets of data. They can be fully customized.
-- [React Tabs component](https://mui.com/material-ui/react-tabs.md): Tabs make it easy to explore and switch between different views.
-- [React Text Field component](https://mui.com/material-ui/react-text-field.md): Text Fields let users enter and edit text.
-- [React Timeline component](https://mui.com/material-ui/react-timeline.md): The timeline displays a list of events in chronological order.
-- [React Tooltip component](https://mui.com/material-ui/react-tooltip.md): Tooltips display informative text when users hover over, focus on, or tap an element.
-- [React Transition component](https://mui.com/material-ui/transitions.md): Transitions help to make a UI expressive and easy to use.
-- [Textarea Autosize React component](https://mui.com/material-ui/react-textarea-autosize.md): The Textarea Autosize component automatically adjusts its height to match the length of the content within.
-- [Toggle Button React component](https://mui.com/material-ui/react-toggle-button.md): A Toggle Button can be used to group related options.
+- [App Bar](https://mui.com/material-ui/react-app-bar.md) - Displays information and actions relating to the current screen
+- [Backdrop](https://mui.com/material-ui/react-backdrop.md) - Narrows user focus to a particular element  
+- [Bottom Navigation](https://mui.com/material-ui/react-bottom-navigation.md) - Movement between primary destinations
+- [Progress](https://mui.com/material-ui/react-progress.md) - Circular and linear progress indicators
+- [CSS Baseline](https://mui.com/material-ui/react-css-baseline.md) - Consistent baseline styles
+- [Click Away Listener](https://mui.com/material-ui/react-click-away-listener.md) - Detects clicks outside child element
+- [Customization Guide](https://mui.com/material-ui/customization/how-to-customize.md) - Learn component customization strategies
+- [Image List](https://mui.com/material-ui/react-image-list.md) - Collection of images in organized grid
+- [InitColorSchemeScript](https://mui.com/material-ui/react-init-color-scheme-script.md) - Eliminates dark mode flickering
+- [No SSR](https://mui.com/material-ui/react-no-ssr.md) - Defers rendering from server to client
+- [Accordion](https://mui.com/material-ui/react-accordion.md) - Show/hide sections of related content
+- [Alert](https://mui.com/material-ui/react-alert.md) - Brief messages without interrupting user flow
+- [Autocomplete](https://mui.com/material-ui/react-autocomplete.md) - Text input with suggested options
+- [Avatar](https://mui.com/material-ui/react-avatar.md) - Profile pictures and icons
+- [Box](https://mui.com/material-ui/react-box.md) - Generic container with CSS utilities
+- [Breadcrumbs](https://mui.com/material-ui/react-breadcrumbs.md) - Navigation hierarchy visualization
+- [Button](https://mui.com/material-ui/react-button.md) - Actions and choices
+- [Button Group](https://mui.com/material-ui/react-button-group.md) - Group related buttons
+- [Card](https://mui.com/material-ui/react-card.md) - Content and actions about single subject
+- [Checkbox](https://mui.com/material-ui/react-checkbox.md) - Select one or more items from set
+- [Chip](https://mui.com/material-ui/react-chip.md) - Compact elements for inputs/attributes/actions
+- [Container](https://mui.com/material-ui/react-container.md) - Centers content horizontally
+- [Dialog](https://mui.com/material-ui/react-dialog.md) - Task information and decisions
+- [Divider](https://mui.com/material-ui/react-divider.md) - Thin line for grouping elements
+- [Drawer](https://mui.com/material-ui/react-drawer.md) - Navigation sidebars
+- [Floating Action Button](https://mui.com/material-ui/react-floating-action-button.md) - Primary screen action
+- [Grid](https://mui.com/material-ui/react-grid.md) - Responsive layout grid
+- [Grid Legacy](https://mui.com/material-ui/react-grid-legacy.md) - Material Design responsive grid
+- [Icons](https://mui.com/material-ui/icons.md) - Icon usage guidance
+- [List](https://mui.com/material-ui/react-list.md) - Vertical indexes of text/images
+- [Masonry](https://mui.com/material-ui/react-masonry.md) - Varying dimension blocks layout
+- [Menu](https://mui.com/material-ui/react-menu.md) - Choices on temporary surfaces
+- [Modal](https://mui.com/material-ui/react-modal.md) - Foundation for dialogs/popovers
+- [Pagination](https://mui.com/material-ui/react-pagination.md) - Select specific page from range
+- [Popover](https://mui.com/material-ui/react-popover.md) - Content on top of another element
+- [Portal](https://mui.com/material-ui/react-portal.md) - Render children outside DOM hierarchy
+- [Radio Group](https://mui.com/material-ui/react-radio-button.md) - Select one option from set
+- [Rating](https://mui.com/material-ui/react-rating.md) - Insight and submission of ratings
+- [Select](https://mui.com/material-ui/react-select.md) - Collect user info from options list
+- [Skeleton](https://mui.com/material-ui/react-skeleton.md) - Placeholder preview before data loads
+- [Slider](https://mui.com/material-ui/react-slider.md) - Selections from value ranges
+- [Snackbar](https://mui.com/material-ui/react-snackbar.md) - Brief process notifications
+- [Speed Dial](https://mui.com/material-ui/react-speed-dial.md) - FAB with related actions
+- [Stack](https://mui.com/material-ui/react-stack.md) - Arrange elements vertically/horizontally
+- [Stepper](https://mui.com/material-ui/react-stepper.md) - Progress through numbered steps
+- [Switch](https://mui.com/material-ui/react-switch.md) - Toggle single setting on/off
+- [Table](https://mui.com/material-ui/react-table.md) - Display sets of data
+- [Tabs](https://mui.com/material-ui/react-tabs.md) - Explore and switch between views
+- [Text Field](https://mui.com/material-ui/react-text-field.md) - Enter and edit text
+- [Timeline](https://mui.com/material-ui/react-timeline.md) - Events in chronological order
+- [Tooltip](https://mui.com/material-ui/react-tooltip.md) - Informative text on hover/focus
+- [Transitions](https://mui.com/material-ui/transitions.md) - Expressive UI animations
+- [Textarea Autosize](https://mui.com/material-ui/react-textarea-autosize.md) - Auto-adjusting height textarea
+- [Toggle Button](https://mui.com/material-ui/react-toggle-button.md) - Group related options
 
 ### `@mui/x-date-pickers` components
 
-#### Date components
-
-- [Date Picker](/x/react-date-pickers/date-picker.md): The Date Picker component lets users select a date.
-- [Date Field](/x/react-date-pickers/date-field.md): The Date Field component lets users select a date with the keyboard.
-- [Date Calendar](/x/react-date-pickers/date-calendar.md): The Date Calendar component lets users select a date without any input or popper / modal.
-
-#### Time components
-
-- [Time Picker](/x/react-date-pickers/time-picker.md): The Time Picker component lets the user select a time.
-- [Time Field](/x/react-date-pickers/time-field.md): The Time Field component lets the user select a time with the keyboard.
-- [Time Clock](/x/react-date-pickers/time-clock.md): The Time Clock component lets the user select a time without any input or popper / modal.
-- [Digital Clock](/x/react-date-pickers/digital-clock.md): The Digital Clock lets the user select a time without any input or popper / modal.
-
-#### Date Time components
-
-- [Date Time Picker](/x/react-date-pickers/date-time-picker.md): The Date Time Picker component lets users select a date and time.
-- [Date Time Field](/x/react-date-pickers/date-time-field.md): The Date Time Field component lets users select a date and a time with the keyboard.
-
-#### Date Range components
-
-- [Date Range Picker](/x/react-date-pickers/date-range-picker.md): The Date Range Picker lets the user select a range of dates.
-- [Date Range Field](/x/react-date-pickers/date-range-field.md): The Date Range Field lets the user select a date range with the keyboard.
-- [Date Range Calendar](/x/react-date-pickers/date-range-calendar.md): The Date Range Calendar lets the user select a range of dates without any input or popper / modal.
-
-#### Time Range components
-
-- [Time Range Picker](/x/react-date-pickers/time-range-picker.md): The Time Range Picker lets users select a range of time values. 🆕
-- [Time Range Field](/x/react-date-pickers/time-range-field.md): The Time Range Field lets the user select a range of time with the keyboard.
-
-#### Date Time Range components
-
-- [Date Time Range Picker](/x/react-date-pickers/date-time-range-picker.md): The Date Time Range Picker lets the user select a range of dates with an explicit starting and ending time.
-- [Date Time Range Field](/x/react-date-pickers/date-time-range-field.md): The Date Time Range Field lets the user select a range of dates with an explicit starting and ending time with the keyboard.
-
-- [Field components](/x/react-date-pickers/fields.md): The field components let the user input date and time values with a keyboard and refined keyboard navigation.
+- [Date Picker](https://mui.com/x/react-date-pickers/date-picker/) - Select a date
+- [Date Field](https://mui.com/x/react-date-pickers/date-field/) - Select date with keyboard
+- [Date Calendar](https://mui.com/x/react-date-pickers/date-calendar/) - Select date without input/modal
+- [Time Picker](https://mui.com/x/react-date-pickers/time-picker/) - Select a time
+- [Time Field](https://mui.com/x/react-date-pickers/time-field/) - Select time with keyboard
+- [Time Clock](https://mui.com/x/react-date-pickers/time-clock/) - Select time without input/modal
+- [Digital Clock](https://mui.com/x/react-date-pickers/digital-clock/) - Digital time selection
+- [Date Time Picker](https://mui.com/x/react-date-pickers/date-time-picker/) - Select date and time
+- [Date Time Field](https://mui.com/x/react-date-pickers/date-time-field/) - Select date/time with keyboard
+- [Date Range Picker](https://mui.com/x/react-date-pickers/date-range-picker/) - Select date range
+- [Date Range Field](https://mui.com/x/react-date-pickers/date-range-field/) - Select date range with keyboard
+- [Date Range Calendar](https://mui.com/x/react-date-pickers/date-range-calendar/) - Select date range without input
+- [Time Range Picker](https://mui.com/x/react-date-pickers/time-range-picker/) - Select time range
+- [Time Range Field](https://mui.com/x/react-date-pickers/time-range-field/) - Select time range with keyboard
+- [Date Time Range Picker](https://mui.com/x/react-date-pickers/date-time-range-picker/) - Select date/time range
+- [Date Time Range Field](https://mui.com/x/react-date-pickers/date-time-range-field/) - Select date/time range with keyboard
 
 ### `@mui/x-charts` components
 
-#### Bars
-
-- [Bars overview](/x/react-charts/bars.md): Bar charts express quantities through a bar's length, using a common baseline.
-- [Demos](/x/react-charts/bar-demo.md): This page groups demonstration using bar charts.
-
-#### Lines
-
-- [Lines overview](/x/react-charts/lines.md): Line charts can express qualities about data, such as hierarchy, highlights, and comparisons.
-- [Lines demo](/x/react-charts/line-demo.md): This page groups demonstration using line charts.
-- [Area demo](/x/react-charts/areas-demo.md): This page groups demonstration using area charts.
-
-#### Pie
-
-- [Pie overview](/x/react-charts/pie.md): Pie charts express portions of a whole, using arcs or angles within a circle.
-- [Demo](/x/react-charts/pie-demo.md): This page groups demonstration using pie charts.
-
-#### Scatter
-
-- [Scatter overview](/x/react-charts/scatter.md): Scatter charts express the relation between two variables, using points in a surface.
-- [Demo](/x/react-charts/scatter-demo.md): This page groups demonstration using scatter charts.
-
-- [Sparkline](/x/react-charts/sparkline.md): Sparkline chart can provide an overview of data trends.
-- [Gauge](/x/react-charts/gauge.md): Gauge let the user evaluate metrics.
-- [Radar](/x/react-charts/radar.md): Radar allows to compare multivariate data in a 2D chart.
-- [Heatmap](/x/react-charts/heatmap.md): Heatmap charts visually represents data with color variations to highlight patterns and trends across two dimensions. (pro)
-
-#### Funnel
-
-- [Funnel overview](/x/react-charts/funnel.md): Funnel charts allow to express quantity evolution along a process, such as audience engagement, population education levels or yields of multiple processes.
-- [Pyramid demo](/x/react-charts/pyramid.md): The pyramid chart is a variation of the funnel chart.
+- [Bar Chart](https://mui.com/x/react-charts/bars/) - Express quantities through bar length
+- [Line Chart](https://mui.com/x/react-charts/lines/) - Express data qualities and comparisons
+- [Area Chart](https://mui.com/x/react-charts/areas-demo/) - Area chart demonstrations
+- [Pie Chart](https://mui.com/x/react-charts/pie/) - Express portions of whole using arcs
+- [Scatter Chart](https://mui.com/x/react-charts/scatter/) - Relation between two variables
+- [Sparkline](https://mui.com/x/react-charts/sparkline/) - Overview of data trends
+- [Gauge](https://mui.com/x/react-charts/gauge/) - Evaluate metrics
+- [Radar](https://mui.com/x/react-charts/radar/) - Compare multivariate data in 2D
+- [Heatmap](https://mui.com/x/react-charts/heatmap/) - Color variations for patterns/trends (pro)
+- [Funnel Chart](https://mui.com/x/react-charts/funnel/) - Quantity evolution along process
+- [Pyramid Chart](https://mui.com/x/react-charts/pyramid/) - Variation of funnel chart
 
 ### `@mui/x-tree-view` components
 
-- [Quickstart](/x/react-tree-view/quickstart.md): Install the MUI X Tree View package and start building.
+- [Tree View](https://mui.com/x/react-tree-view/quickstart/) - Hierarchical data display
 
 ### `@mui/x-data-grid` components
 
-- [Quickstart](/x/react-data-grid/quickstart.md): Install the MUI X Data Grid package and start building your React data table.
+- [Data Grid](https://mui.com/x/react-data-grid/quickstart/) - React data table
 
 ## Built-in theme
 
