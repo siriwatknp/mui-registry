@@ -31,7 +31,7 @@ pnpm lint
 
 - **registry.json**: Central configuration defining all registry items (components, blocks, themes)
 - **public/r/**: Static JSON files served for each registry item after build
-- **registry/new-york/**: Source files for all registry items
+- **registry/**: Source files for all registry items
   - `components/`: Reusable components
   - `blocks/`: Complex UI blocks
   - `themes/`: MUI theme configurations
@@ -72,7 +72,7 @@ You MUST check the context session file to understand the requirements and act a
 
 Then, you MUST the gather the required MUI components and follow the links from the [avaiable MUI components](#available-mui-components) to get the latest information of the components.
 
-Finally, build the registry at @registry/new-york/{type}/{name}/{name}.tsx and render it to the preview page at @app/{name}/page.tsx.
+Finally, build the registry at @registry/{type}/{name}/{name}.tsx and render it to the preview page at @app/{name}/page.tsx.
 
 ```tsx
 // @app/{name}/page.tsx

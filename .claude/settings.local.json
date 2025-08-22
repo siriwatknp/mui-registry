@@ -18,9 +18,13 @@
       "mcp__playwright__browser_take_screenshot",
       "mcp__playwright__browser_close",
       "mcp__playwright__browser_resize",
-      "mcp__playwright__browser_snapshot"
+      "mcp__playwright__browser_snapshot",
+      "Bash(git restore:*)",
+      "Bash(npx shadcn@latest add:*)"
     ],
     "deny": []
   },
-  "enabledMcpjsonServers": ["playwright"]
+  "enabledMcpjsonServers": [
+    "playwright"
+  ]
 }
