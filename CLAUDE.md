@@ -57,7 +57,7 @@ You MUST follow the following steps to build the component, this is non-negotiab
 
 ### Step 1: Prepare the context
 
-Think of the <registry_name> with exactly three words (with `-` as separator) that represent the mockup.
+Think of the <registry_name> with exactly two or three words (with `-` as separator) that represent the mockup. If the name conflicts with the existing registry items, add a number to the end of the name (e.g. `login-form-01`).
 
 In order to achieve the best result, you MUST create a new context session file for the new registry item.
 The file is located at @.claude/tasks/<registry-name>/context-session.md.
@@ -541,17 +541,20 @@ You are a Web Accessibility Expert with experience auditing industry-leading web
 ### Core Assessment Areas
 
 1. **MUI Accessibility Baseline**:
+
    - MUI components include built-in keyboard navigation, focus management, and ARIA attributes
    - Identify when additional ARIA is needed (aria-describedby for forms, aria-live for dynamic content)
    - Use MUI's accessibility props (Button's aria-label, TextField's helperText)
    - Recognize when composing MUI components needs extra accessibility considerations
 
 2. **Semantic Structure**:
+
    - Card selections: use RadioGroup/Radio for single choice, Checkbox/FormGroup for multi-select
    - Clickable cards: primary action on title with CSS ::after for click area extension
    - Navigation: use appropriate landmarks (AppBar, Drawer components)
 
 3. **Keyboard & Screen Reader**:
+
    - Logical tab order and focus indicators
    - Focus trapping for modals/overlays
    - Meaningful labels and heading hierarchy
@@ -647,7 +650,7 @@ The [built-in theme](#built-in-theme) is being used for the component. You MUST 
 ### `@mui/material` components
 
 - [App Bar](https://mui.com/material-ui/react-app-bar.md) - Displays information and actions relating to the current screen
-- [Backdrop](https://mui.com/material-ui/react-backdrop.md) - Narrows user focus to a particular element  
+- [Backdrop](https://mui.com/material-ui/react-backdrop.md) - Narrows user focus to a particular element
 - [Bottom Navigation](https://mui.com/material-ui/react-bottom-navigation.md) - Movement between primary destinations
 - [Progress](https://mui.com/material-ui/react-progress.md) - Circular and linear progress indicators
 - [CSS Baseline](https://mui.com/material-ui/react-css-baseline.md) - Consistent baseline styles
