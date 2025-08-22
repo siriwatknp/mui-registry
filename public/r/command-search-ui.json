@@ -20,6 +20,7 @@
   ],
   "meta": {
     "screenshot": "/screenshots/command-search-ui.png",
-    "category": "dashboard"
+    "category": "dashboard",
+    "previewMode": "iframe"
   }
 }
