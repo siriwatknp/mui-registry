@@ -36,7 +36,7 @@ declare module "@mui/material/styles" {
 const theme = createTheme({
   cssVariables: {
     colorSchemeSelector: "class",
-    cssVarPrefix: "minimal",
+    cssVarPrefix: "plus",
   },
   colorSchemes: {
     light: {
