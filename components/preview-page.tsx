@@ -15,7 +15,7 @@ export function PreviewComponent({
     <div className={`h-full ${className}`}>
       <div className="mx-auto max-w-7xl">
         <div
-          className="flex items-center justify-center p-8 min-w-[1280px] min-h-[768px]"
+          className="flex items-center justify-center p-8 min-h-[768px]"
           data-preview
         >
           {children}

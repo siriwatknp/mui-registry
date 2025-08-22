@@ -1,9 +1,8 @@
-'use client';
+"use client";
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+import { useRouter, useSearchParams } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Check } from "lucide-react";
 
 interface TagFilterProps {
   availableTags: string[];
@@ -11,7 +10,11 @@ interface TagFilterProps {
   category: string;
 }
 
-export default function TagFilter({ availableTags, selectedTags, category }: TagFilterProps) {
+export default function TagFilter({
+  availableTags,
+  selectedTags,
+  category,
+}: TagFilterProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -21,15 +24,15 @@ export default function TagFilter({ availableTags, selectedTags, category }: Tag
       : [...selectedTags, tag];
 
     const params = new URLSearchParams(searchParams);
-    
+
     if (newSelectedTags.length > 0) {
-      params.set('tags', newSelectedTags.join(','));
+      params.set("tags", newSelectedTags.join(","));
     } else {
-      params.delete('tags');
+      params.delete("tags");
     }
 
     const search = params.toString();
-    router.push(`/${category}${search ? `?${search}` : ''}`);
+    router.push(`/${category}${search ? `?${search}` : ""}`);
   };
 
   const clearAllTags = () => {
@@ -41,70 +44,33 @@ export default function TagFilter({ availableTags, selectedTags, category }: Tag
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h3 className="font-medium">Filter by tags</h3>
-        {selectedTags.length > 0 && (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={clearAllTags}
-            className="text-xs h-auto p-1"
+    <div className="flex flex-wrap gap-3 justify-center">
+      {availableTags.map((tag) => {
+        const isSelected = selectedTags.includes(tag);
+        return (
+          <button
+            key={tag}
+            onClick={() => toggleTag(tag)}
+            className={cn(
+              "flex items-center gap-2 px-4 py-2 rounded-full border-1 text-sm font-medium transition-all duration-200 capitalize",
+              isSelected
+                ? "border-black bg-black text-white"
+                : "border-gray-300 bg-white text-gray-700 hover:border-gray-400"
+            )}
           >
-            Clear all
-          </Button>
-        )}
-      </div>
+            {isSelected && <Check className="w-4 h-4" />}
+            {tag}
+          </button>
+        );
+      })}
 
       {selectedTags.length > 0 && (
-        <div className="space-y-2">
-          <p className="text-sm text-muted-foreground">Selected:</p>
-          <div className="space-y-1">
-            {selectedTags.map((tag) => (
-              <Badge
-                key={tag}
-                variant="default"
-                className="w-full justify-between cursor-pointer hover:bg-destructive hover:text-destructive-foreground transition-colors block"
-                onClick={() => toggleTag(tag)}
-              >
-                <span>{tag}</span>
-                <span>×</span>
-              </Badge>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div className="space-y-2">
-        <p className="text-sm text-muted-foreground">Available tags:</p>
-        <div className="space-y-1">
-          {availableTags.map((tag) => {
-            const isSelected = selectedTags.includes(tag);
-            return (
-              <Badge
-                key={tag}
-                variant={isSelected ? "default" : "secondary"}
-                className={cn(
-                  "w-full justify-start cursor-pointer transition-colors block",
-                  isSelected
-                    ? "bg-primary text-primary-foreground hover:bg-primary/80"
-                    : "hover:bg-secondary/80"
-                )}
-                onClick={() => toggleTag(tag)}
-              >
-                {tag}
-              </Badge>
-            );
-          })}
-        </div>
-      </div>
-
-      {availableTags.length > 0 && (
-        <div className="pt-2 border-t">
-          <p className="text-xs text-muted-foreground">
-            {availableTags.length} tag{availableTags.length !== 1 ? 's' : ''} available
-          </p>
-        </div>
+        <button
+          onClick={clearAllTags}
+          className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          Clear all
+        </button>
       )}
     </div>
   );

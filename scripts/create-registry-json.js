@@ -4,15 +4,17 @@
 const fs = require("fs");
 const path = require("path");
 
-// Usage: node scripts/create-registry-json.js <item-name> <item-title> <item-description>
+// Usage: node scripts/create-registry-json.js <item-name> <item-title> <item-description> [category] [tags]
 // Usage: node scripts/create-registry-json.js --all
-const [, , firstArg, itemTitle, itemDescription] = process.argv;
+const [, , firstArg, itemTitle, itemDescription, itemCategory, itemTags] = process.argv;
 
 if (!firstArg) {
   console.error(
-    "Usage: node scripts/create-registry-json.js <item-name> [title] [description]"
+    "Usage: node scripts/create-registry-json.js <item-name> [title] [description] [category] [tags]"
   );
   console.error("       node scripts/create-registry-json.js --all");
+  console.error("Examples:");
+  console.error("  node scripts/create-registry-json.js login-form \"Login Form\" \"A login form component\" authentication \"form,login,auth\"");
   process.exit(1);
 }
 
@@ -209,7 +211,7 @@ function extractDependencies(content) {
   return Array.from(dependencies);
 }
 
-function processRegistryFile(fileInfo, title = null, description = null) {
+function processRegistryFile(fileInfo, title = null, description = null, category = null, tags = null) {
   const { path: filePath, type, name } = fileInfo;
   const OUTPUT_PATH = path.join(process.cwd(), "public", "r", `${name}.json`);
 
@@ -280,6 +282,26 @@ function processRegistryFile(fileInfo, title = null, description = null) {
   // Get registry type
   const registryType = getRegistryType(type);
 
+  // Determine category, tags, and previewMode
+  let finalCategory, finalTags, finalPreviewMode;
+  
+  if (category) {
+    finalCategory = category;
+  } else if (existingJson && existingJson.meta && existingJson.meta.category) {
+    finalCategory = existingJson.meta.category;
+  }
+  
+  if (tags) {
+    finalTags = tags.split(',').map(tag => tag.trim()).filter(Boolean);
+  } else if (existingJson && existingJson.meta && existingJson.meta.tags) {
+    finalTags = existingJson.meta.tags;
+  }
+
+  // Preserve existing previewMode if it exists
+  if (existingJson && existingJson.meta && existingJson.meta.previewMode) {
+    finalPreviewMode = existingJson.meta.previewMode;
+  }
+
   // Create the registry JSON structure
   const registryJson = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -294,6 +316,17 @@ function processRegistryFile(fileInfo, title = null, description = null) {
       screenshot: `/screenshots/${name}.png`,
     },
   };
+
+  // Add category, tags, and previewMode to meta if they exist
+  if (finalCategory) {
+    registryJson.meta.category = finalCategory;
+  }
+  if (finalTags && finalTags.length > 0) {
+    registryJson.meta.tags = finalTags;
+  }
+  if (finalPreviewMode) {
+    registryJson.meta.previewMode = finalPreviewMode;
+  }
 
   // Ensure the output directory exists
   const outputDir = path.dirname(OUTPUT_PATH);
@@ -317,7 +350,7 @@ function processRegistryFile(fileInfo, title = null, description = null) {
 }
 
 // Legacy function for backward compatibility
-function createRegistryJson(name, title, description) {
+function createRegistryJson(name, title, description, category, tags) {
   const matches = findMatchingFiles(name);
 
   if (matches.length === 0) {
@@ -326,7 +359,7 @@ function createRegistryJson(name, title, description) {
   }
 
   if (matches.length === 1) {
-    return processRegistryFile(matches[0], title, description);
+    return processRegistryFile(matches[0], title, description, category, tags);
   }
 
   // Multiple matches - process all
@@ -337,7 +370,7 @@ function createRegistryJson(name, title, description) {
     console.log(
       `\n[${index + 1}/${matches.length}] Processing: ${match.relativePath}`
     );
-    results.push(processRegistryFile(match, title, description));
+    results.push(processRegistryFile(match, title, description, category, tags));
   });
 
   return results;
@@ -363,5 +396,5 @@ function processAllRegistries() {
 if (isAllFlag) {
   processAllRegistries();
 } else {
-  createRegistryJson(itemName, itemTitle, itemDescription);
+  createRegistryJson(itemName, itemTitle, itemDescription, itemCategory, itemTags);
 }

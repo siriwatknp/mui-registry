@@ -19,6 +19,15 @@
     }
   ],
   "meta": {
-    "screenshot": "/screenshots/project-invite-modal.png"
+    "screenshot": "/screenshots/project-invite-modal.png",
+    "category": "authentication",
+    "tags": [
+      "modal",
+      "invite",
+      "form",
+      "collaboration",
+      "team"
+    ],
+    "previewMode": "iframe"
   }
 }

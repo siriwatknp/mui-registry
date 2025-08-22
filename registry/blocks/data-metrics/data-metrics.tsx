@@ -93,7 +93,7 @@ export default function DataMetrics() {
               direction="row"
               alignItems="baseline"
               spacing={2}
-              sx={{ mb: 2 }}
+              sx={{ mb: 2, whiteSpace: "nowrap" }}
             >
               <Typography
                 variant="h3"
@@ -134,8 +134,10 @@ export default function DataMetrics() {
           <CardContent sx={{ p: 2.5 }}>
             <Stack
               direction="row"
+              flexWrap="wrap"
               justifyContent="space-between"
               alignItems="flex-start"
+              spacing={2}
             >
               <Stack spacing={0.25}>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
