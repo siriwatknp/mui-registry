@@ -12,7 +12,7 @@ export function PreviewComponent({
   className = "",
 }: PreviewComponentProps) {
   return (
-    <div className={`min-h-screen ${className}`}>
+    <div className={`h-full ${className}`}>
       <div className="mx-auto max-w-7xl">
         <div
           className="flex items-center justify-center p-8 min-w-[1280px] min-h-[768px]"

@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
 import { AppTheme } from "./theme";
+import { HeaderNav } from "@/components/header-nav";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,7 +38,25 @@ export default function RootLayout({
             enableCssLayer: true,
           }}
         >
-          <AppTheme>{children}</AppTheme>
+          <AppTheme>
+            <div className="min-h-screen bg-background">
+              {/* Header */}
+              <header className="border-b px-6 py-3 sticky top-0 bg-background z-10">
+                <div className="flex items-center justify-between">
+                  <Link
+                    href="/"
+                    className="text-xl font-semibold hover:opacity-80"
+                  >
+                    MUI+
+                  </Link>
+                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                    <HeaderNav />
+                  </div>
+                </div>
+              </header>
+              {children}
+            </div>
+          </AppTheme>
         </AppRouterCacheProvider>
       </body>
     </html>

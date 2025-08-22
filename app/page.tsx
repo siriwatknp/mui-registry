@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -14,39 +13,7 @@ const navItems = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b px-6 py-3">
-        <div className="flex items-center justify-between">
-          <h1 className="text-xl font-semibold">MUI+</h1>
-          <div className="absolute left-1/2 transform -translate-x-1/2">
-            <Tabs defaultValue="authentication" className="w-auto">
-              <TabsList className="bg-transparent p-0 h-auto">
-                <TabsTrigger 
-                  value="theme"
-                  className="bg-transparent data-[state=active]:bg-muted data-[state=active]:shadow-none rounded-md px-3 py-1.5"
-                >
-                  Theme
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="authentication"
-                  className="bg-transparent data-[state=active]:bg-muted data-[state=active]:shadow-none rounded-md px-3 py-1.5"
-                >
-                  Authentication
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="dashboard"
-                  className="bg-transparent data-[state=active]:bg-muted data-[state=active]:shadow-none rounded-md px-3 py-1.5"
-                >
-                  Dashboard
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
-        </div>
-      </header>
-
-      <div className="flex">
+    <div className="flex">
         {/* Sidebar */}
         <aside className="w-48 min-h-[calc(100vh-73px)] border-r bg-background p-4">
           <nav className="space-y-1">
@@ -100,7 +67,6 @@ export default function Home() {
             </div>
           </section>
         </main>
-      </div>
     </div>
   );
 }
