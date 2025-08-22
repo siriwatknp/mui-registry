@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { Card, CardContent } from "@/components/ui/card";
 import { Suspense } from "react";
 import { RegistryItem } from "@/lib/registry";
 import TagFilter from "@/components/tag-filter";
+import { ExternalLinkIcon } from "lucide-react";
 
 interface CategoryClientProps {
   categoryInfo: { name: string; label: string };
@@ -16,6 +16,20 @@ interface CategoryClientProps {
 }
 
 function ComponentPreview({ item }: { item: RegistryItem }) {
+  // Use explicit previewMode from registry metadata
+  const needsIframe = item.meta.previewMode === "iframe";
+
+  if (needsIframe) {
+    return (
+      <div className="w-full h-full relative">
+        <iframe
+          src={`/preview/${item.name}`}
+          className="w-full h-full border-none"
+        />
+      </div>
+    );
+  }
+
   try {
     const componentPath = item.files[0].path.replace(".tsx", "");
     const Component = dynamic(() => import(`@/registry/${componentPath}`), {
@@ -28,10 +42,8 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
     });
 
     return (
-      <div className="w-full h-full flex items-center justify-center p-4 bg-background overflow-hidden">
-        <div className="scale-75 origin-center">
-          <Component />
-        </div>
+      <div className="w-full h-full flex items-center justify-center p-4 bg-muted overflow-hidden">
+        <Component />
       </div>
     );
   } catch {
@@ -63,7 +75,7 @@ export default function CategoryClient({
       {/* Main Content */}
       <main className="flex-1 p-6">
         {/* Header */}
-        <header className="mb-6">
+        <div className="mb-6 text-center">
           <h1 className="text-2xl font-semibold capitalize mb-2">
             {categoryInfo.label}
           </h1>
@@ -74,92 +86,43 @@ export default function CategoryClient({
               <span> matching: {selectedTags.join(", ")}</span>
             )}
           </p>
-        </header>
+        </div>
 
         {/* Registry Grid */}
         {filteredItems.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mx-auto max-w-screen-2xl">
             {filteredItems.map((item) => (
-              <Link
-                key={item.name}
-                href={`/${categoryInfo.name}/${item.name}`}
-                className="group block"
-              >
-                <Card className="h-full transition-all duration-200 hover:shadow-md group-hover:border-foreground/20">
-                  <CardContent className="p-0">
-                    {/* Live Component Preview */}
-                    <div className="aspect-video relative bg-muted rounded-t-lg overflow-hidden">
-                      <Suspense
-                        fallback={
-                          <div className="w-full h-full flex items-center justify-center">
-                            <div className="animate-pulse bg-muted rounded w-16 h-16"></div>
-                          </div>
-                        }
-                      >
-                        <ComponentPreview item={item} />
-                      </Suspense>
-                    </div>
+              <div key={item.name} className="group space-y-3 p-4">
+                {/* Title and Description */}
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="font-semibold text-lg">{item.title}</h3>
+                    <Link
+                      href={`/${categoryInfo.name}/${item.name}`}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-primary"
+                      title="Open full preview"
+                    >
+                      <ExternalLinkIcon className="w-4 h-4" />
+                    </Link>
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {item.description}
+                  </p>
+                </div>
 
-                    {/* Content */}
-                    <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                        {item.description}
-                      </p>
-
-                      {/* Tags */}
-                      {item.meta.tags && item.meta.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-1">
-                          {item.meta.tags.slice(0, 3).map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                          {item.meta.tags.length > 3 && (
-                            <span className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md">
-                              +{item.meta.tags.length - 3}
-                            </span>
-                          )}
-                        </div>
-                      )}
-
-                      {/* Type indicator */}
-                      <div className="mt-3 flex items-center justify-between">
-                        <span className="text-xs text-muted-foreground capitalize">
-                          {item.type.replace("registry:", "")}
-                        </span>
-                        <div className="flex -space-x-1">
-                          {item.dependencies.slice(0, 3).map((dep) => (
-                            <div
-                              key={dep}
-                              className="w-6 h-6 rounded-full bg-primary/10 border-2 border-background flex items-center justify-center"
-                              title={dep}
-                            >
-                              <span className="text-[10px] font-medium text-primary">
-                                {dep.includes("mui")
-                                  ? "M"
-                                  : dep.charAt(0).toUpperCase()}
-                              </span>
-                            </div>
-                          ))}
-                          {item.dependencies.length > 3 && (
-                            <div className="w-6 h-6 rounded-full bg-muted border-2 border-background flex items-center justify-center">
-                              <span className="text-[10px] font-medium text-muted-foreground">
-                                +{item.dependencies.length - 3}
-                              </span>
-                            </div>
-                          )}
-                        </div>
+                {/* Live Component Preview */}
+                <div className="aspect-video relative bg-muted rounded-lg overflow-hidden">
+                  <Suspense
+                    fallback={
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="animate-pulse bg-muted rounded w-16 h-16"></div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+                    }
+                  >
+                    <ComponentPreview item={item} />
+                  </Suspense>
+                </div>
+              </div>
             ))}
           </div>
         ) : (

@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 export interface RegistryItem {
   $schema?: string;
@@ -19,6 +19,7 @@ export interface RegistryItem {
     screenshot: string;
     category?: string;
     tags?: string[];
+    previewMode?: "normal" | "iframe";
   };
 }
 
@@ -28,7 +29,7 @@ export interface RegistryCategory {
   count: number;
 }
 
-const PUBLIC_R_DIR = path.join(process.cwd(), 'public', 'r');
+const PUBLIC_R_DIR = path.join(process.cwd(), "public", "r");
 
 /**
  * Get all registry items from the public/r directory
@@ -37,20 +38,20 @@ export function getRegistryItems(): RegistryItem[] {
   try {
     const files = fs
       .readdirSync(PUBLIC_R_DIR)
-      .filter((file) => file.endsWith('.json') && file !== 'registry.json');
+      .filter((file) => file.endsWith(".json") && file !== "registry.json");
 
     const items: RegistryItem[] = [];
 
     for (const file of files) {
       try {
         const filePath = path.join(PUBLIC_R_DIR, file);
-        const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-        
+        const content = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
         // Ensure meta exists
         if (!content.meta) {
           content.meta = {};
         }
-        
+
         items.push(content);
       } catch (error) {
         console.error(`Error parsing ${file}:`, error);
@@ -59,7 +60,7 @@ export function getRegistryItems(): RegistryItem[] {
 
     return items;
   } catch (error) {
-    console.error('Error reading registry directory:', error);
+    console.error("Error reading registry directory:", error);
     return [];
   }
 }
@@ -70,18 +71,18 @@ export function getRegistryItems(): RegistryItem[] {
 export function getRegistryByName(name: string): RegistryItem | null {
   try {
     const filePath = path.join(PUBLIC_R_DIR, `${name}.json`);
-    
+
     if (!fs.existsSync(filePath)) {
       return null;
     }
-    
-    const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-    
+
+    const content = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
     // Ensure meta exists
     if (!content.meta) {
       content.meta = {};
     }
-    
+
     return content;
   } catch (error) {
     console.error(`Error reading registry item ${name}:`, error);
@@ -123,13 +124,13 @@ export function getCategories(): RegistryCategory[] {
  */
 export function getTags(category?: string): string[] {
   let items = getRegistryItems();
-  
+
   if (category) {
     items = items.filter((item) => item.meta.category === category);
   }
 
   const tagsSet = new Set<string>();
-  
+
   for (const item of items) {
     if (item.meta.tags) {
       for (const tag of item.meta.tags) {
@@ -144,9 +145,12 @@ export function getTags(category?: string): string[] {
 /**
  * Filter registry items by tags
  */
-export function getRegistryByTags(tags: string[], category?: string): RegistryItem[] {
+export function getRegistryByTags(
+  tags: string[],
+  category?: string
+): RegistryItem[] {
   let items = getRegistryItems();
-  
+
   if (category) {
     items = items.filter((item) => item.meta.category === category);
   }
@@ -155,7 +159,7 @@ export function getRegistryByTags(tags: string[], category?: string): RegistryIt
     if (!item.meta.tags || item.meta.tags.length === 0) {
       return false;
     }
-    
+
     // Check if item has any of the specified tags
     return tags.some((tag) => item.meta.tags?.includes(tag));
   });
