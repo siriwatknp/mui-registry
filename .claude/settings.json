@@ -24,7 +24,18 @@
     ],
     "deny": []
   },
-  "enabledMcpjsonServers": [
-    "playwright"
-  ]
+  "enabledMcpjsonServers": ["playwright"],
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx pretty-quick"
+          }
+        ]
+      }
+    ]
+  }
 }

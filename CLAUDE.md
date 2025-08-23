@@ -101,6 +101,7 @@ Before moving to the next step, you MUST do the following:
 - At the root terminal, run `node scripts/create-registry-json.js <registry_name> [title] [description] [category] [tags]` with meaningful title and description.
   - category: `authentication`, `dashboard`
   - tags: `form`, `login`, `chart`, `card`, `table` (can be multiple)
+  - optional: add `previewMode: "iframe"` to the `meta` field if the component is very big.
 - Check the screenshots location and move them to the context folder if the location is not correct.
 - Duplicate the latest iteration screenshot and save it to the `public/screenshots/{registry_name}.png`.
 
@@ -133,14 +134,12 @@ You follow the project's UI and styling rules with unwavering discipline:
 ### Visual Accuracy Methodology
 
 1. **Spacing Precision**:
-
    - Use 0.5 step increments (0.5, 1, 1.5, 2, etc.)
    - Text/icon spacing: 0.5-1.5 based on font size
    - Component spacing: 1-2 based on component size
    - Never use arbitrary decimals like 1.2
 
 2. **Image & Media Handling**:
-
    - Use `<Box component="img" />` with proper aspectRatio
    - Implement placeholders with correct dimensions (e.g., https://placehold.co/600x400) WITHOUT using any query params
    - Never use fake divs to simulate images
@@ -242,26 +241,22 @@ Then, you can adjust the spacing/padding of the chart to match the design analys
 ### TextField and Form Best Practices
 
 1. **Label Integration**:
-
    - **ALWAYS use built-in `label` prop** instead of separate Typography components
    - Ensures proper accessibility and screen reader support
    - Maintains semantic HTML structure
 
 2. **Modern API Usage**:
-
    - Use `slotProps` instead of deprecated `InputProps`, `InputLabelProps`
    - Proper slot configuration: `slotProps.input`, `slotProps.inputLabel`, `slotProps.htmlInput`
    - Never use deprecated props that trigger TypeScript warnings
 
 3. **Form State Management**:
-
    - Implement controlled components with proper state handling
    - Add real-time validation with error states
    - Clear errors on user interaction
    - Use proper TypeScript types for form data
 
 4. **Accessibility Requirements**:
-
    - Include `required` prop for mandatory fields
    - Provide `error` and `helperText` for validation feedback
    - Ensure proper ARIA attributes
@@ -306,26 +301,22 @@ Common use cases:
 ### TextField and Form Best Practices
 
 1. **Label Integration**:
-
    - **ALWAYS use built-in `label` prop** instead of separate Typography components
    - Ensures proper accessibility and screen reader support
    - Maintains semantic HTML structure
 
 2. **Modern API Usage**:
-
    - Use `slotProps` instead of deprecated `InputProps`, `InputLabelProps`
    - Proper slot configuration: `slotProps.input`, `slotProps.inputLabel`, `slotProps.htmlInput`
    - Never use deprecated props that trigger TypeScript warnings
 
 3. **Form State Management**:
-
    - Implement controlled components with proper state handling
    - Add real-time validation with error states
    - Clear errors on user interaction
    - Use proper TypeScript types for form data
 
 4. **Accessibility Requirements**:
-
    - Include `required` prop for mandatory fields
    - Provide `error` and `helperText` for validation feedback
    - Ensure proper ARIA attributes
@@ -543,20 +534,17 @@ You are a Web Accessibility Expert with experience auditing industry-leading web
 ### Core Assessment Areas
 
 1. **MUI Accessibility Baseline**:
-
    - MUI components include built-in keyboard navigation, focus management, and ARIA attributes
    - Identify when additional ARIA is needed (aria-describedby for forms, aria-live for dynamic content)
    - Use MUI's accessibility props (Button's aria-label, TextField's helperText)
    - Recognize when composing MUI components needs extra accessibility considerations
 
 2. **Semantic Structure**:
-
    - Card selections: use RadioGroup/Radio for single choice, Checkbox/FormGroup for multi-select
    - Clickable cards: primary action on title with CSS ::after for click area extension
    - Navigation: use appropriate landmarks (AppBar, Drawer components)
 
 3. **Keyboard & Screen Reader**:
-
    - Logical tab order and focus indicators
    - Focus trapping for modals/overlays
    - Meaningful labels and heading hierarchy

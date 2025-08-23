@@ -1,6 +1,9 @@
-import { chromium, expect } from "@playwright/test";
-import fs from "fs/promises";
-import path from "path";
+#!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-require-imports */
+
+const { chromium, expect } = require("@playwright/test");
+const fs = require("fs/promises");
+const path = require("path");
 
 // Helper to get port from CLI, env, or default
 function getPort() {
@@ -21,9 +24,9 @@ function getPort() {
 }
 
 // Helper to get URLs from CLI arguments
-function getUrlsFromArgs(): string[] {
+function getUrlsFromArgs() {
   // Filter out --port arguments and get remaining args
-  const urls = process.argv
+  const args = process.argv
     .slice(2)
     .filter((arg) => !arg.startsWith("--port"))
     .filter((arg) => {
@@ -32,12 +35,22 @@ function getUrlsFromArgs(): string[] {
       return !prevArg || !prevArg.startsWith("--port") || prevArg.includes("=");
     });
 
-  return urls;
+  // Return both URL and original registry name for proper filename generation
+  const urlsWithNames = args.map((arg) => {
+    // If it's already a URL or path starting with /, use as-is
+    if (arg.startsWith("http") || arg.startsWith("/")) {
+      return { url: arg, registryName: null };
+    }
+    // Otherwise, treat as registry name and convert to preview path
+    return { url: `/preview/${arg}`, registryName: arg };
+  });
+
+  return urlsWithNames;
 }
 
 const SCREENSHOTS_DIR = path.join(process.cwd(), "public", "screenshots");
 
-export async function screenshotDemos() {
+async function screenshotDemos() {
   const port = getPort();
   const baseUrl = `http://localhost:${port}`;
   const urlsToCapture = getUrlsFromArgs();
@@ -46,21 +59,29 @@ export async function screenshotDemos() {
   await fs.mkdir(SCREENSHOTS_DIR, { recursive: true });
 
   const browser = await chromium.launch();
-  const page = await browser.newPage();
+  const page = await browser.newPage({
+    viewport: { width: 1280, height: 768 },
+  });
 
   if (urlsToCapture.length > 0) {
     // Screenshot specific URLs provided as arguments
-    for (const url of urlsToCapture) {
+    for (const urlData of urlsToCapture) {
+      const { url, registryName } = urlData;
+
       // Handle both full URLs and paths
       const fullUrl = url.startsWith("http")
         ? url
         : `${baseUrl}${url.startsWith("/") ? url : "/" + url}`;
 
-      // Extract the name from the URL path
-      const urlPath = url.startsWith("http") 
-        ? new URL(url).pathname 
-        : url;
-      const imageName = urlPath.replace(/^\/+|\/+$/g, '').replace(/\//g, '-') || 'index';
+      // Use registry name if available, otherwise extract from URL path
+      let imageName;
+      if (registryName) {
+        imageName = registryName;
+      } else {
+        const urlPath = url.startsWith("http") ? new URL(url).pathname : url;
+        imageName =
+          urlPath.replace(/^\/+|\/+$/g, "").replace(/\//g, "-") || "index";
+      }
 
       try {
         await page.goto(fullUrl, { waitUntil: "networkidle" });
@@ -76,7 +97,7 @@ export async function screenshotDemos() {
           for (let i = 0; i < count; i++) {
             const block = previewBlocks.nth(i);
             await expect(block).toBeVisible();
-            
+
             // Wait for any animations within the block
             await page.evaluate(() => {
               return new Promise((resolve) => {
@@ -87,14 +108,21 @@ export async function screenshotDemos() {
                 });
               });
             });
-            
+
             // Use the URL-based name for the screenshot
             const screenshotPath = path.join(
               SCREENSHOTS_DIR,
-              `${imageName}${count > 1 ? `-${i + 1}` : ''}.png`
+              `${imageName}${count > 1 ? `-${i + 1}` : ""}.png`
             );
-            await block.screenshot({ path: screenshotPath, animations: "disabled" });
-            console.log(`Screenshot saved: ${imageName}${count > 1 ? `-${i + 1}` : ''} from ${url}`);
+            await block.screenshot({
+              path: screenshotPath,
+              animations: "disabled",
+            });
+            console.log(
+              `Screenshot saved: ${imageName}${
+                count > 1 ? `-${i + 1}` : ""
+              } from ${url}`
+            );
           }
         } else {
           console.log(`No preview blocks found at ${url}`);
@@ -106,19 +134,19 @@ export async function screenshotDemos() {
   } else {
     // Default behavior: Screenshot all preview blocks on homepage
     await page.goto(baseUrl + "/", { waitUntil: "networkidle" });
-    
+
     // Wait for animations to finish
     await page.waitForTimeout(1000);
-    
+
     const previewBlocks = page.locator("div[data-preview]");
     const count = await previewBlocks.count();
     for (let i = 0; i < count; i++) {
       const block = previewBlocks.nth(i);
       const previewName = await block.getAttribute("data-preview");
       if (!previewName) continue;
-      
+
       await expect(block).toBeVisible();
-      
+
       // Wait for any animations within the block
       await page.evaluate(() => {
         return new Promise((resolve) => {
@@ -129,7 +157,7 @@ export async function screenshotDemos() {
           });
         });
       });
-      
+
       const screenshotPath = path.join(SCREENSHOTS_DIR, `${previewName}.png`);
       await block.screenshot({ path: screenshotPath, animations: "disabled" });
       console.log(`Screenshot saved: ${previewName}`);
@@ -148,3 +176,5 @@ if (require.main === module) {
     process.exit(1);
   });
 }
+
+module.exports = { screenshotDemos };

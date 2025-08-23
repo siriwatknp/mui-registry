@@ -4,11 +4,7 @@
   "type": "registry:component",
   "title": "Login Form",
   "description": "Clean and accessible login form with email/password authentication and Google OAuth option",
-  "dependencies": [
-    "@mui/material",
-    "@emotion/react",
-    "@emotion/styled"
-  ],
+  "dependencies": ["@mui/material", "@emotion/react", "@emotion/styled"],
   "registryDependencies": [],
   "files": [
     {
@@ -20,8 +16,6 @@
   "meta": {
     "screenshot": "/screenshots/login-form.png",
     "category": "authentication",
-    "tags": [
-      "form"
-    ]
+    "tags": ["form", "login"]
   }
 }

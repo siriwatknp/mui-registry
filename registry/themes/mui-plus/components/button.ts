@@ -109,8 +109,13 @@ export const buttonTheme: ThemeOptions["components"] = {
           {
             props: { size: "large" },
             style: {
+              "--_fs": "1rem",
               padding: "12px 24px",
               lineHeight: "24px",
+              fontSize: "var(--_fs)",
+              [theme.breakpoints.up(768)]: {
+                "--_fs": "0.875rem",
+              },
             },
           },
           // Outlined border compensation for all sizes
