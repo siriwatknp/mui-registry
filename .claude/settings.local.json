@@ -13,14 +13,16 @@
       "Bash(mkdir:*)",
       "Bash(touch:*)",
       "Bash(lsof:*)",
+      "Bash(git restore:*)",
+      "Bash(npx shadcn@latest add:*)",
       "mcp__ide__getDiagnostics",
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_take_screenshot",
       "mcp__playwright__browser_close",
       "mcp__playwright__browser_resize",
       "mcp__playwright__browser_snapshot",
-      "Bash(git restore:*)",
-      "Bash(npx shadcn@latest add:*)"
+      "mcp__playwright__browser_drag",
+      "mcp__playwright__browser_click"
     ],
     "deny": []
   },

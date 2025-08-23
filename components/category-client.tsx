@@ -2,10 +2,16 @@
 
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import { RegistryItem } from "@/lib/registry";
 import TagFilter from "@/components/tag-filter";
 import { ExternalLinkIcon } from "lucide-react";
+import {
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from "@/components/ui/resizable";
+import type { ImperativePanelHandle } from "react-resizable-panels";
 
 interface CategoryClientProps {
   categoryInfo: { name: string; label: string };
@@ -61,6 +67,16 @@ export default function CategoryClient({
   selectedTags,
   filteredItems,
 }: CategoryClientProps) {
+  // Create refs for each panel
+  const panelRefs = useRef<Record<string, ImperativePanelHandle | null>>({});
+
+  const handleDoubleClick = (itemName: string) => {
+    const panelRef = panelRefs.current[itemName];
+    if (panelRef) {
+      panelRef.resize(100);
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 pb-10">
       {/* Header */}
@@ -92,7 +108,7 @@ export default function CategoryClient({
           {filteredItems.map((item) => (
             <div
               key={item.name}
-              className="group space-y-3 p-4 border rounded-lg hover:shadow-lg hover:border-foreground/20 transition-all duration-200"
+              className="flex flex-col space-y-3 p-4 border rounded-lg hover:shadow-lg hover:border-foreground/20 transition-all duration-200"
             >
               {/* Title and Description */}
               <div>
@@ -112,16 +128,38 @@ export default function CategoryClient({
               </div>
 
               {/* Live Component Preview */}
-              <div className="min-h-[360px] relative bg-muted rounded-lg overflow-hidden">
-                <Suspense
-                  fallback={
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="animate-pulse bg-muted rounded w-16 h-16"></div>
-                    </div>
-                  }
+              <div className="min-h-0 flex-1">
+                <ResizablePanelGroup
+                  direction="horizontal"
+                  className="min-h-[360px] rounded-lg border"
                 >
-                  <ComponentPreview item={item} />
-                </Suspense>
+                  <ResizablePanel
+                    ref={(ref) => {
+                      if (ref) {
+                        panelRefs.current[item.name] = ref;
+                      }
+                    }}
+                    defaultSize={100}
+                    minSize={30}
+                  >
+                    <div className="h-full relative bg-muted overflow-hidden">
+                      <Suspense
+                        fallback={
+                          <div className="w-full h-full flex items-center justify-center">
+                            <div className="animate-pulse bg-muted rounded w-16 h-16"></div>
+                          </div>
+                        }
+                      >
+                        <ComponentPreview item={item} />
+                      </Suspense>
+                    </div>
+                  </ResizablePanel>
+                  <ResizableHandle
+                    withHandle
+                    onDoubleClick={() => handleDoubleClick(item.name)}
+                  />
+                  <ResizablePanel defaultSize={0} minSize={0} maxSize={70} />
+                </ResizablePanelGroup>
               </div>
             </div>
           ))}
