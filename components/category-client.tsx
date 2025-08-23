@@ -5,7 +5,8 @@ import dynamic from "next/dynamic";
 import { Suspense, useRef, useState } from "react";
 import { RegistryItem } from "@/lib/registry";
 import TagFilter from "@/components/tag-filter";
-import { ExternalLinkIcon, Copy, Check } from "lucide-react";
+import { OpenInV0Button } from "@/components/open-in-v0-button";
+import { ExternalLinkIcon, Copy, Check, Terminal } from "lucide-react";
 import {
   ResizablePanelGroup,
   ResizablePanel,
@@ -15,6 +16,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import type { ImperativePanelHandle } from "react-resizable-panels";
 import type { SyntaxHighlighterProps } from "react-syntax-highlighter";
+import React from "react";
 
 interface CategoryClientProps {
   categoryInfo: { name: string; label: string };
@@ -23,6 +25,81 @@ interface CategoryClientProps {
   selectedTags: string[];
   filteredItems: RegistryItem[];
 }
+
+interface ComponentPreviewContentProps {
+  item: RegistryItem;
+  needsIframe: boolean;
+}
+
+const ComponentPreviewContent = React.memo(
+  ({ item, needsIframe }: ComponentPreviewContentProps) => {
+    const DynamicComponent = React.useMemo(() => {
+      if (needsIframe) return null;
+
+      try {
+        const componentPath = item.files[0].path.replace(".tsx", "");
+        return dynamic(
+          () =>
+            import(`@/registry/${componentPath}`).catch(() => {
+              // Return a fallback component for failed imports
+              return {
+                default: function FallbackComponent() {
+                  return (
+                    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                      <span className="text-sm">Preview unavailable</span>
+                    </div>
+                  );
+                },
+              };
+            }),
+          {
+            loading: () => (
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="animate-pulse bg-muted rounded w-16 h-16"></div>
+              </div>
+            ),
+            ssr: false,
+          },
+        );
+      } catch {
+        return function ErrorFallback() {
+          return (
+            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+              <span className="text-sm">Preview unavailable</span>
+            </div>
+          );
+        };
+      }
+    }, [item.files, needsIframe]);
+
+    if (needsIframe) {
+      return (
+        <div className="w-full h-full relative">
+          <iframe
+            src={`/preview/${item.name}`}
+            className="aspect-video border-none min-h-[80vh] max-w-full"
+          />
+        </div>
+      );
+    }
+
+    if (!DynamicComponent) {
+      return (
+        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+          <span className="text-sm">Preview unavailable</span>
+        </div>
+      );
+    }
+
+    return (
+      <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden">
+        <DynamicComponent />
+      </div>
+    );
+  },
+);
+
+ComponentPreviewContent.displayName = "ComponentPreviewContent";
 
 function ComponentPreview({ item }: { item: RegistryItem }) {
   // Use explicit previewMode from registry metadata
@@ -40,10 +117,11 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
     setTimeout(() => setCopiedIndex(-1), 2000);
   };
 
-  const handleDoubleClick = () => {
-    if (panelRef.current) {
-      panelRef.current.resize(100);
-    }
+  const handleCopyCLI = async () => {
+    const cliCommand = `npx shadcn@latest add ${process.env.NEXT_PUBLIC_BASE_URL}/r/${item.name}.json`;
+    await navigator.clipboard.writeText(cliCommand);
+    setCopiedIndex(-2); // Use -2 for CLI button
+    setTimeout(() => setCopiedIndex(-1), 2000);
   };
 
   const handleTabChange = async (value: string) => {
@@ -66,55 +144,24 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
     }
   };
 
-  const renderPreview = () => {
-    const content = needsIframe ? (
-      <div className="w-full h-full relative">
-        <iframe
-          src={`/preview/${item.name}`}
-          className="aspect-video border-none min-h-[80vh] max-w-full"
-        />
-      </div>
-    ) : (
-      (() => {
-        try {
-          const componentPath = item.files[0].path.replace(".tsx", "");
-          const Component = dynamic(
-            () => import(`@/registry/${componentPath}`),
-            {
-              loading: () => (
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="animate-pulse bg-muted rounded w-16 h-16"></div>
-                </div>
-              ),
-              ssr: false,
-            }
-          );
-
-          return (
-            <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden">
-              <Component />
-            </div>
-          );
-        } catch {
-          return (
-            <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-              <span className="text-sm">Preview unavailable</span>
-            </div>
-          );
-        }
-      })()
-    );
-
+  const renderPreview = React.useCallback(() => {
     return (
       <ResizablePanelGroup direction="horizontal" className="w-full h-full">
         <ResizablePanel ref={panelRef} defaultSize={100} minSize={30}>
-          {content}
+          <ComponentPreviewContent item={item} needsIframe={needsIframe} />
         </ResizablePanel>
-        <ResizableHandle withHandle onDoubleClick={handleDoubleClick} />
+        <ResizableHandle
+          withHandle
+          onDoubleClick={() => {
+            if (panelRef.current) {
+              panelRef.current.resize(100);
+            }
+          }}
+        />
         <ResizablePanel defaultSize={0} minSize={0} maxSize={70} />
       </ResizablePanelGroup>
     );
-  };
+  }, [item, needsIframe, panelRef]);
 
   return (
     <Tabs
@@ -127,6 +174,22 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleCopyCLI}
+            className="h-8 px-3 text-xs font-mono"
+          >
+            {copiedIndex === -2 ? (
+              <Check className="h-3 w-3 mr-1.5" />
+            ) : (
+              <Terminal className="h-3 w-3 mr-1.5" />
+            )}
+            Get via CLI
+          </Button>
+          <OpenInV0Button name={item.name} className="h-8" />
+        </div>
       </div>
 
       <TabsContent
