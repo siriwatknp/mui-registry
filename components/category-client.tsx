@@ -59,7 +59,7 @@ const ComponentPreviewContent = React.memo(
               </div>
             ),
             ssr: false,
-          },
+          }
         );
       } catch {
         return function ErrorFallback() {
@@ -96,7 +96,7 @@ const ComponentPreviewContent = React.memo(
         <DynamicComponent />
       </div>
     );
-  },
+  }
 );
 
 ComponentPreviewContent.displayName = "ComponentPreviewContent";
@@ -186,7 +186,7 @@ function ComponentPreview({ item }: { item: RegistryItem }) {
             ) : (
               <Terminal className="h-3 w-3 mr-1.5" />
             )}
-            Get via CLI
+            npx shadcn
           </Button>
           <OpenInV0Button name={item.name} className="h-8" />
         </div>
