@@ -98,7 +98,9 @@ Before moving to the next step, you MUST do the following:
 ### Step 3: Post task
 
 - Kill the dev server and close the MCP playwright browser
-- At the root terminal, run `node scripts/create-registry-json.js <registry_name> "Title" "Description"` with meaningful title and description.
+- At the root terminal, run `node scripts/create-registry-json.js <registry_name> [title] [description] [category] [tags]` with meaningful title and description.
+  - category: `authentication`, `dashboard`
+  - tags: `form`, `login`, `chart`, `card`, `table` (can be multiple)
 - Check the screenshots location and move them to the context folder if the location is not correct.
 - Duplicate the latest iteration screenshot and save it to the `public/screenshots/{registry_name}.png`.
 
