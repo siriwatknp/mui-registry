@@ -128,7 +128,13 @@ export default function LoginFormSplit() {
             direction="row"
             alignItems="center"
             spacing={1}
-            sx={{ position: "fixed", top: "2rem", left: "2rem" }}
+            sx={{
+              position: { xs: "static", md: "fixed" },
+              top: "2rem",
+              left: "2rem",
+              mb: 2,
+              justifyContent: "center",
+            }}
           >
             <Box
               sx={{
