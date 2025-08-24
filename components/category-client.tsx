@@ -77,7 +77,7 @@ const ComponentPreviewContent = React.memo(
         <div className="w-full h-full relative">
           <iframe
             src={`/preview/${item.name}`}
-            className="aspect-video border-none min-h-[80vh] max-w-full"
+            className="aspect-video border-none min-h-[80vh] max-w-full [color-scheme:auto]"
           />
         </div>
       );

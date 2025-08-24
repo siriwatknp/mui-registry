@@ -83,7 +83,7 @@ export default function LoginFormSplit() {
     >
       {/* Left side - Image */}
       <Box
-        sx={{
+        sx={(theme) => ({
           display: {
             xs: "none",
             md: "flex",
@@ -93,7 +93,10 @@ export default function LoginFormSplit() {
           alignItems: "center",
           justifyContent: "center",
           p: 3,
-        }}
+          ...theme.applyStyles("dark", {
+            bgcolor: "grey.900",
+          }),
+        })}
       >
         <Box
           component="img"
@@ -104,6 +107,7 @@ export default function LoginFormSplit() {
             height: "100%",
             objectFit: "cover",
             borderRadius: 2,
+            opacity: 0.2, // TODO: remove this once we have a real image
           }}
         />
       </Box>
