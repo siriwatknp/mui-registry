@@ -21,6 +21,11 @@ export const buttonTheme: ThemeOptions["components"] = {
   MuiIconButton: {
     styleOverrides: {
       root: ({ theme }) => ({
+        "&.Mui-focusVisible": {
+          outline: "2px solid",
+          outlineColor: (theme.vars || theme).palette.text.primary,
+          outlineOffset: "2px",
+        },
         "&:active": {
           transform: "scale(0.98)",
         },
@@ -52,6 +57,11 @@ export const buttonTheme: ThemeOptions["components"] = {
       root: ({ theme }) => ({
         minWidth: "unset",
         textTransform: "capitalize",
+        "&.Mui-focusVisible": {
+          outline: "2px solid",
+          outlineColor: (theme.vars || theme).palette.text.primary,
+          outlineOffset: "2px",
+        },
         "&:active": {
           transform: "scale(0.98)",
         },
@@ -255,6 +265,17 @@ export const buttonTheme: ThemeOptions["components"] = {
             },
           },
         ],
+      }),
+    },
+  },
+  MuiFab: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        "&.Mui-focusVisible": {
+          outline: "2px solid",
+          outlineColor: (theme.vars || theme).palette.text.primary,
+          outlineOffset: "2px",
+        },
       }),
     },
   },

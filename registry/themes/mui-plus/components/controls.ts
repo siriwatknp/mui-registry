@@ -22,6 +22,7 @@ export const controlsTheme: ThemeOptions["components"] = {
         "&:has(.Mui-focusVisible)": {
           outline: "2px solid",
           outlineOffset: "4px",
+          outlineColor: (theme.vars || theme).palette.text.primary,
         },
         variants: [
           {
@@ -67,9 +68,7 @@ export const controlsTheme: ThemeOptions["components"] = {
           height: "var(--_thumb-h)",
           boxShadow:
             "0 3px 8px 0 rgba(0,0,0,0.1), 0 1px 1px 0 rgba(0,0,0,0.12), 0 3px 1px 0 rgba(0,0,0,0.08)",
-          transition: theme.transitions.create(["width"], {
-            duration: theme.transitions.duration.shortest,
-          }),
+          transition: "width 120ms ease-out 0ms",
         },
         [`& .${switchClasses.track}`]: {
           borderRadius: "var(--_thumb-size)",

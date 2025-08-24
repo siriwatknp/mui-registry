@@ -212,12 +212,12 @@ export const textFieldTheme: ThemeOptions["components"] = {
     styleOverrides: {
       root: ({ theme }) => ({
         fontSize: theme.typography.body2.fontSize,
+      }),
+      outlined: ({ theme }) => ({
         color: (theme.vars || theme).palette.text.primary,
         "&.Mui-focused": {
           color: (theme.vars || theme).palette.primary.main,
         },
-      }),
-      outlined: ({ theme }) => ({
         "&.Mui-disabled": {
           color: (theme.vars || theme).palette.text.disabled,
         },
@@ -254,9 +254,9 @@ export const textFieldTheme: ThemeOptions["components"] = {
           {
             props: { size: "small" },
             style: {
-              transform: "translate(12px, 13px) scale(1)",
+              transform: "translate(12px, 14px) scale(1)",
               "&.MuiInputLabel-shrink": {
-                transform: "translate(12px, 4px) scale(0.75)",
+                transform: "translate(10px, 6px) scale(0.75)",
               },
             },
           },

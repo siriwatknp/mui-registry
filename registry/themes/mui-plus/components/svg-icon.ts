@@ -9,19 +9,19 @@ export const svgIconTheme: ThemeOptions["components"] = {
           {
             props: { fontSize: "small" },
             style: {
-              fontSize: "var(--Icon-size, 1.25rem)", // 20px
+              fontSize: "var(--Icon-size, 1.125rem)", // 18px
             },
           },
           {
             props: { fontSize: "medium" },
             style: {
-              fontSize: "var(--Icon-size, 1.5rem)", // 24px
+              fontSize: "var(--Icon-size, 1.25rem)", // 20px
             },
           },
           {
             props: { fontSize: "large" },
             style: {
-              fontSize: "var(--Icon-size, 2.1875rem)", // 35px
+              fontSize: "var(--Icon-size, 2rem)", // 32px
             },
           },
           {

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { AppTheme } from "@/app/theme";
+import { useTheme, useColorScheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Accordion from "@mui/material/Accordion";
@@ -82,7 +83,6 @@ import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
-import { useTheme } from "@mui/material/styles";
 
 interface SectionHeaderProps {
   title: string;
@@ -107,11 +107,34 @@ interface ColorBoxProps {
 }
 
 function ColorBox({ color, label }: ColorBoxProps) {
+  const { mode, systemMode } = useColorScheme();
+  const resolvedMode = (systemMode || mode) as "light" | "dark";
+  const { colorSchemes } = useTheme();
+
+  // Convert color prop like "palette-primary-main" to nested object path
+  const getColorValue = (colorPath: string) => {
+    const parts = colorPath.split("-");
+    if (parts.length < 3) return colorPath;
+
+    const [category, section, variant] = parts;
+    if (category === "palette" && colorSchemes?.[resolvedMode]?.palette) {
+      const palette = colorSchemes[resolvedMode].palette as unknown as Record<
+        string,
+        Record<string, string>
+      >;
+      const paletteSection = palette[section];
+      return paletteSection?.[variant] || colorPath;
+    }
+    return <>&nbsp;</>;
+  };
+
+  const colorValue = getColorValue(color);
+
   return (
-    <div className="text-center">
+    <div className="text-center snap-center">
       <div
-        className="w-30 h-10 border border-gray-300 rounded mb-2"
-        style={{ backgroundColor: color }}
+        className="w-30 h-10 border border-gray-300 dark:border-gray-600 rounded mb-2"
+        style={{ backgroundColor: `var(--plus-${color})` }}
       />
       <Typography
         variant="caption"
@@ -121,9 +144,14 @@ function ColorBox({ color, label }: ColorBoxProps) {
       </Typography>
       <Typography
         variant="caption"
-        sx={{ display: "block", fontFamily: "monospace", fontSize: "0.7rem" }}
+        sx={{
+          display: "block",
+          fontFamily: "monospace",
+          fontSize: "0.7rem",
+          lineHeight: "18px",
+        }}
       >
-        {color}
+        {colorValue}
       </Typography>
     </div>
   );
@@ -177,7 +205,6 @@ function CodeChip({ children }: CodeChipProps) {
 }
 
 export default function ThemePreviewPage() {
-  const theme = useTheme();
   const [checked, setChecked] = React.useState(true);
   const [checkedState, setCheckedState] = React.useState({
     option1: true,
@@ -228,23 +255,11 @@ export default function ThemePreviewPage() {
             <h3 className="text-xl font-bold">Primary</h3>
             <p className="self-baseline">Monochromatic branding palette</p>
           </GridCell>
-          <GridDemo className="flex gap-4 mt-4">
-            <ColorBox color={theme.palette.primary.main} label="main" />
-            <ColorBox
-              color={theme.palette.primary.light || theme.palette.primary.main}
-              label="light"
-            />
-            <ColorBox
-              color={theme.palette.primary.dark || theme.palette.primary.main}
-              label="dark"
-            />
-            <ColorBox
-              color={
-                (theme.palette.primary as { text?: string }).text ||
-                theme.palette.primary.main
-              }
-              label="text"
-            />
+          <GridDemo className="flex overflow-x-auto overscroll-x-contain snap-x gap-4 mt-4">
+            <ColorBox color="palette-primary-main" label="main" />
+            <ColorBox color="palette-primary-light" label="light" />
+            <ColorBox color="palette-primary-dark" label="dark" />
+            <ColorBox color="palette-primary-text" label="text" />
           </GridDemo>
 
           {/* Secondary Colors */}
@@ -254,27 +269,11 @@ export default function ThemePreviewPage() {
               System gray tones for supporting UI elements
             </p>
           </GridCell>
-          <GridDemo className="flex gap-4 mt-4">
-            <ColorBox color={theme.palette.secondary.main} label="main" />
-            <ColorBox
-              color={
-                theme.palette.secondary.light || theme.palette.secondary.main
-              }
-              label="light"
-            />
-            <ColorBox
-              color={
-                theme.palette.secondary.dark || theme.palette.secondary.main
-              }
-              label="dark"
-            />
-            <ColorBox
-              color={
-                (theme.palette.secondary as { text?: string }).text ||
-                theme.palette.secondary.main
-              }
-              label="text"
-            />
+          <GridDemo className="flex overflow-x-auto overscroll-x-contain snap-x gap-4 mt-4">
+            <ColorBox color="palette-secondary-main" label="main" />
+            <ColorBox color="palette-secondary-light" label="light" />
+            <ColorBox color="palette-secondary-dark" label="dark" />
+            <ColorBox color="palette-secondary-text" label="text" />
           </GridDemo>
 
           {/* Success Colors */}
@@ -284,23 +283,11 @@ export default function ThemePreviewPage() {
               Green palette for positive actions and states
             </p>
           </GridCell>
-          <GridDemo className="flex gap-4 mt-4">
-            <ColorBox color={theme.palette.success.main} label="main" />
-            <ColorBox
-              color={theme.palette.success.light || theme.palette.success.main}
-              label="light"
-            />
-            <ColorBox
-              color={theme.palette.success.dark || theme.palette.success.main}
-              label="dark"
-            />
-            <ColorBox
-              color={
-                (theme.palette.success as { text?: string }).text ||
-                theme.palette.success.main
-              }
-              label="text"
-            />
+          <GridDemo className="flex overflow-x-auto overscroll-x-contain snap-x gap-4 mt-4">
+            <ColorBox color="palette-success-main" label="main" />
+            <ColorBox color="palette-success-light" label="light" />
+            <ColorBox color="palette-success-dark" label="dark" />
+            <ColorBox color="palette-success-text" label="text" />
           </GridDemo>
 
           {/* Error Colors */}
@@ -310,23 +297,11 @@ export default function ThemePreviewPage() {
               Red palette for error states and destructive actions
             </p>
           </GridCell>
-          <GridDemo className="flex gap-4 mt-4">
-            <ColorBox color={theme.palette.error.main} label="main" />
-            <ColorBox
-              color={theme.palette.error.light || theme.palette.error.main}
-              label="light"
-            />
-            <ColorBox
-              color={theme.palette.error.dark || theme.palette.error.main}
-              label="dark"
-            />
-            <ColorBox
-              color={
-                (theme.palette.error as { text?: string }).text ||
-                theme.palette.error.main
-              }
-              label="text"
-            />
+          <GridDemo className="flex overflow-x-auto overscroll-x-contain snap-x gap-4 mt-4">
+            <ColorBox color="palette-error-main" label="main" />
+            <ColorBox color="palette-error-light" label="light" />
+            <ColorBox color="palette-error-dark" label="dark" />
+            <ColorBox color="palette-error-text" label="text" />
           </GridDemo>
 
           {/* Warning Colors */}
@@ -336,23 +311,11 @@ export default function ThemePreviewPage() {
               Yellow/amber palette for warning states
             </p>
           </GridCell>
-          <GridDemo className="flex gap-4 mt-4">
-            <ColorBox color={theme.palette.warning.main} label="main" />
-            <ColorBox
-              color={theme.palette.warning.light || theme.palette.warning.main}
-              label="light"
-            />
-            <ColorBox
-              color={theme.palette.warning.dark || theme.palette.warning.main}
-              label="dark"
-            />
-            <ColorBox
-              color={
-                (theme.palette.warning as { text?: string }).text ||
-                theme.palette.warning.main
-              }
-              label="text"
-            />
+          <GridDemo className="flex overflow-x-auto overscroll-x-contain snap-x gap-4 mt-4">
+            <ColorBox color="palette-warning-main" label="main" />
+            <ColorBox color="palette-warning-light" label="light" />
+            <ColorBox color="palette-warning-dark" label="dark" />
+            <ColorBox color="palette-warning-text" label="text" />
           </GridDemo>
 
           {/* Info Colors */}
@@ -362,23 +325,11 @@ export default function ThemePreviewPage() {
               Blue palette for informational elements
             </p>
           </GridCell>
-          <GridDemo className="flex gap-4 mt-4">
-            <ColorBox color={theme.palette.info.main} label="main" />
-            <ColorBox
-              color={theme.palette.info.light || theme.palette.info.main}
-              label="light"
-            />
-            <ColorBox
-              color={theme.palette.info.dark || theme.palette.info.main}
-              label="dark"
-            />
-            <ColorBox
-              color={
-                (theme.palette.info as { text?: string }).text ||
-                theme.palette.info.main
-              }
-              label="text"
-            />
+          <GridDemo className="flex overflow-x-auto overscroll-x-contain snap-x gap-4 mt-4">
+            <ColorBox color="palette-info-main" label="main" />
+            <ColorBox color="palette-info-light" label="light" />
+            <ColorBox color="palette-info-dark" label="dark" />
+            <ColorBox color="palette-info-text" label="text" />
           </GridDemo>
 
           {/* Background & Text Colors */}
@@ -386,17 +337,17 @@ export default function ThemePreviewPage() {
             <h3 className="text-xl font-bold">Background & Text</h3>
             <p className="self-baseline"></p>
           </GridCell>
-          <GridDemo className="flex gap-4 mt-4">
+          <GridDemo className="flex overflow-x-auto overscroll-x-contain snap-x gap-4 mt-4">
             <ColorBox
-              color={theme.palette.background.default}
-              label="bg default"
+              color="palette-background-default"
+              label="background.default"
             />
-            <ColorBox color={theme.palette.background.paper} label="bg paper" />
-            <ColorBox color={theme.palette.text.primary} label="text primary" />
             <ColorBox
-              color={theme.palette.text.secondary}
-              label="text secondary"
+              color="palette-background-paper"
+              label="background.paper"
             />
+            <ColorBox color="palette-text-primary" label="text.primary" />
+            <ColorBox color="palette-text-secondary" label="text.secondary" />
           </GridDemo>
 
           {/* Typography Section */}

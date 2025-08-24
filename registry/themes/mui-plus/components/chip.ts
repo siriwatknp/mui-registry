@@ -7,6 +7,11 @@ export const chipTheme: ThemeOptions["components"] = {
         borderRadius: 6,
         fontWeight: 400,
         fontSize: theme.typography.body2.fontSize,
+        "&.Mui-focusVisible": {
+          outline: "2px solid",
+          outlineColor: (theme.vars || theme).palette.text.primary,
+          outlineOffset: "2px",
+        },
         variants: [
           {
             props: { variant: "outlined", color: "primary" },
@@ -105,6 +110,14 @@ export const chipTheme: ThemeOptions["components"] = {
               } var(--_p, 80%))`,
             },
           },
+          {
+            props: { clickable: true },
+            style: {
+              "&:active": {
+                transform: "scale(0.98)",
+              },
+            },
+          },
         ],
       }),
       icon: {
@@ -119,6 +132,9 @@ export const chipTheme: ThemeOptions["components"] = {
         ],
       },
       deleteIcon: ({ theme }) => ({
+        "&:active": {
+          transform: "scale(0.97)",
+        },
         variants: [
           {
             props: { color: "default" },
