@@ -45,11 +45,12 @@ export const controlsTheme: ThemeOptions["components"] = {
                 background: (theme.vars || theme).palette.grey[900],
               },
             }),
-            [`& + .${switchClasses.track}`]: {
+          },
+          [`&.${switchClasses.checked}:not(.Mui-disabled) + .${switchClasses.track}`]:
+            {
               opacity: 1,
               border: "none",
             },
-          },
           "&:active": {
             "--_thumb-w": "calc(var(--_thumb-size) + 4px)",
           },

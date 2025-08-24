@@ -10,6 +10,10 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Alert from "@mui/material/Alert";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import Button from "@mui/material/Button";
@@ -427,6 +431,229 @@ export default function ThemePreviewPage() {
               <Typography variant="overline" sx={{ display: "block" }}>
                 overline text
               </Typography>
+            </div>
+          </GridDemo>
+
+          {/* TextField Section */}
+          <GridCell>
+            <h3 className="text-xl font-bold">TextField</h3>
+            <p className="self-baseline">Enter and edit text</p>
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <TextField
+                label="Standard"
+                variant="standard"
+                placeholder="Enter text"
+              />
+              <TextField
+                label="Outlined"
+                variant="outlined"
+                placeholder="Enter text"
+              />
+              <TextField
+                label="Filled"
+                variant="filled"
+                placeholder="Enter text"
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>variant=&quot;outlined&quot;</CodeChip> (default)
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <TextField
+                label="Basic TextField"
+                variant="outlined"
+                placeholder="Enter your text here"
+              />
+              <TextField
+                label="With Helper Text"
+                variant="outlined"
+                placeholder="Enter text"
+                helperText="This is helper text"
+              />
+              <TextField
+                label="Required Field"
+                variant="outlined"
+                required
+                placeholder="This field is required"
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>size=&quot;small&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <TextField
+                label="Small TextField"
+                variant="outlined"
+                size="small"
+                placeholder="Small size"
+              />
+              <TextField
+                label="Small Filled"
+                variant="filled"
+                size="small"
+                placeholder="Small filled"
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>error</CodeChip> state
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <TextField
+                label="Error State"
+                variant="outlined"
+                error
+                value="Invalid input"
+                helperText="This field has an error"
+              />
+              <TextField
+                label="Error Required"
+                variant="outlined"
+                required
+                error
+                helperText="This field is required"
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>disabled</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <OutlinedInput placeholder="Outlined" />
+              <OutlinedInput placeholder="Small outlined" size="small" />
+              <TextField
+                label="Disabled"
+                variant="outlined"
+                disabled
+                value="Disabled text"
+              />
+              <TextField
+                label="Disabled Filled"
+                variant="filled"
+                disabled
+                placeholder="Disabled placeholder"
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>multiline</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <TextField
+                label="Multiline"
+                variant="outlined"
+                multiline
+                rows={3}
+                placeholder="Enter multiple lines of text..."
+              />
+              <TextField
+                label="Auto-resize"
+                variant="outlined"
+                multiline
+                minRows={2}
+                maxRows={4}
+                placeholder="This will auto-resize as you type..."
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>fullWidth</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4">
+              <TextField
+                label="Full Width"
+                variant="outlined"
+                fullWidth
+                placeholder="This field takes full width"
+              />
+              <TextField
+                label="Full Width Filled"
+                variant="filled"
+                fullWidth
+                placeholder="Full width filled variant"
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>With icons</GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <TextField
+                label="Search"
+                variant="outlined"
+                placeholder="Search..."
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+              />
+              <TextField
+                label="Account"
+                variant="outlined"
+                placeholder="Username"
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <AccountCircleIcon />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+              />
+            </div>
+          </GridDemo>
+
+          <GridCell>Input types</GridCell>
+          <GridDemo>
+            <div className="space-y-4 space-x-4 max-w-md">
+              <TextField
+                label="Email"
+                variant="outlined"
+                type="email"
+                placeholder="email@example.com"
+              />
+              <TextField
+                label="Password"
+                variant="outlined"
+                type="password"
+                placeholder="Enter password"
+              />
+              <TextField
+                label="Number"
+                variant="outlined"
+                type="number"
+                placeholder="Enter number"
+              />
+              <TextField
+                label="Date"
+                variant="outlined"
+                type="date"
+                slotProps={{
+                  inputLabel: { shrink: true },
+                }}
+              />
             </div>
           </GridDemo>
 
@@ -2202,7 +2429,7 @@ export default function ThemePreviewPage() {
           <GridDemo>
             <div className="flex items-center gap-4">
               <Switch defaultChecked color="secondary" />
-              <Switch defaultChecked color="error" />
+              <Switch defaultChecked color="error" disabled />
               <Switch defaultChecked color="success" />
               <Switch defaultChecked color="warning" />
             </div>

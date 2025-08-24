@@ -11,20 +11,6 @@ export const textFieldTheme: ThemeOptions["components"] = {
           {
             props: { variant: "outlined" },
             style: {
-              "& .MuiFormLabel-root, & .MuiInputLabel-root.MuiInputLabel-shrink":
-                {
-                  position: "static",
-                  transform: "none",
-                  pointerEvents: "auto",
-                  marginBottom: "0.25rem",
-                  maxWidth: "unset",
-                  fontWeight: 500,
-                  lineHeight: 1.5,
-                  color: (theme.vars || theme).palette.text.primary,
-                },
-              "& .MuiOutlinedInput-input:where(input)": {
-                paddingBlock: "9.5px",
-              },
               "&&& .MuiInputBase-input": {
                 "&::-webkit-input-placeholder": {
                   opacity: "0.42 !important",
@@ -47,15 +33,6 @@ export const textFieldTheme: ThemeOptions["components"] = {
                   color: (theme.vars || theme).palette.text.primary,
                   backgroundColor: "transparent",
                 },
-              },
-            },
-          },
-          {
-            props: { variant: "outlined", size: "small" },
-            style: {
-              "& .MuiInputBase-input:where(input)": {
-                paddingBlock: "6.5px",
-                paddingInline: "12px",
               },
             },
           },
@@ -110,6 +87,8 @@ export const textFieldTheme: ThemeOptions["components"] = {
           borderColor: (theme.vars || theme).palette.error.main,
         },
         "&.Mui-disabled": {
+          backgroundColor: (theme.vars || theme).palette.action
+            .disabledBackground,
           "& .MuiOutlinedInput-notchedOutline": {
             borderColor: (theme.vars || theme).palette.action.disabled,
           },
@@ -129,6 +108,23 @@ export const textFieldTheme: ThemeOptions["components"] = {
           },
         ],
       }),
+      input: {
+        paddingBlock: "9.5px",
+        variants: [
+          {
+            props: { size: "small" },
+            style: {
+              paddingBlock: "6.5px",
+            },
+          },
+          {
+            props: { multiline: true },
+            style: {
+              padding: 0,
+            },
+          },
+        ],
+      },
       notchedOutline: {
         borderRadius: 8,
       },
@@ -216,16 +212,26 @@ export const textFieldTheme: ThemeOptions["components"] = {
     styleOverrides: {
       root: ({ theme }) => ({
         fontSize: theme.typography.body2.fontSize,
+        color: (theme.vars || theme).palette.text.primary,
         "&.Mui-focused": {
           color: (theme.vars || theme).palette.primary.main,
         },
-        "&.Mui-error": {
-          color: (theme.vars || theme).palette.error.main,
-        },
       }),
-      outlined: {
-        "&.MuiInputLabel-shrink": {
-          transform: "translate(14px, -9px) scale(0.75)",
+      outlined: ({ theme }) => ({
+        "&.Mui-disabled": {
+          color: (theme.vars || theme).palette.text.disabled,
+        },
+        "&.MuiFormLabel-root": {
+          position: "static",
+          transform: "none",
+          pointerEvents: "auto",
+          marginBottom: "0.25rem",
+          maxWidth: "unset",
+          fontWeight: 500,
+          lineHeight: 1.5,
+          "&.MuiInputLabel-shrink": {
+            transform: "none",
+          },
         },
         variants: [
           {
@@ -238,7 +244,7 @@ export const textFieldTheme: ThemeOptions["components"] = {
             },
           },
         ],
-      },
+      }),
       filled: {
         transform: "translate(12px, 16px) scale(1)",
         "&.MuiInputLabel-shrink": {
