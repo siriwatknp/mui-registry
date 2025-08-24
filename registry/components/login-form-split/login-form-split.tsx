@@ -160,14 +160,14 @@ export default function LoginFormSplit() {
                 }}
               />
             </Box>
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            <Typography variant="h4" sx={{ fontWeight: 600 }}>
               Acme Inc.
             </Typography>
           </Stack>
 
           {/* Form Header */}
           <Box sx={{ mb: 4, textAlign: "center" }}>
-            <Typography variant="h4" sx={{ fontWeight: 600, mb: 1 }}>
+            <Typography variant="h3" sx={{ fontWeight: 600, mb: 1 }}>
               Login to your account
             </Typography>
             <Typography variant="body2" color="text.secondary">

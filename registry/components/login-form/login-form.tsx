@@ -97,7 +97,7 @@ export default function LoginForm() {
     >
       <Stack spacing={3}>
         <Stack spacing={1} textAlign="center">
-          <Typography variant="h4" component="h1">
+          <Typography variant="h3" component="h1">
             Login to your account
           </Typography>
           <Typography variant="body1" color="text.secondary">

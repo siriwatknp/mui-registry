@@ -148,7 +148,9 @@ interface GridCellProps {
  * MUST be a direct child of GridContainer
  */
 function GridCell({ children, className = "" }: GridCellProps) {
-  return <div className={`col-start-1 ${className}`}>{children}</div>;
+  return (
+    <div className={`col-start-1 mt-4 md:mt-3 ${className}`}>{children}</div>
+  );
 }
 
 /**
@@ -404,8 +406,6 @@ export default function ThemePreviewPage() {
               <Typography variant="h2">h2. Heading</Typography>
               <Typography variant="h3">h3. Heading</Typography>
               <Typography variant="h4">h4. Heading</Typography>
-              <Typography variant="h5">h5. Heading</Typography>
-              <Typography variant="h6">h6. Heading</Typography>
               <Typography variant="subtitle1">
                 subtitle1. Lorem ipsum dolor sit amet
               </Typography>
@@ -935,7 +935,9 @@ export default function ThemePreviewPage() {
           {/* Card */}
           <GridCell>
             <h4 className="text-lg font-bold">Card</h4>
-            <p className="self-baseline">Content and actions about single subject</p>
+            <p className="self-baseline">
+              Content and actions about single subject
+            </p>
           </GridCell>
           <GridDemo>
             <div className="space-y-4 max-w-sm">
@@ -946,9 +948,10 @@ export default function ThemePreviewPage() {
                 />
                 <CardContent>
                   <Typography variant="body2" color="text.secondary">
-                    This impressive paella is a perfect party dish and a fun meal to cook
-                    together with your guests. Add 1 or 2 seeded bell peppers, or add a bit
-                    of hot sauce to give it a bit more kick.
+                    This impressive paella is a perfect party dish and a fun
+                    meal to cook together with your guests. Add 1 or 2 seeded
+                    bell peppers, or add a bit of hot sauce to give it a bit
+                    more kick.
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -958,9 +961,7 @@ export default function ThemePreviewPage() {
             </div>
           </GridDemo>
 
-          <GridCell>
-            With media
-          </GridCell>
+          <GridCell>With media</GridCell>
           <GridDemo>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
@@ -974,8 +975,9 @@ export default function ThemePreviewPage() {
                   Lizard
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over 6,000
-                  species, ranging across all continents except Antarctica.
+                  Lizards are a widespread group of squamate reptiles, with over
+                  6,000 species, ranging across all continents except
+                  Antarctica.
                 </Typography>
               </CardContent>
               <CardActions>
@@ -995,7 +997,8 @@ export default function ThemePreviewPage() {
                   Outlined Card
                 </Typography>
                 <Typography variant="body2">
-                  This card uses the outlined variant to display a subtle border.
+                  This card uses the outlined variant to display a subtle
+                  border.
                 </Typography>
               </CardContent>
               <CardActions>
@@ -1008,7 +1011,7 @@ export default function ThemePreviewPage() {
             <CodeChip>elevation=0</CodeChip>
           </GridCell>
           <GridDemo>
-            <Card elevation={0} sx={{ maxWidth: 300, bgcolor: 'grey.100' }}>
+            <Card elevation={0} sx={{ maxWidth: 300, bgcolor: "grey.100" }}>
               <CardContent>
                 <Typography variant="h5" component="div">
                   Flat Card
@@ -1023,13 +1026,11 @@ export default function ThemePreviewPage() {
             </Card>
           </GridDemo>
 
-          <GridCell>
-            Complex card
-          </GridCell>
+          <GridCell>Complex card</GridCell>
           <GridDemo>
             <Card sx={{ maxWidth: 345 }}>
               <CardHeader
-                avatar={<Avatar sx={{ bgcolor: 'red.500' }}>R</Avatar>}
+                avatar={<Avatar sx={{ bgcolor: "red.500" }}>R</Avatar>}
                 title="Shrimp and Chorizo Paella"
                 subheader="September 14, 2016"
                 action={
@@ -1046,8 +1047,8 @@ export default function ThemePreviewPage() {
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                  This impressive paella is a perfect party dish and a fun meal to cook
-                  together with your guests.
+                  This impressive paella is a perfect party dish and a fun meal
+                  to cook together with your guests.
                 </Typography>
               </CardContent>
               <CardActions>
@@ -2125,13 +2126,13 @@ export default function ThemePreviewPage() {
                 </Step>
               </Stepper>
               <div className="flex gap-2">
-                <Button 
+                <Button
                   disabled={stepperActiveStep === 0}
                   onClick={() => setStepperActiveStep(stepperActiveStep - 1)}
                 >
                   Back
                 </Button>
-                <Button 
+                <Button
                   disabled={stepperActiveStep === 2}
                   onClick={() => setStepperActiveStep(stepperActiveStep + 1)}
                 >
@@ -2201,6 +2202,7 @@ export default function ThemePreviewPage() {
           <GridDemo>
             <div className="flex items-center gap-4">
               <Switch defaultChecked color="secondary" />
+              <Switch defaultChecked color="error" />
               <Switch defaultChecked color="success" />
               <Switch defaultChecked color="warning" />
             </div>
@@ -2218,7 +2220,7 @@ export default function ThemePreviewPage() {
 
           <GridCell>With labels</GridCell>
           <GridDemo>
-            <div className="space-y-2">
+            <div className="flex gap-8">
               <FormControlLabel
                 control={<Switch defaultChecked />}
                 label="WiFi"
@@ -2479,10 +2481,10 @@ export default function ThemePreviewPage() {
                 slotProps={{
                   tooltip: {
                     sx: {
-                      bgcolor: 'success.main',
-                      color: 'success.contrastText',
-                      '& .MuiTooltip-arrow': {
-                        color: 'success.main',
+                      bgcolor: "success.main",
+                      color: "success.contrastText",
+                      "& .MuiTooltip-arrow": {
+                        color: "success.main",
                       },
                     },
                   },
