@@ -26,15 +26,16 @@ import { controlsTheme } from "./components/controls";
 // Augment the palette to include custom 'text' property
 declare module "@mui/material/styles" {
   interface PaletteColor {
-    text?: string;
+    text: string;
   }
 
   interface SimplePaletteColorOptions {
-    text?: string;
+    text: string;
   }
 
   interface TypeText {
-    icon?: string;
+    icon: string;
+    tertiary: string;
   }
 }
 
@@ -125,7 +126,8 @@ const theme = createTheme({
     light: {
       palette: {
         text: {
-          icon: "rgb(0 0 0 / 0.48)", // systemGray for icons
+          icon: "rgb(0 0 0 / 0.4)", // systemGray for icons
+          tertiary: "rgb(0 0 0 / 0.54)", // lowest contrast text to pass AAA
         },
         action: {
           activatedOpacity: 0.38, // Reduced from 0.54
@@ -165,7 +167,8 @@ const theme = createTheme({
     dark: {
       palette: {
         text: {
-          icon: "rgb(255 255 255 / 0.6)", // systemGray for icons in dark mode
+          icon: "rgb(255 255 255 / 0.54)", // systemGray for icons in dark mode
+          tertiary: "rgb(255 255 255 / 0.6)", // systemGray for tertiary text
         },
         action: {
           activatedOpacity: 0.38, // Reduced intensity

@@ -11,7 +11,7 @@ export const selectTheme: ThemeOptions["components"] = {
           padding: "10px 14px",
           minHeight: "1.42857em", // 20px
           "&.MuiInputBase-inputSizeSmall": {
-            padding: "7px 14px",
+            padding: "7px 12px",
           },
         },
         "&.MuiFilledInput-input": {

@@ -115,6 +115,7 @@ export const textFieldTheme: ThemeOptions["components"] = {
             props: { size: "small" },
             style: {
               paddingBlock: "6.5px",
+              paddingInline: "12px",
             },
           },
           {

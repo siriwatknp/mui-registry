@@ -276,6 +276,9 @@ export const buttonTheme: ThemeOptions["components"] = {
           outlineColor: (theme.vars || theme).palette.text.primary,
           outlineOffset: "2px",
         },
+        "&:active": {
+          transform: "scale(0.98)",
+        },
       }),
     },
   },

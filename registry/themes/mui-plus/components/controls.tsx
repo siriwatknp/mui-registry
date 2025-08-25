@@ -1,9 +1,63 @@
+import React from "react";
 import type { ThemeOptions } from "@mui/material/styles";
 import { switchClasses } from "@mui/material/Switch";
+import { styled } from "@mui/material/styles";
 
 const borderWidth = 1;
 
+const Uncheckbox = styled("span")(({ theme }) => ({
+  display: "inline-block",
+  width: "1.5rem",
+  height: "1.5rem",
+  padding: 3,
+  borderRadius: 4,
+  color: (theme.vars || theme).palette.text.icon,
+  ".MuiCheckbox-root:hover &, .MuiFormControlLabel-root:hover &": {
+    color: (theme.vars || theme).palette.text.primary,
+  },
+  "&::before": {
+    content: '""',
+    display: "block",
+    width: "100%",
+    height: "100%",
+    border: "1px solid",
+    borderColor: "currentColor",
+    borderRadius: "inherit",
+  },
+}));
+
+const Unradio = styled("span")(({ theme }) => ({
+  display: "inline-block",
+  width: "1.5rem",
+  height: "1.5rem",
+  padding: 2,
+  borderRadius: "50%",
+  color: (theme.vars || theme).palette.text.icon,
+  ".MuiRadio-root:hover &, .MuiFormControlLabel-root:hover &": {
+    color: (theme.vars || theme).palette.text.primary,
+  },
+  "&::before": {
+    content: '""',
+    display: "block",
+    width: "100%",
+    height: "100%",
+    border: "1px solid",
+    borderColor: "currentColor",
+    borderRadius: "inherit",
+  },
+}));
+
 export const controlsTheme: ThemeOptions["components"] = {
+  MuiCheckbox: {
+    defaultProps: {
+      icon: <Uncheckbox />,
+    },
+  },
+  MuiRadio: {
+    defaultProps: {
+      icon: <Unradio />,
+    },
+  },
   MuiSwitch: {
     styleOverrides: {
       root: ({ theme }) => ({
@@ -24,6 +78,11 @@ export const controlsTheme: ThemeOptions["components"] = {
           outlineOffset: "4px",
           outlineColor: (theme.vars || theme).palette.text.primary,
         },
+        [theme.breakpoints.up("md")]: {
+          "--_h": "28px",
+          "--_w": "44px",
+          "--_inset": "2px",
+        },
         variants: [
           {
             props: { size: "small" },
@@ -31,6 +90,10 @@ export const controlsTheme: ThemeOptions["components"] = {
               "--_h": "28px",
               "--_w": "44px",
               "--_inset": "2px",
+              [theme.breakpoints.up("md")]: {
+                "--_h": "22px",
+                "--_w": "36px",
+              },
             },
           },
         ],

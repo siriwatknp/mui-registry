@@ -12,22 +12,20 @@ export const autocompleteTheme: ThemeOptions["components"] = {
     styleOverrides: {
       root: {
         "& .MuiAutocomplete-inputRoot": {
-          paddingTop: 6,
-          paddingBottom: 6,
+          paddingTop: 2,
+          paddingBottom: 2,
           paddingRight: 40,
           "&:has(.MuiChip-root)": {
-            paddingLeft: "6px",
+            paddingLeft: "2px",
           },
           "& .MuiAutocomplete-input": {
             paddingBlock: 7.5,
           },
         },
         "& .MuiAutocomplete-inputRoot.MuiInputBase-sizeSmall": {
-          paddingTop: 4,
-          paddingBottom: 4,
-          "&:has(.MuiChip-root)": {
-            paddingLeft: 4,
-          },
+          paddingTop: 2,
+          paddingBottom: 2,
+          paddingLeft: 4,
           "& .MuiAutocomplete-input": {
             paddingBlock: 4.5,
           },

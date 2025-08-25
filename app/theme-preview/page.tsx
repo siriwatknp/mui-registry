@@ -83,6 +83,13 @@ import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import FormatAlignCenterIcon from "@mui/icons-material/FormatAlignCenter";
 import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
+import HomeIcon from "@mui/icons-material/Home";
+import SettingsIcon from "@mui/icons-material/Settings";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import SvgIcon from "@mui/material/SvgIcon";
 
 interface SectionHeaderProps {
   title: string;
@@ -2409,6 +2416,107 @@ export default function ThemePreviewPage() {
                 control={<Switch />}
                 label="Location Services"
               />
+            </div>
+          </GridDemo>
+
+          {/* Icons */}
+          <GridCell>
+            <h4 className="text-lg font-bold">Icons</h4>
+            <p className="self-baseline">Material UI icons and SvgIcon</p>
+          </GridCell>
+          <GridDemo>
+            <div className="space-y-4">
+              <div>
+                <Typography variant="subtitle2" sx={{ mb: 2 }}>
+                  @mui/icons-material
+                </Typography>
+                <div className="flex items-center gap-4 flex-wrap">
+                  <HomeIcon />
+                  <SettingsIcon />
+                  <NotificationsIcon />
+                  <EmailIcon />
+                  <PhoneIcon />
+                  <LocationOnIcon />
+                  <PersonIcon />
+                  <StarIcon />
+                  <FavoriteIcon />
+                  <ShareIcon />
+                </div>
+              </div>
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>color=&quot;primary&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="flex items-center gap-4 flex-wrap">
+              <HomeIcon color="primary" />
+              <SettingsIcon color="primary" />
+              <NotificationsIcon color="primary" />
+              <EmailIcon color="primary" />
+              <PhoneIcon color="primary" />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>color=&quot;secondary&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="flex items-center gap-4 flex-wrap">
+              <HomeIcon color="secondary" />
+              <SettingsIcon color="secondary" />
+              <NotificationsIcon color="secondary" />
+              <EmailIcon color="secondary" />
+              <PhoneIcon color="secondary" />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>fontSize=&quot;small&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="flex items-center gap-4 flex-wrap">
+              <HomeIcon fontSize="small" />
+              <SettingsIcon fontSize="small" />
+              <NotificationsIcon fontSize="small" />
+              <EmailIcon fontSize="small" />
+              <PhoneIcon fontSize="small" />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <CodeChip>fontSize=&quot;large&quot;</CodeChip>
+          </GridCell>
+          <GridDemo>
+            <div className="flex items-center gap-4 flex-wrap">
+              <HomeIcon fontSize="large" />
+              <SettingsIcon fontSize="large" />
+              <NotificationsIcon fontSize="large" />
+              <EmailIcon fontSize="large" />
+              <PhoneIcon fontSize="large" />
+            </div>
+          </GridDemo>
+
+          <GridCell>
+            <h4 className="text-lg font-bold">SvgIcon</h4>
+            <p className="self-baseline">Custom SVG icons</p>
+          </GridCell>
+          <GridDemo>
+            <div className="flex items-center gap-4 flex-wrap">
+              <SvgIcon>
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+              </SvgIcon>
+              <SvgIcon color="primary">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </SvgIcon>
+              <SvgIcon color="secondary">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </SvgIcon>
+              <SvgIcon fontSize="large">
+                <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z" />
+              </SvgIcon>
             </div>
           </GridDemo>
 
