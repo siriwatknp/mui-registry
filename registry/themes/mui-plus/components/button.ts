@@ -178,7 +178,7 @@ export const buttonTheme: ThemeOptions["components"] = {
               "&.MuiButton-colorPrimary": {
                 "--variant-outlinedBorder": `color-mix(in srgb, ${
                   (theme.vars || theme).palette.primary.main
-                } 28%, transparent)`,
+                } 12%, transparent)`,
               },
               "&.MuiButton-colorSecondary": {
                 "--variant-outlinedColor": (theme.vars || theme).palette

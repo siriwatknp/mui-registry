@@ -54,7 +54,7 @@ const h1Styles = {
   [breakpoints.up("md")]: {
     "--_fs": "3.5rem",
   },
-  [breakpoints.up("lg")]: {
+  [breakpoints.up("xl")]: {
     "--_fs": "4rem",
   },
 };
@@ -72,7 +72,7 @@ const h2Styles = {
     "--_fs": "2.25rem",
     "--_lh": "1.11111111",
   },
-  [breakpoints.up("lg")]: {
+  [breakpoints.up("xl")]: {
     "--_fs": "3rem",
     "--_lh": "1.08333",
   },
@@ -92,7 +92,7 @@ const h3Styles = {
     "--_fs": "1.875rem",
     "--_lh": "1.33333",
   },
-  [breakpoints.up("lg")]: {
+  [breakpoints.up("xl")]: {
     "--_fs": "2.25rem",
     "--_lh": "1.22222",
   },
@@ -111,7 +111,7 @@ const h4Styles = {
   [breakpoints.up("md")]: {
     "--_lh": "1.6",
   },
-  [breakpoints.up("lg")]: {
+  [breakpoints.up("xl")]: {
     "--_lh": "1.5",
   },
 };
